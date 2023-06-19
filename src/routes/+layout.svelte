@@ -1,5 +1,23 @@
 <script>
-  import "../app.postcss";
+  import '@skeletonlabs/skeleton/themes/theme-skeleton.css';
+  import '@skeletonlabs/skeleton/styles/skeleton.css';
+  import '../app.postcss';
+  import { AppBar, AppShell } from '@skeletonlabs/skeleton';
 </script>
 
-<slot />
+
+<AppShell>
+	<svelte:fragment slot="header">
+    <AppBar>Iskohire</AppBar>
+  </svelte:fragment>
+	<!-- (sidebarLeft) -->
+	<!-- (sidebarRight) -->
+	<!-- (pageHeader) -->
+	<!-- Router Slot -->
+	<slot />
+	<!-- ---- / ---- -->
+	<!-- (pageFooter) -->
+	<svelte:fragment slot="footer">
+    <AppBar>Footer</AppBar>
+  </svelte:fragment>
+</AppShell>
