@@ -82,3 +82,6 @@
     <AppBar>Footer</AppBar>
   </svelte:fragment>
 </AppShell>
+<slot>
+<p>Hello World</p>
+</slot>
