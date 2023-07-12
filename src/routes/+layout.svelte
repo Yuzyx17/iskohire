@@ -1,5 +1,25 @@
+<style>
+  :global(body) {
+    background-color: #F1EFEC;
+  }
+
+  html, body {
+    height: 100%;
+  }
+
+  #app {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  main {
+    flex-grow: 1;
+  }
+</style>
+
 <script lang="ts">
-  import '@skeletonlabs/skeleton/themes/theme-skeleton.css';
+  //import '@skeletonlabs/skeleton/themes/theme-sahara.css';
   import '@skeletonlabs/skeleton/styles/skeleton.css';
   import '../app.postcss';
   import { AppBar, AppShell } from '@skeletonlabs/skeleton';
@@ -32,8 +52,8 @@
 <nav class="list-nav">
 	<ul>
 		<li class=""><a href="/">Home</a></li>
-		<li><a href="/about">About</a></li>
-		<li><a href="/blog">Blog</a></li>
+		<li><a href="/expform">About</a></li>
+		<li><a href="/eduform">Blog</a></li>
 		<li><a href="/contact">Contact</a></li>
 	</ul>
 </nav>
