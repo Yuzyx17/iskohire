@@ -29,22 +29,22 @@
 </style>
 
 <script lang="ts">
-  import '../theme.postcss'
+  import '../../theme.postcss'
   //import '@skeletonlabs/skeleton/themes/theme-sahara.css';
   import '@skeletonlabs/skeleton/styles/skeleton.css';
-  import '../app.postcss';
+  import '../../app.postcss';
   import { AppBar, AppShell } from '@skeletonlabs/skeleton';
   import { IconMenu2 } from '@tabler/icons-svelte';
   import { Drawer, drawerStore } from '@skeletonlabs/skeleton';
   import type { DrawerSettings } from '@skeletonlabs/skeleton';
 	import { invalidate } from '$app/navigation'
 	import { onMount } from 'svelte'
-  import Profile from './components/Profile.svelte';
-  import Register from './components/Register.svelte';
+  import Profile from '../../components/Profile.svelte';
+  import Register from '../../components/Register.svelte';
   
-  import {logged_in} from './store'
+  import {logged_in} from '../../store'
 
-	export let data./with navbar and footer/$types.js
+  export let data;
 
 	let { supabase, session } = data
 	$: ({ supabase, session } = data)

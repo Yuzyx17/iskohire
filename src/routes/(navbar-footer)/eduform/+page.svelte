@@ -26,7 +26,7 @@
     .container {
       display: grid;
       place-items: center;
-      height: 75vh;
+      height: 100vh;
       margin: auto;
     }
   

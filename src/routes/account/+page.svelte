@@ -1,77 +1,109 @@
-<!-- src/routes/account/+page.svelte -->
 <script lang="ts">
 	import { enhance, type SubmitFunction } from '$app/forms'
-
-	export let data
-	export let form
-
-	let { session, supabase, profile } = data
-	$: ({ session, supabase, profile } = data)
-
-	let profileForm: HTMLFormElement
+	
+	let loginForm: HTMLFormElement
 	let loading = false
-	let fullName: string = profile?.full_name ?? ''
-	let username: string = profile?.username ?? ''
-	let website: string = profile?.website ?? ''
-	let avatarUrl: string = profile?.avatar_url ?? ''
-
+	let email = ''
+	let password = ''
+	
 	const handleSubmit: SubmitFunction = () => {
-		loading = true
-		return async () => {
-			loading = false
-		}
-	}
-
-	const handleSignOut: SubmitFunction = () => {
-		loading = true
-		return async ({ update }) => {
-			loading = false
-			update()
-		}
+	  loading = true
+	  return async () => {
+		await new Promise((resolve) => setTimeout(resolve, 2000))
+		loading = false
+	  }
 	}
 </script>
+	
+<style>
+	.container {
+	  display: flex;
+	  justify-content: center;
+	  align-items: center;
+	  height: 75vh;
+	  margin: auto;
+	}
+  
+	.form-widget {
+	  background-color: #702828;
+	  width: 75%;
+	  height: 75%;
+	  justify-content: center;
+	  align-items: center;
+	  display: flex;
+	  flex-direction: column;
+	}
+  
+	.form-widget input[type="studnum"],
+	.form-widget input[type="password"] {
+	  width: 100%;
+	  padding: 10px;
+	  font-size: 16px;
+	  background-image: url('/images/admin.png'); /*ayusin*/
+	  background-repeat: no-repeat;
+	  background-position: left center;
+	  padding-left: 30px; /* Adjust this value as needed */
+	}
+  
+	.form-widget input[type="submit"] {
+	  width: 100%;
+	  padding: 10px;
+	  font-size: 16px;
+	  color: #fff;
+	  background-color: #007bff;
+	  border: none;
+	  border-radius: 4px;
+	  cursor: pointer;
+	}
+  
+	.form-widget input[type="submit"]:disabled {
+	  background-color: #ccc;
+	  cursor: not-allowed;
+	}
+</style>
 
-<div class="form-widget">
-	<form
+<div class="bg-[url('/images/backup.png')] bg-cover m-0 h-full"> 
+<div class="container">
+	<div class="form-widget">
+	  <form
 		class="form-widget"
 		method="post"
-		action="?/update"
+		action="?/login"
 		use:enhance={handleSubmit}
-		bind:this={profileForm}
-	>
-		<div>
-			<label for="email">Email</label>
-			<input id="email" type="text" value={session.user.email} disabled />
+		bind:this={loginForm}
+	  >
+		<div class="w-full">
+		  <input
+			id="studnum"
+			name="studnum"
+			type="text"
+			class="bg-gray-50 border border-gray-300 text-gray-900 text-sm mb-1 focus:ring-blue-500 focus:border-blue-500 block w-full p-2"
+			placeholder="Student Number"
+			on:input={(event) => (email = event.currentTarget.value)}
+			required
+		  />
 		</div>
-
-		<div>
-			<label for="fullName">Full Name</label>
-			<input id="fullName" name="fullName" type="text" value={form?.fullName ?? fullName} />
+  
+		<div class="w-full">
+		  <input 
+			id="password"
+			name="password"
+			type="password"
+			value={password}
+			on:input={(event) => (password = event.currentTarget.value)}
+			required
+		  />
 		</div>
-
-		<div>
-			<label for="username">Username</label>
-			<input id="username" name="username" type="text" value={form?.username ?? username} />
+  
+		<div class="w-full">
+		  <input
+			type="submit"
+			class="button block primary"
+			value={loading ? 'Loading...' : 'Log in'}
+			disabled={loading}
+		  />
 		</div>
-
-		<div>
-			<label for="website">Website</label>
-			<input id="website" name="website" type="url" value={form?.website ?? website} />
-		</div>
-
-		<div>
-			<input
-				type="submit"
-				class="button block primary"
-				value={loading ? 'Loading...' : 'Update'}
-				disabled={loading}
-			/>
-		</div>
-	</form>
-
-	<form method="post" action="?/signout" use:enhance={handleSignOut}>
-		<div>
-			<button class="button block" disabled={loading}>Sign Out</button>
-		</div>
-	</form>
+	  </form>
+	</div>
+</div>
 </div>

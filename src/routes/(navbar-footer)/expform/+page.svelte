@@ -31,17 +31,17 @@
   .container {
       display: grid;
       place-items: center;
-      height: 75vh;
+      height: 100vh;
       margin: auto;
     }
   
     .form-wrapper {
       width: 75%;
     }
-
-  .form-wrapper form {
-    width: 100%;
-  }
+  
+    .form-wrapper form {
+      width: 100%;
+    }
 
   #save{
     background-color: #417E1B;
@@ -86,7 +86,7 @@
 <div class="container">
   <div class="form-wrapper">
       <main class="p-8">
-        <h1 class="font-bold mb-20 mt-10">
+        <h1 class="font-bold mb-20 mt-10 ">
           Add<br/>
           <span class="space"></span>Experience
         </h1>
@@ -166,7 +166,6 @@
                     </select>
                 </div>
 
-            
                   <div>
                       <label class="block font-bold mb-1" for="startDate"
                           >Start Date</label
