@@ -3,20 +3,19 @@
 </script>
 
 <style>
-    .center-container {
+    .container {
         display: flex;
-        justify-content: right;
         align-items: center;
         height: 75vh;
-        margin-right: 90px;
         padding: 50px;
+        margin: auto;
     }
 
     .wrapcontainer {
         background-color: #702828;
         padding: 10px;
         width: 50%;
-        height: 75%;
+        height: 55%;
     }
 
     .questions {
@@ -40,19 +39,18 @@
     select::-ms-expand {
         display: none;
     }
+
     
 </style>
+
 <div class="bg-[url('/images/backup.png')] bg-cover m-0 h-full">
-    <div class="center-container">
+    <div class="container">
+        <div class="text-container mr-28 w-3/6">
+            <h2 class="text-3xl font-bold mb-4 text-[#7C0000]">Iskohire</h2>
+            <span class="text-lg inline-grid">Iskohire is your gateway to success, providing effortless access to a wide range of internships and job opportunities. Discover the perfect match for your skills and aspirations with a click of a button. Let Iskohire empower your career path and unlock your potential for excellence.</span>
+        </div>
         <div class="wrapcontainer">
             <div class="questions">
-                <select class="mt-4 mb-1 p-10 text-lg">
-                    <option value="" disabled selected class="text-lg">I'm a</option>
-                    <option value="stud" class="text-lg">PUP Student</option>
-                    <option value="alumn" class="text-lg">PUP Alumni</option>
-                    <option value="comp" class="text-lg">Member of Partnered Company</option>
-                </select>
-
                 <select class="mb-1 p-10 text-lg">
                     <option value="" disabled selected class="text-lg">I'm looking for</option>
                     <option value="pt" class="text-lg">Part Time</option>

@@ -80,7 +80,9 @@
     <AppBar background="bg-[#702828]" gridColumns="grid-cols-3" slotDefault="place-self-center" slotTrail="place-content-end">
       <!-- Left End Items -->
       <svelte:fragment slot="lead">
+        <a href="./">
         <img id="logo_name" src="./images/logo_name.png" alt="logo_name">
+        </a>
       </svelte:fragment>
 
       <!-- Center Items
@@ -123,7 +125,9 @@
 	<!-- (pageFooter) -->
 	<svelte:fragment slot="pageFooter">
     <AppBar background="bg-[#702828]">
+      <a href="./">
       <img id="logo" src="./images/logo.png" alt="logo">
+      </a>
     </AppBar>
   </svelte:fragment>
 </AppShell>
