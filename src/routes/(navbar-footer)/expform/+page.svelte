@@ -60,6 +60,12 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
 
+  select#industry{
+    height: 50px;
+    padding: 0.75rem;
+    border: 1px solid #D1D5DB;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1)
+  }
   textarea,
   input[type="text"],
   input[type="date"] {
@@ -194,16 +200,31 @@
               </div>
 
               <div class="mb-4">
-                  <label class="block font-bold mb-1" for="industry"
+                  <label class="block font-bold mb-1" for="industry" 
                       >Industry</label
-                  >
-                  <input
-                      class="w-full px-3 py-2"
-                      type="text"
-                      id="industry"
-                      bind:value="{industry}"
-                      required
-                  />
+                  > <!--dropdown-->
+
+                  <select
+                        class="w-full px-3 py-2 h-1"
+                        id="industry"
+                        bind:value="{industry}"
+                        required
+                    >
+                        <option class="text-slate-400" value="" disabled selected>Please Select</option>
+                        <option value="Onsite">Business & Management</option>
+                        <option value="Online">Creative Arts</option>
+                        <option value="Hybrid">Engineering & Mathematics</option>
+                        <option value="Onsite">Food, Hospitality, & Personal Services</option>
+                        <option value="Online">General Skills & Pathways</option>
+                        <option value="Hybrid">Humanities, Arts & Social Sciences</option>
+                        <option value="Onsite">IT & Computer Science</option>
+                        <option value="Online">Law, Legal Studies, & Justice</option>
+                        <option value="Hybrid">Medical & Health Sciences</option>
+                        <option value="Hybrid">Property & Built Environment</option>
+                        <option value="Onsite">Sciences</option>
+                        <option value="Online">Teaching & Education</option>
+                        <option value="Hybrid">Trades and Services</option>
+                    </select>
               </div>
 
               <div class="mb-4">

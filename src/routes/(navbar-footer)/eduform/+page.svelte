@@ -96,7 +96,7 @@
                 </div>
   
                 <div class="mb-4">
-                    <label class="block font-bold mb-1" for="field">Field of Study</label>
+                    <label class="block font-bold mb-1" for="field">Field of Study</label> <!--dropdown-->
                     <input
                         class="w-full px-3 py-2"
                         type="text"
