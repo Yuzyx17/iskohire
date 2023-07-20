@@ -13,6 +13,11 @@
     min-height: 100vh;
   }
 
+  #sidebar-left a{
+    outline: solid 1px;
+    padding: 10px;
+    background-color: #F8F8F8;
+  }
   main {
     flex-grow: 1;
   }
@@ -39,7 +44,7 @@
   import type { DrawerSettings } from '@skeletonlabs/skeleton';
 	import { invalidate } from '$app/navigation'
 	import { onMount } from 'svelte'
-  import Profile from '../../components/Profile.svelte';
+  import User from '../../components/User.svelte';
   import Register from '../../components/Register.svelte';
   
   import {logged_in} from '../../store'
@@ -76,7 +81,7 @@
 </Drawer>
 
 <AppShell>
-	<svelte:fragment slot="pageHeader">
+	<svelte:fragment slot="header">
     <AppBar background="bg-[#702828]" gridColumns="grid-cols-3" slotDefault="place-self-center" slotTrail="place-content-end">
       <!-- Left End Items -->
       <svelte:fragment slot="lead">
@@ -85,45 +90,30 @@
         </a>
       </svelte:fragment>
 
-      <!-- Center Items
-      <div class="hidden tablet:flex gap-x-8 text-primary-50">
-        <p>Search Jobs</p>
-        <p>Search Employers</p>
-        <a href="/index">Index</a>
-      </div>
-       -->
-
-      <!-- Right End Items -->
       <svelte:fragment slot="trail">
-        <!-- <div class="hidden flex-row gap-x-4 tablet:flex">
-          <button type="button" class="btn variant-filled-surface rounded-none">
-            Sign Up
-          </button>
-          <button type="button" class="btn variant-ringed rounded-none">
-            Sign In
-          </button>
-        </div>
-        <div class="block tablet:hidden">
-          <button type="button" class="btn-icon !bg-transparent" on:click={() => drawerStore.open()}>
-            <IconMenu2 size={48} />
-          </button>
-        </div> -->
+
         {#if $logged_in}
-          <Profile/>
+          <User/>
         {:else}
           <Register/>
         {/if}
       </svelte:fragment>
     </AppBar>
   </svelte:fragment>
-	<!-- (sidebarLeft) -->
-	<!-- (sidebarRight) -->
-	<!-- (pageHeader) -->
-	<!-- Router Slot -->
+
 	<slot />
-	<!-- ---- / ---- -->
-	<!-- (pageFooter) -->
-	<svelte:fragment slot="pageFooter">
+  <svelte:fragment slot="sidebarLeft">
+  <AppBar background="bg-white h-full w-full" >
+		<div id="sidebar-left" class="flex flex-col">
+    <a href="#" >Profile</a>
+    <a href="../././test-job-application">Application Status</a>
+    <a href="../././expform">Add Experience</a>
+    <a href="../././eduform">Add Education</a>
+    <a href="#">Saved</a>
+  </div>
+  </AppBar>
+  </svelte:fragment>
+	<svelte:fragment slot="footer">
     <AppBar background="bg-[#702828]">
       <a href="./">
       <img id="logo" src="./images/logo.png" alt="logo">

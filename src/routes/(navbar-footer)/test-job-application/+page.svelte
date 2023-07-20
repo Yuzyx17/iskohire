@@ -17,9 +17,6 @@
 </script>
 
 <div class="flex">
-    <div class="border border-solid border-black w-64 p-5 bg-white">
-        Filter
-    </div>
     <div class="m-8">
         {#await mockdata}
             <p>Loading...</p>
