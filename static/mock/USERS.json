@@ -1,0 +1,10 @@
+[{"USER_ID":1,"EMAIL":"user1@email.com","PW_HASH":"user1","ROLE_ID":1},
+{"USER_ID":2,"EMAIL":"user1@email.com","PW_HASH":"user2","ROLE_ID":1},
+{"USER_ID":3,"EMAIL":"user1@email.com","PW_HASH":"user3","ROLE_ID":1},
+{"USER_ID":4,"EMAIL":"alumni1@email.com","PW_HASH":"alumni1","ROLE_ID":2},
+{"USER_ID":5,"EMAIL":"alumni2@email.com","PW_HASH":"alumni2","ROLE_ID":2},
+{"USER_ID":6,"EMAIL":"alumni3@email.com","PW_HASH":"alumni3","ROLE_ID":2},
+{"USER_ID":7,"EMAIL":"employer1@email.com","PW_HASH":"employer1","ROLE_ID":3},
+{"USER_ID":8,"EMAIL":"employer2@email.com","PW_HASH":"employer2","ROLE_ID":3},
+{"USER_ID":9,"EMAIL":"employer3@email.com","PW_HASH":"employer3","ROLE_ID":3},
+{"USER_ID":10,"EMAIL":"admin@admin.com","PW_HASH":"admin123","ROLE_ID":4}]
