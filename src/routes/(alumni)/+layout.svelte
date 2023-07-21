@@ -12,16 +12,29 @@
     flex-direction: column;
     min-height: 100vh;
   }
-
-  #sidebar-left a{
-    outline: solid 1px;
-    padding: 10px;
-    background-color: #F8F8F8;
-  }
   main {
     flex-grow: 1;
   }
-
+  #sidebar-left a{
+    padding: 15px 75px 15px 15px;
+    background-color: #F8F8F8;
+    outline: solid 1px #bbbbbb;
+  }
+  #sidebar-left a:hover{
+    background-color: #dfbfbf;
+    font-weight: bold;
+  }
+  #sidebar-left a:active{
+    background-color: #DBCBCB;
+    font-weight: bold;
+  }
+  #sidebar-left #logout a{
+    background-color: rgb(199, 199, 199);
+    color: #702828;
+  }
+  #sidebar-left #logout a:hover{
+    background-color: rgb(182, 181, 181);
+  }
   #logo_name{
     width: clamp(128px, 50%, 256px);
     align-self: center;
@@ -63,22 +76,8 @@
 
 		return () => data.subscription.unsubscribe()
 	})
+  
 </script>
-
-<Drawer 
-  position="right"
-  width="w-2/3"
->
-<nav class="list-nav">
-	<ul>
-		<li class=""><a href="/">Home</a></li>
-		<li><a href="/expform">About</a></li>
-		<li><a href="/eduform">Blog</a></li>
-		<li><a href="/contact">Contact</a></li>
-		<li><a href="/index">Index</a></li>
-	</ul>
-</nav>
-</Drawer>
 
 <AppShell>
 	<svelte:fragment slot="header">
@@ -102,6 +101,50 @@
   </svelte:fragment>
 
 	<slot />
+  <svelte:fragment slot="sidebarLeft">
+    <div id="sidebar-left" class="flex flex-col h-full w-full bg-[white] justify-between shadow">
+      <div class="container flex flex-col bg-[EDECEC]">
+        <a href="#" class="flex">
+          <img src="./images/prof.png" alt="profile" class="h-6 mr-3">
+          Profile
+        </a>
+        <a href="#" class=" flex">
+          <img src="./images/dash.png" alt="dashboard" class="h-6 mr-3"> 
+          Dashboard
+        </a>
+        <a href="#" class=" flex">
+          <img src="./images/addjob.png" alt="add job" class="h-6 mr-3"> 
+          Add Job
+        </a>
+        <a href="#" class=" flex">
+          <img src="./images/editjob.png" alt="edit job" class="h-6 mr-3"> 
+          Edit Job
+        </a>
+        <a href="../application-status" class="flex">
+          <img src="./images/appli.png" alt="appstat" class="h-6 mr-3">
+          Application Status
+        </a>
+        <a href="../add-exp" class=" flex">
+          <img src="./images/exp.png" alt="add exp" class="h-6 mr-3"> 
+          Add Experience
+        </a>
+        <a href="../add-edu"class=" flex"> 
+          <img src="./images/exp.png" alt="add edu" class="h-6 mr-3"> 
+          Add Education
+        </a>
+        <a href="../saved" class="flex">
+           <img src="./images/savedicon.png" alt="profile" class="h-6 mr-3"> 
+           Saved
+        </a>
+      </div>
+      <div class="flex flex-col" id="logout">
+        <a href="#" class="font-bold tracking-wider flex" > 
+          <img src="./images/logout.png" alt="logout" class="h-6 mr-3">
+          LOGOUT
+        </a>
+      </div>
+    </div>
+  </svelte:fragment>
   
 	<svelte:fragment slot="footer">
     <AppBar background="bg-[#702828]">
