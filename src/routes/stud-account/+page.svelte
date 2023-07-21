@@ -64,7 +64,7 @@
 			<div class="w-full">
 				<input
 				type="submit"
-				class="variant-filled-tertiary cursor-pointer hover:bg-[#AD9673] text-white text-center w-full py-2 px-4 rounded-md cursor-pointer disabled:bg-gray-400"
+				class="variant-filled-tertiary cursor-pointer hover:bg-[#AD9673] text-white text-center w-full py-2 px-4 rounded-md disabled:bg-gray-400"
 				value={loading ? 'Loading...' : 'Log in'}
 				disabled={loading}
 			  />
