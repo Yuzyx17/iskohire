@@ -103,16 +103,19 @@
 
 	<slot />
   <svelte:fragment slot="sidebarLeft">
-  <AppBar background="bg-white h-full w-full" >
-		<div id="sidebar-left" class="flex flex-col">
-    <a href="#" >Profile</a>
-    <a href="../././test-job-application">Application Status</a>
-    <a href="../././expform">Add Experience</a>
-    <a href="../././eduform">Add Education</a>
-    <a href="#">Saved</a>
-  </div>
-  </AppBar>
+    <AppBar background="bg-white h-full w-full">
+      <div id="sidebar-left" class="flex flex-col">
+        <a href="#">Profile</a>
+        <a href="../././test-job-application">Application Status</a>
+        <a href="../././expform">Add Experience</a>
+        <a href="../././eduform">Add Education</a>
+        <a href="../././test-job-board">Job search</a>
+        <a href="#">Saved</a>
+        <a href="#">Logout</a>
+      </div>
+    </AppBar>
   </svelte:fragment>
+  
 	<svelte:fragment slot="footer">
     <AppBar background="bg-[#702828]">
       <a href="./">
