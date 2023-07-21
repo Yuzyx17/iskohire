@@ -11,9 +11,14 @@
         justify-content: center;
         align-items: center;
         margin-right: 4%;
+        min-height: var(--profile-size);
     }
     #button{
         font-weight: bold;
         padding: 4px 16px;
+    }
+
+    .text{
+        min-width: max-content;
     }
 </style>
