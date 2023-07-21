@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { enhance, type SubmitFunction } from '$app/forms'
-	
+	import { goto } from '$app/navigation';
+
 	let loginForm: HTMLFormElement
 	let loading = false
 	let email = ''
@@ -11,6 +12,7 @@
 	  return async () => {
 		await new Promise((resolve) => setTimeout(resolve, 2000))
 		loading = false
+		goto("../emp-editjob")
 	  }
 	}
 </script>
@@ -60,7 +62,7 @@
 			</div>
 	
 			<div class="w-full">
-			  <input
+				<input
 				type="submit"
 				class="variant-filled-tertiary cursor-pointer hover:bg-[#AD9673] text-white text-center w-full py-2 px-4 rounded-md cursor-pointer disabled:bg-gray-400"
 				value={loading ? 'Loading...' : 'Log in'}

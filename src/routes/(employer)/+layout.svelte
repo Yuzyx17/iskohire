@@ -104,37 +104,17 @@
   <svelte:fragment slot="sidebarLeft">
     <div id="sidebar-left" class="flex flex-col h-full w-full bg-[white] justify-between shadow">
       <div class="container flex flex-col bg-[EDECEC]">
-        <a href="#" class="flex">
-          <img src="./images/prof.png" alt="profile" class="h-6 mr-3">
-          Profile
-        </a>
         <a href="#" class=" flex">
           <img src="./images/dash.png" alt="dashboard" class="h-6 mr-3"> 
           Dashboard
         </a>
-        <a href="#" class=" flex">
+        <a href="../emp-addjob" class=" flex">
           <img src="./images/addjob.png" alt="add job" class="h-6 mr-3"> 
           Add Job
         </a>
-        <a href="#" class=" flex">
+        <a href="../emp-editjob" class=" flex">
           <img src="./images/editjob.png" alt="edit job" class="h-6 mr-3"> 
           Edit Job
-        </a>
-        <a href="../application-status" class="flex">
-          <img src="./images/appli.png" alt="appstat" class="h-6 mr-3">
-          Application Status
-        </a>
-        <a href="../add-exp" class=" flex">
-          <img src="./images/exp.png" alt="add exp" class="h-6 mr-3"> 
-          Add Experience
-        </a>
-        <a href="../add-edu"class=" flex"> 
-          <img src="./images/exp.png" alt="add edu" class="h-6 mr-3"> 
-          Add Education
-        </a>
-        <a href="../saved" class="flex">
-           <img src="./images/savedicon.png" alt="profile" class="h-6 mr-3"> 
-           Saved
         </a>
       </div>
       <div class="flex flex-col" id="logout">
