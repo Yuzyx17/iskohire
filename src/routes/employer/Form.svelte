@@ -17,7 +17,7 @@
 	];
 </script>
 
-<form method="POST" class="employerForm">
+<form method="POST" class="employerForm" id="employerForm">
 	<slot name="buttons">
 		<span>EMPTY</span>
 	</slot>
@@ -70,7 +70,7 @@
 		</div>
 		<div class="form-el">
 			<label for="desc">Description</label>
-			<input name="desc" id="desc" type="text" placeholder="Short Description of the Job"/>
+			<textarea name="desc" id="desc" form="employerForm" placeholder="Short Description of the Job"/>
 		</div>
 	</div>
 </form>
@@ -125,8 +125,9 @@
         flex-flow: column;
         margin-bottom: 1.2rem;
     }
-    input, select{
+    input, select, textarea{
         font-size: 1.2rem;
+		resize: none;
         padding: .75rem 1.5rem;
         border: none;
         background-color: rgb(239, 239, 239);
