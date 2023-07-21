@@ -4,17 +4,18 @@
     //     let response = await fetch("/mockdata.json");
     //     mockdata = await response.json()
     // })
-    async function loadMockData(){
-        let response = await fetch("/mock/JOB_POST.json");
-        let mockdata: Promise<any> = await response.json()
-        if(mockdata){
-            return mockdata
-        }else{
-            throw new Error(mockdata)
-        }
-    }
 
-    let mockdata = loadMockData()
+    // async function loadMockData(){
+    //     let response = await fetch("/mockdata.json");
+    //     let mockdata: Promise<any> = await response.json()
+    //     if(mockdata){
+    //         return mockdata
+    //     }else{
+    //         throw new Error(mockdata)
+    //     }
+    // }
+
+    // let mockdata = loadMockData()
 
 </script>
 
@@ -26,7 +27,7 @@
 
 <!-- scrolling and effect -->
 <div class="flex">
-    <!-- <div class="border border-black border-opacity-30 h-screen w-[230px] min-w-[230px] bg-white relative">
+    <div class="border border-black border-opacity-30 h-screen w-[230px] min-w-[230px] bg-white relative">
         <div class="flex-grow">
             <div class="flex border border-black border-opacity-20 hover:bg-[#dbcbcb] p-3 h-79 flex-shrink-0">
                 <img src="images/dashboard-employer.png" class="h-6 w-6 mr-3" alt="Dashboard Logo">
@@ -45,7 +46,7 @@
             <img src="images/logout-employer.png" class="h-5 w-6" alt="Logout Logo">
             <span class="text-black text-justify font-inter text-24 font-medium leading-normal">LOGOUT</span>
         </div>
-    </div> -->
+    </div>
     <div class="m-8">
         <!-- list of job application -->
         <div class="mb-5 w-[1450px] flex overflow-x-scroll no-scrollbar">
