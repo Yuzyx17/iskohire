@@ -1,0 +1,74 @@
+[
+    {
+        "USER_ID": 1,
+        "ROLE_ID": 1,
+        "EXP_TITLE": "Office Worker",
+        "EXP_TYPE": "Part-time",
+        "COMPANY_NAME": "Jaskolski LLC",
+        "LOCATION": "7 Buena Vista Drive",
+        "LOCATION_TYPE": "Onsite",
+        "START_DATE": "1/1/2022",
+        "END_DATE": "9/24/2019",
+        "INDUSTRY_TYPE": 1
+    },
+    {
+        "USER_ID": 2,
+        "ROLE_ID": 1,
+        "EXP_TITLE": "Staff Scientist",
+        "EXP_TYPE": "Internship",
+        "COMPANY_NAME": "Murazik, Rodriguez and Conroy",
+        "LOCATION": "23 Novick Street",
+        "LOCATION_TYPE": "Hybrid",
+        "START_DATE": "8/7/2022",
+        "END_DATE": "1/22/2019",
+        "INDUSTRY_TYPE": 12
+    },
+    {
+        "USER_ID": 3,
+        "ROLE_ID": 1,
+        "EXP_TITLE": "BPO",
+        "EXP_TYPE": "Full-Time",
+        "COMPANY_NAME": "Kassulke-Pagac",
+        "LOCATION": "0 Scoville Plaza",
+        "LOCATION_TYPE": "Online",
+        "START_DATE": "4/24/2019",
+        "END_DATE": "5/12/2022",
+        "INDUSTRY_TYPE": 1
+    },
+    {
+        "USER_ID": 4,
+        "ROLE_ID": 2,
+        "EXP_TITLE": "Quality Control Specialist",
+        "EXP_TYPE": "Full-Time",
+        "COMPANY_NAME": "Schimmel Inc",
+        "LOCATION": "1 Messerschmidt Alley",
+        "LOCATION_TYPE": "Onsite",
+        "START_DATE": "2/5/2020",
+        "END_DATE": "5/3/2023",
+        "INDUSTRY_TYPE": 4
+    },
+    {
+        "USER_ID": 5,
+        "ROLE_ID": 2,
+        "EXP_TITLE": "Senior Editor",
+        "EXP_TYPE": "Part-time",
+        "COMPANY_NAME": "Auer, O'Kon and Schiller",
+        "LOCATION": "08796 Lillian Parkway",
+        "LOCATION_TYPE": "Online",
+        "START_DATE": "12/8/2015",
+        "END_DATE": "7/1/2021",
+        "INDUSTRY_TYPE": 7
+    },
+    {
+        "USER_ID": 6,
+        "ROLE_ID": 2,
+        "EXP_TITLE": "Project Manager",
+        "EXP_TYPE": "Full-Time",
+        "COMPANY_NAME": "Wolff-Tromp",
+        "LOCATION": "7945 Commercial Crossing",
+        "LOCATION_TYPE": "Online",
+        "START_DATE": "2/11/2018",
+        "END_DATE": "6/14/2019",
+        "INDUSTRY_TYPE": 2
+    }
+]
