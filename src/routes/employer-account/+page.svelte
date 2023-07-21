@@ -1,9 +1,11 @@
 <script lang="ts">
 	import { enhance, type SubmitFunction } from '$app/forms'
-	
+	import { goto } from '$app/navigation';
+
 	let loginForm: HTMLFormElement
 	let loading = false
-	let email = ''
+	let compid = ''
+	let username = ''
 	let password = ''
 	
 	const handleSubmit: SubmitFunction = () => {
@@ -11,6 +13,7 @@
 	  return async () => {
 		await new Promise((resolve) => setTimeout(resolve, 2000))
 		loading = false
+		goto("../emp-editjob")
 	  }
 	}
 </script>
@@ -31,18 +34,33 @@
 		  >
 			<div class="w-full relative h-">
 			  <input
-				id="studnum"
-				name="studnum"
+				id="compid"
+				name="compid"
 				type="text"
 				class="bg-gray-50 border border-gray-300 text-gray-900 text-sm mb-1 focus:ring-blue-500 focus:border-blue-500 block w-full p-2 pl-10"
-				placeholder="Student Number"
-				on:input={(event) => (email = event.currentTarget.value)}
+				placeholder="Company ID"
+				on:input={(event) => (compid = event.currentTarget.value)}
 				required
 			  />
 			  <div class="absolute top-0 left-0 h-full flex items-center pl-3"> 
-				<img src="/images/admin.png" alt="icon" class="h-4" /> 
+				<img src="/images/admin.png" alt="icon" class="h-7" /> 
 			  </div>
 			</div>
+
+			<div class="w-full relative h-">
+				<input
+				  id="username"
+				  name="username"
+				  type="text"
+				  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm mb-1 focus:ring-blue-500 focus:border-blue-500 block w-full p-2 pl-10"
+				  placeholder="Username"
+				  on:input={(event) => (username = event.currentTarget.value)}
+				  required
+				/>
+				<div class="absolute top-0 left-0 h-full flex items-center pl-3"> 
+				  <img src="/images/admin.png" alt="icon" class="h-7" /> 
+				</div>
+			  </div>
 	
 			<div class="w-full relative">
 			  <input 
@@ -60,7 +78,7 @@
 			</div>
 	
 			<div class="w-full">
-			  <input
+				<input
 				type="submit"
 				class="variant-filled-tertiary cursor-pointer hover:bg-[#AD9673] text-white text-center w-full py-2 px-4 rounded-md cursor-pointer disabled:bg-gray-400"
 				value={loading ? 'Loading...' : 'Log in'}

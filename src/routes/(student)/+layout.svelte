@@ -68,21 +68,6 @@
 	})
 </script>
 
-<Drawer 
-  position="right"
-  width="w-2/3"
->
-<nav class="list-nav">
-	<ul>
-		<li class=""><a href="/">Home</a></li>
-		<li><a href="/expform">About</a></li>
-		<li><a href="/eduform">Blog</a></li>
-		<li><a href="/contact">Contact</a></li>
-		<li><a href="/index">Index</a></li>
-	</ul>
-</nav>
-</Drawer>
-
 <AppShell>
 	<svelte:fragment slot="header">
     <AppBar background="bg-[#702828]" gridColumns="grid-cols-3" slotDefault="place-self-center" slotTrail="place-content-end">
@@ -130,7 +115,7 @@
         </a>
       </div>
       <div class="flex flex-col" id="logout">
-        <a href="#" class="font-bold tracking-wider flex" > 
+        <a href="./" class="font-bold tracking-wider flex" > 
           <img src="./images/logout.png" alt="logout" class="h-6 mr-3">
           LOGOUT
         </a>
