@@ -1,4 +1,7 @@
 /** @type {import('tailwindcss').Config}*/
+
+const defaultTheme = require('tailwindcss/defaultTheme');
+
 const config = {
   darkMode: 'class',
   content: [
@@ -24,7 +27,11 @@ const config = {
       'xl':'1280px',
       '2xl':'1536px',
     },
-    extend: {},
+    extend: {
+      fontFamily: {
+        inter: ['"Inter"', ...defaultTheme.fontFamily.sans],
+      },
+    },
   },
 
   plugins: [

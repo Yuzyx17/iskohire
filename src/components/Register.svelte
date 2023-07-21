@@ -1,6 +1,6 @@
 <div id="container">
-    <span class="variant-filled-tertiary text" id="button">Sign in</span>
-    <span class="text-primary-50 text">Post Job</span>
+    <a href="./login" class="text-black variant-filled-tertiary hover:bg-[#AD9673] hover:text-white cursor-pointer rounded" id="button">Sign in</a>
+    <span class=" font-bold text-white cursor-pointer hover:text-primary-50">Post Job</span>
 </div>
 
 <style>
@@ -16,7 +16,6 @@
     #button{
         font-weight: bold;
         padding: 4px 16px;
-        border-radius: 8px;
     }
 
     .text{

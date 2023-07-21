@@ -4,7 +4,7 @@
 
 <style>
     #profile{
-        width: clamp(var(--profile-size), 15%, 64px);
+        width: 9%;
         aspect-ratio: 1/1;
         border-radius: 50%;
         align-self: center;
@@ -12,5 +12,6 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        margin-right: 13px;
     }
 </style>
