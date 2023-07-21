@@ -4,7 +4,7 @@
 
 	let loginForm: HTMLFormElement
 	let loading = false
-	let email = ''
+	let studnum = ''
 	let password = ''
 	
 	const handleSubmit: SubmitFunction = () => {
@@ -38,11 +38,11 @@
 				type="text"
 				class="bg-gray-50 border border-gray-300 text-gray-900 text-sm mb-1 focus:ring-blue-500 focus:border-blue-500 block w-full p-2 pl-10"
 				placeholder="Student Number"
-				on:input={(event) => (email = event.currentTarget.value)}
+				on:input={(event) => (studnum = event.currentTarget.value)}
 				required
 			  />
 			  <div class="absolute top-0 left-0 h-full flex items-center pl-3"> 
-				<img src="/images/admin.png" alt="icon" class="h-4" /> 
+				<img src="/images/admin.png" alt="icon" class="h-7" /> 
 			  </div>
 			</div>
 	

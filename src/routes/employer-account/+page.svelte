@@ -4,7 +4,8 @@
 
 	let loginForm: HTMLFormElement
 	let loading = false
-	let email = ''
+	let compid = ''
+	let username = ''
 	let password = ''
 	
 	const handleSubmit: SubmitFunction = () => {
@@ -33,18 +34,33 @@
 		  >
 			<div class="w-full relative h-">
 			  <input
-				id="studnum"
-				name="studnum"
+				id="compid"
+				name="compid"
 				type="text"
 				class="bg-gray-50 border border-gray-300 text-gray-900 text-sm mb-1 focus:ring-blue-500 focus:border-blue-500 block w-full p-2 pl-10"
-				placeholder="Student Number"
-				on:input={(event) => (email = event.currentTarget.value)}
+				placeholder="Company ID"
+				on:input={(event) => (compid = event.currentTarget.value)}
 				required
 			  />
 			  <div class="absolute top-0 left-0 h-full flex items-center pl-3"> 
-				<img src="/images/admin.png" alt="icon" class="h-4" /> 
+				<img src="/images/admin.png" alt="icon" class="h-7" /> 
 			  </div>
 			</div>
+
+			<div class="w-full relative h-">
+				<input
+				  id="username"
+				  name="username"
+				  type="text"
+				  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm mb-1 focus:ring-blue-500 focus:border-blue-500 block w-full p-2 pl-10"
+				  placeholder="Username"
+				  on:input={(event) => (username = event.currentTarget.value)}
+				  required
+				/>
+				<div class="absolute top-0 left-0 h-full flex items-center pl-3"> 
+				  <img src="/images/admin.png" alt="icon" class="h-7" /> 
+				</div>
+			  </div>
 	
 			<div class="w-full relative">
 			  <input 
