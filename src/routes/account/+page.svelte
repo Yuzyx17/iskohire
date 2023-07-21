@@ -1,77 +1,76 @@
-<!-- src/routes/account/+page.svelte -->
 <script lang="ts">
 	import { enhance, type SubmitFunction } from '$app/forms'
-
-	export let data
-	export let form
-
-	let { session, supabase, profile } = data
-	$: ({ session, supabase, profile } = data)
-
-	let profileForm: HTMLFormElement
+	
+	let loginForm: HTMLFormElement
 	let loading = false
-	let fullName: string = profile?.full_name ?? ''
-	let username: string = profile?.username ?? ''
-	let website: string = profile?.website ?? ''
-	let avatarUrl: string = profile?.avatar_url ?? ''
-
+	let email = ''
+	let password = ''
+	
 	const handleSubmit: SubmitFunction = () => {
-		loading = true
-		return async () => {
-			loading = false
-		}
-	}
-
-	const handleSignOut: SubmitFunction = () => {
-		loading = true
-		return async ({ update }) => {
-			loading = false
-			update()
-		}
+	  loading = true
+	  return async () => {
+		await new Promise((resolve) => setTimeout(resolve, 2000))
+		loading = false
+	  }
 	}
 </script>
 
-<div class="form-widget">
-	<form
-		class="form-widget"
-		method="post"
-		action="?/update"
-		use:enhance={handleSubmit}
-		bind:this={profileForm}
-	>
-		<div>
-			<label for="email">Email</label>
-			<input id="email" type="text" value={session.user.email} disabled />
-		</div>
-
-		<div>
-			<label for="fullName">Full Name</label>
-			<input id="fullName" name="fullName" type="text" value={form?.fullName ?? fullName} />
-		</div>
-
-		<div>
-			<label for="username">Username</label>
-			<input id="username" name="username" type="text" value={form?.username ?? username} />
-		</div>
-
-		<div>
-			<label for="website">Website</label>
-			<input id="website" name="website" type="url" value={form?.website ?? website} />
-		</div>
-
-		<div>
-			<input
+<div class="bg-[url('/images/backup.png')] bg-cover m-0 h-full">
+	<div class="flex items-center justify-center h-screen p-10">
+	  <div class="flex flex-col gap-4 bg-[#702828] p-5 w-5/12 h-5/4 items-center">
+		<a href="./">
+		  <img class="h-auto max-w-xs mx-auto" id="logo_name" src="./images/logo_name.png" alt="logo_name">
+		</a>
+		<div class="bg-[#702828] w-full h-full flex items-center justify-center flex-col">
+		  <form
+			class="w-full"
+			method="post"
+			action="?/login"
+			use:enhance={handleSubmit}
+			bind:this={loginForm}
+		  >
+			<div class="w-full relative h-">
+			  <input
+				id="studnum"
+				name="studnum"
+				type="text"
+				class="bg-gray-50 border border-gray-300 text-gray-900 text-sm mb-1 focus:ring-blue-500 focus:border-blue-500 block w-full p-2 pl-10"
+				placeholder="Student Number"
+				on:input={(event) => (email = event.currentTarget.value)}
+				required
+			  />
+			  <div class="absolute top-0 left-0 h-full flex items-center pl-3"> 
+				<img src="/images/admin.png" alt="icon" class="h-4" /> 
+			  </div>
+			</div>
+	
+			<div class="w-full relative">
+			  <input 
+				id="password"
+				name="password"
+				type="password"
+				value={password}
+				on:input={(event) => (password = event.currentTarget.value)}
+				class="bg-gray-50 border border-gray-300 text-gray-900 text-sm mb-1 focus:ring-blue-500 focus:border-blue-500 block w-full p-2 pl-10" 
+				required
+			  />
+			  <div class="absolute top-0 left-0 h-full flex items-center pl-3"> 
+				<img src="/images/pass.png" alt="icon" class="h-10" />
+			  </div>
+			</div>
+	
+			<div class="w-full">
+			  <input
 				type="submit"
-				class="button block primary"
-				value={loading ? 'Loading...' : 'Update'}
+				class="bg-blue-500 text-white text-center w-full py-2 px-4 rounded-md cursor-pointer disabled:bg-gray-400"
+				value={loading ? 'Loading...' : 'Log in'}
 				disabled={loading}
-			/>
+			  />
+			</div>
+		  </form>
 		</div>
-	</form>
-
-	<form method="post" action="?/signout" use:enhance={handleSignOut}>
-		<div>
-			<button class="button block" disabled={loading}>Sign Out</button>
-		</div>
-	</form>
-</div>
+	  </div>
+	</div>
+  </div>
+  
+  
