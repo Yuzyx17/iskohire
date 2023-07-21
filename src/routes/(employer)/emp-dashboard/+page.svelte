@@ -14,17 +14,6 @@
         }
     }
     let mockdata = loadMockData()
-
-    async function loadMockD(){
-        let response = await fetch("/mock/Applicant/JOB_POST.json");
-        let mockd: Promise<any> = await response.json()
-        if(mockd){
-            return mockd
-        }else{
-            throw new Error(mockd)
-        }
-    }
-    let mockd = loadMockData()
 </script>
 
 <style>
