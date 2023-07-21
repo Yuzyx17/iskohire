@@ -66,8 +66,11 @@
                 </select>
             </div>
             <div class="search">
-                <button type="button" class="text-white variant-filled-tertiary hover:bg-[#AD9673] font-bold rounded-md text-4xl p-7 w-full mt-2">SEARCH</button>
-            </div>
+                <a href="../././test-job-board" class="text-white bg-[#AD9673] hover:bg-[#D2AC72] font-bold rounded-md text-4xl p-7 w-full mt-2 block text-center">
+                  SEARCH
+                </a>
+              </div>
+              
         </div>
     </div>
 </div>

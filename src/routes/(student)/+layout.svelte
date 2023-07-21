@@ -14,9 +14,13 @@
   }
 
   #sidebar-left a{
-    outline: solid 1px;
-    padding: 10px;
+    padding: 15px 75px 15px 15px;
     background-color: #F8F8F8;
+    outline: solid 1px #bbbbbb;
+  }
+  #sidebar-left #logout a{
+    background-color: rgb(199, 199, 199);
+    color: #702828;
   }
   main {
     flex-grow: 1;
@@ -30,7 +34,6 @@
     width: clamp(64px, 10%, 128px);
     aspect-ratio: 1/1;
   }
-
 </style>
 
 <script lang="ts">
@@ -102,6 +105,38 @@
   </svelte:fragment>
 
 	<slot />
+  <svelte:fragment slot="sidebarLeft">
+    <div id="sidebar-left" class="flex flex-col h-full w-full bg-[white] justify-between shadow">
+      <div class="container flex flex-col bg-[EDECEC]">
+        <a href="#" class="flex">
+          <img src="./images/prof.png" alt="profile" class="h-6 mr-3">
+          Profile
+        </a>
+        <a href="../app-status" class="flex">
+          <img src="./images/appli.png" alt="appstat" class="h-6 mr-3">
+          Application Status
+        </a>
+        <a href="../add-exp" class=" flex">
+          <img src="./images/exp.png" alt="add exp" class="h-6 mr-3"> 
+          Add Experience
+        </a>
+        <a href="../add-edu"class=" flex"> 
+          <img src="./images/exp.png" alt="add edu" class="h-6 mr-3"> 
+          Add Education
+        </a>
+        <a href="../saved" class="flex">
+           <img src="./images/savedicon.png" alt="profile" class="h-6 mr-3"> 
+           Saved
+        </a>
+      </div>
+      <div class="flex flex-col" id="logout">
+        <a href="#" class="font-bold tracking-wider flex" > 
+          <img src="./images/logout.png" alt="logout" class="h-6 mr-3">
+          LOGOUT
+        </a>
+      </div>
+    </div>
+  </svelte:fragment>
   
 	<svelte:fragment slot="footer">
     <AppBar background="bg-[#702828]">
