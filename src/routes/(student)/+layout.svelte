@@ -12,7 +12,14 @@
     flex-direction: column;
     min-height: 100vh;
   }
-
+  #sidebar-left a:hover{
+    background-color: #dfbfbf;
+    font-weight: bold;
+  }
+  #sidebar-left a:active{
+    background-color: #DBCBCB;
+    font-weight: bold;
+  }
   #sidebar-left a{
     padding: 15px 75px 15px 15px;
     background-color: #F8F8F8;
@@ -22,9 +29,9 @@
     background-color: rgb(199, 199, 199);
     color: #702828;
   }
-  main {
-    flex-grow: 1;
-  }
+    main {
+      flex-grow: 1;
+    }
 
   #logo_name{
     width: clamp(128px, 50%, 256px);

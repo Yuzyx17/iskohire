@@ -104,7 +104,7 @@
   <svelte:fragment slot="sidebarLeft">
     <div id="sidebar-left" class="flex flex-col h-full w-full bg-[white] justify-between shadow">
       <div class="container flex flex-col bg-[EDECEC]">
-        <a href="#" class=" flex">
+        <a href="../emp-dashboard" class=" flex">
           <img src="./images/dash.png" alt="dashboard" class="h-6 mr-3"> 
           Dashboard
         </a>

@@ -4,7 +4,6 @@
     //     let response = await fetch("/mockdata.json");
     //     mockdata = await response.json()
     // })
-
     async function loadMockData(){
         let response = await fetch("/mock/JOB_POST.json");
         let mockdata: Promise<any> = await response.json()

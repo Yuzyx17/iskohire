@@ -108,15 +108,15 @@
           <img src="./images/prof.png" alt="profile" class="h-6 mr-3">
           Profile
         </a>
-        <a href="#" class=" flex">
+        <a href="../alumni-dashboard" class=" flex">
           <img src="./images/dash.png" alt="dashboard" class="h-6 mr-3"> 
           Dashboard
         </a>
-        <a href="#" class=" flex">
+        <a href="../addjobform" class=" flex">
           <img src="./images/addjob.png" alt="add job" class="h-6 mr-3"> 
           Add Job
         </a>
-        <a href="#" class=" flex">
+        <a href="../editjobform" class=" flex">
           <img src="./images/editjob.png" alt="edit job" class="h-6 mr-3"> 
           Edit Job
         </a>
