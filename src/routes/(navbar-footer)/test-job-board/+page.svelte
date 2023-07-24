@@ -5,7 +5,7 @@
     //     mockdata = await response.json()
     // })
     async function loadMockData(){
-        let response = await fetch("mock/JOB_POST.json");
+        let response = await fetch("/mock/JOB_POST.json");
         let mockdata: Promise<any> = await response.json()
         if(mockdata){
             return mockdata
@@ -23,9 +23,9 @@
         {:then mock}
             {#each mock as item}
                 <div class="flex flex-col bg-white m-10 p-10 shadow-[0_4px_4px_0px_rgba(0,0,0,0.25)] font-inter relative block card card-hover">
-                    <h1 class="text-2xl font-semibold">Job Position</h1>
+                    <h1 class="text-2xl font-semibold">{item.JOB_TITLE}</h1>
                     <span class="text-xs font-semibold h-24">
-                        Company Name
+                        {item.RECRUITER_ID}
                     </span>
                     <div class="absolute bottom-8 flex gap-2">
                         <button class="bg-[#D2AC72] border border-solid border-[#AB7C7C] w-24 font-inter text-lg font-black text-white h-10 hover:bg-[#AD9673]">
