@@ -26,6 +26,10 @@
     }
 </script>
 
+<svelte:head>
+	<title>Add Experience</title>
+</svelte:head>
+
 <style>
     .container {
         display: grid;

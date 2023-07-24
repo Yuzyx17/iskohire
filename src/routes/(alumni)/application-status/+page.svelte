@@ -16,7 +16,9 @@
     let mockdata = loadMockData()
     
 </script>
-
+<svelte:head>
+	<title>Application Status</title>
+</svelte:head>
 <div class="flex">
     <div class="m-8 w-full">
         {#await mockdata}

@@ -22,6 +22,10 @@
     }
 </script>
 
+<svelte:head>
+	<title>Add Education</title>
+</svelte:head>
+
 <style>
     .container {
         display: grid;

@@ -13,13 +13,19 @@
             throw new Error(mockdata)
         }
     }
-    let mockdata = loadMockData()
+    let mockdata = loadMockData()   
+    
 </script>
+
+<svelte:head>
+	<title>Dashboard</title>
+</svelte:head>
 
 <style>
     .no-scrollbar::-webkit-scrollbar {
         display: none;
     }
+    
 </style>
 
 <!-- scrolling and effect -->
@@ -111,7 +117,7 @@
             </div>
             <!-- applicants section -->
             <div class="bg-white shadow-md p-3">
-                <div class="border border-gray-300 bg-white shadow-md w-[1125px] max-w-[1125px] flex-shrink-0 p-3 mb-5 card">
+                <div class="border border-gray-300 bg-white shadow-md w-[1125px] max-w-[1125px] flex-shrink-0 p-3 mb-5 card card-hover">
                     <div class="flex">
                         <div class="flex flex-col w-8/12 mt-auto mb-auto">
                             <span class="text-black font-inter text-lg font-extrabold leading-normal">
@@ -122,7 +128,7 @@
                             </span>
                         </div>
                         <div class="pr-3 border-r border-gray-500 w-2/12 mt-auto mb-auto">
-                            <button class="bg-[#D2AC72] border border-solid border-[#AB7C7C] w-[134px] h-[38px] text-white font-inter text-base font-extrabold leading-normal h-8 shadow-md">
+                            <button class="bg-[#D2AC72] hover:bg-[#AD9673] border border-solid border-[#AB7C7C] w-[134px] h-[38px] text-white font-inter text-base font-extrabold leading-normal h-8 shadow-md">
                                 View Profile
                             </button>
                         </div>
