@@ -57,7 +57,7 @@
   import User from '$lib/components/User.svelte';
   import Register from '$lib/components/Register.svelte';
   
-  import {logged_in} from '../../store'
+  import {logged_in} from '$lib/stores/auth'
 
   export let data;
 
