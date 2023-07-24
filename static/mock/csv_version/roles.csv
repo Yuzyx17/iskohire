@@ -1,0 +1,5 @@
+role_id,permission
+1,STUDENT
+2,ALUMNI
+3,COMPANY
+4,ADMIN

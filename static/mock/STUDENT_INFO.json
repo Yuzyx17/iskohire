@@ -1,3 +1,20 @@
-[{"USER_ID":1,"ROLE_ID":1,"STUDENT_UID":"2010-20619-45","NAME":"Wrennie Geary"}, 
- {"USER_ID":2,"ROLE_ID":1,"STUDENT_UID":"2016-95620-37","NAME":"Cathee McLagan"},
- {"USER_ID":3,"ROLE_ID":1,"STUDENT_UID":"2011-57968-18","NAME":"Diannne Kearle"}]
+[
+	{
+		"user_id": 1,
+		"role_id": 1,
+		"student_uid": "2010-20619-45",
+		"name": "Wrennie Geary"
+	},
+	{
+		"user_id": 2,
+		"role_id": 1,
+		"student_uid": "2016-95620-37",
+		"name": "Cathee McLagan"
+	},
+	{
+		"user_id": 3,
+		"role_id": 1,
+		"student_uid": "2011-57968-18",
+		"name": "Diannne Kearle"
+	}
+]

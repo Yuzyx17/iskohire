@@ -1,6 +1,62 @@
-[{"USER_ID":1,"ROLE_ID":1,"SCHOOL":"Polytechic University of the Philippines","COURSE":"BSCE","IS_FINISHED":"no","YEAR_START":2019,"YEAR_END":2019,"LATIN_HONER":"NONE"},
-{"USER_ID":2,"ROLE_ID":1,"SCHOOL":"Polytechic University of the Philippines","COURSE":"BSCE","IS_FINISHED":"no","YEAR_START":2020,"YEAR_END":2015,"LATIN_HONER":"NONE"},
-{"USER_ID":3,"ROLE_ID":1,"SCHOOL":"Polytechic University of the Philippines","COURSE":"BSBA","IS_FINISHED":"no","YEAR_START":2016,"YEAR_END":2014,"LATIN_HONER":"NONE"},
-{"USER_ID":4,"ROLE_ID":2,"SCHOOL":"Polytechic University of the Philippines","COURSE":"BSHRM","IS_FINISHED":"yes","YEAR_START":2018,"YEAR_END":2015,"LATIN_HONER":"MAGNA"},
-{"USER_ID":5,"ROLE_ID":2,"SCHOOL":"Polytechic University of the Philippines","COURSE":"BSBA","IS_FINISHED":"yes","YEAR_START":2019,"YEAR_END":2018,"LATIN_HONER":"SUMMA"},
-{"USER_ID":6,"ROLE_ID":2,"SCHOOL":"Polytechic University of the Philippines","COURSE":"BSCoE","IS_FINISHED":"yes","YEAR_START":2013,"YEAR_END":2020,"LATIN_HONER":"NONE"}]
+[
+	{
+		"user_id": 1,
+		"role_id": 1,
+		"school": "Polytechic University of the Philippines",
+		"course": "BSCE",
+		"is_finished": false,
+		"year_start": 2020,
+		"year_end": 2025,
+		"latin_honer": "NONE"
+	},
+	{
+		"user_id": 2,
+		"role_id": 1,
+		"school": "Polytechic University of the Philippines",
+		"course": "BSCE",
+		"is_finished": false,
+		"year_start": 2019,
+		"year_end": 2025,
+		"latin_honer": "NONE"
+	},
+	{
+		"user_id": 3,
+		"role_id": 1,
+		"school": "Polytechic University of the Philippines",
+		"course": "BSBA",
+		"is_finished": false,
+		"year_start": 2018,
+		"year_end": 2024,
+		"latin_honer": "NONE"
+	},
+	{
+		"user_id": 4,
+		"role_id": 2,
+		"school": "Polytechic University of the Philippines",
+		"course": "BSHRM",
+		"is_finished": true,
+		"year_start": 2010,
+		"year_end": 2015,
+		"latin_honer": "MAGNA"
+	},
+	{
+		"user_id": 5,
+		"role_id": 2,
+		"school": "Polytechic University of the Philippines",
+		"course": "BSBA",
+		"is_finished": true,
+		"year_start": 2012,
+		"year_end": 2018,
+		"latin_honer": "SUMMA"
+	},
+	{
+		"user_id": 6,
+		"role_id": 2,
+		"school": "Polytechic University of the Philippines",
+		"course": "BSCoE",
+		"is_finished": true,
+		"year_start": 2014,
+		"year_end": 2018,
+		"latin_honer": "NONE"
+	}
+]

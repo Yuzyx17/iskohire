@@ -57,8 +57,8 @@
   import type { DrawerSettings } from '@skeletonlabs/skeleton';
 	import { invalidate } from '$app/navigation'
 	import { onMount } from 'svelte'
-  import User from '../../components/User.svelte';
-  import Register from '../../components/Register.svelte';
+  import User from '$lib/components/User.svelte';
+  import Register from '$lib/components/Register.svelte';
   
   import {logged_in} from '../../store'
 

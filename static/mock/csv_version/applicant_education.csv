@@ -1,0 +1,7 @@
+user_id,role_id,school,course,is_finished,year_start,year_end,latin_honor
+1,1,Polytechic University of the Philippines,BSCE,false,2020,2025,NONE
+2,1,Polytechic University of the Philippines,BSCE,false,2019,2025,NONE
+3,1,Polytechic University of the Philippines,BSBA,false,2018,2024,NONE
+4,2,Polytechic University of the Philippines,BSHRM,true,2010,2015,MAGNA
+5,2,Polytechic University of the Philippines,BSBA,true,2012,2018,SUMMA
+6,2,Polytechic University of the Philippines,BSCoE,true,2014,2018,NONE

@@ -66,7 +66,7 @@
         flex-flow: column;
         margin-bottom: 1.2rem;
     }
-    input, select{
+    input, select, textarea{
         font-size: 1.2rem;
         padding: .75rem 1.5rem;
         border: none;
@@ -90,6 +90,7 @@
 
     #desc{
         height: 25rem;
+		resize: none;
     }
 </style>
 <div class="outside bg-white m-10">
@@ -146,7 +147,8 @@
 		</div>
 		<div class="form-el">
 			<label for="desc">Description</label>
-			<input name="desc" id="desc" type="text" placeholder="Short Description of the Job"/>
+			<!-- <input name="desc" id="desc" type="text" placeholder="Short Description of the Job"/> -->
+			<textarea id="desc" name="desc" placeholder="Short Description of the Job"></textarea>
 		</div>
 	</div>
 </form>
