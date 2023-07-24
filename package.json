@@ -7,7 +7,8 @@
     "build": "vite build",
     "preview": "vite preview",
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
-    "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch"
+    "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+    "update-types": "npx supabase gen types typescript --debug --project-id \"twgyitiluxqrpuedrvrh\" --schema public > src/lib/db/types.ts"
   },
   "devDependencies": {
     "@skeletonlabs/skeleton": "^1.7.1",
@@ -18,6 +19,7 @@
     "lorem-ipsum": "^2.0.8",
     "postcss": "^8.4.23",
     "postcss-load-config": "^4.0.1",
+    "supabase": "^1.77.9",
     "svelte": "^3.54.0",
     "svelte-check": "^3.0.1",
     "svelte-preprocess": "^5.0.3",
