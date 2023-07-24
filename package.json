@@ -8,7 +8,7 @@
     "preview": "vite preview",
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
-    "update-types": "npx supabase gen types typescript --project-id \"https://twgyitiluxqrpuedrvrh.supabase.co\" --schema public > src/lib/db/types.ts"
+    "update-types": "npx supabase gen types typescript --debug --project-id \"twgyitiluxqrpuedrvrh\" --schema public > src/lib/db/types.ts"
   },
   "devDependencies": {
     "@skeletonlabs/skeleton": "^1.7.1",
