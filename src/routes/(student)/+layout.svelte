@@ -116,10 +116,10 @@
           <img src="./images/exp.png" alt="add edu" class="h-6 mr-3"> 
           Add Education
         </a>
-        <a href="../saved" class="flex">
+        <!-- <a href="../saved" class="flex">
            <img src="./images/savedicon.png" alt="profile" class="h-6 mr-3"> 
            Saved
-        </a>
+        </a> -->
       </div>
       <div class="flex flex-col" id="logout">
         <a href="./" class="font-bold tracking-wider flex" > 
