@@ -1,7 +1,3 @@
-<script lang="ts">
-	import { i_types } from "$lib/reference/VALUES";
-	import type { Database } from "$lib/db/types";
-</script>
 
 <style>
 	.employerForm {
@@ -26,7 +22,7 @@
         justify-content: space-between;
 	}
     #row-1{
-        grid-template-columns: 65% 30%;
+		grid-template-columns: 65% 30%;
     }
     #row-2{
         grid-template-columns: 40% 25% 25%;
@@ -49,7 +45,7 @@
 		border-color: #371414;
 	}
     .form-el{
-        display: flex;
+		display: flex;
         flex-flow: column;
         margin-bottom: 1.2rem;
     }
@@ -68,29 +64,35 @@
     input:focus::placeholder{
         font-weight: lighter !important;
     }
-
+	
 	label {
 		font-size: 1.2rem;
 		font-weight: bolder;
         margin-bottom: 4px;
         text-indent: 5px;
 	}
-
+	
     #desc{
-        height: 25rem;
+		height: 25rem;
     }
 </style>
+<script lang="ts">
+	import { i_types } from "$lib/reference/VALUES";
+	import type { Database } from "$lib/db/types";
+
+	export let values: Database['public']['Tables']['job_post']['Row'];
+</script>
 <div class="outside bg-white m-10">
 <form method="POST" class="employerForm">
 	<div id="formContainer">
 		<div id="row-1">
 			<div class="form-el">
 				<label for="job_title">Job Title</label>
-				<input required name="job_title" type="text" placeholder="Title of the Job"/>
+				<input bind:value={values.job_title} required name="job_title" type="text" placeholder="Title of the Job"/>
 			</div>
 			<div class="form-el">
 				<label for="salary">Salary</label>
-				<input required name="salary" type="number" placeholder="Salary of the Job"/>
+				<input bind:value={values.salary} required name="salary" type="number" placeholder="Salary of the Job"/>
 			</div>
 		</div>
 		<div id="row-2">
@@ -98,7 +100,7 @@
 				<label for="industry_type">Industry Type</label>
 				<select name="industry_type" id="industry_type">
 					{#each i_types as i_type}
-						<option value={i_types.indexOf(i_type)+1}>{i_type}</option>
+						<option selected={i_types.indexOf(i_type)+1 == values.industry_type} value={i_types.indexOf(i_type)+1}>{i_type}</option>
 					{/each}
 				</select>
 			</div>
@@ -106,32 +108,32 @@
 			<div class="form-el">
 				<label for="employment_type">Employment Type</label>
 				<select name="employment_type" id="employment_type">
-					<option value="Part-time" selected>Part-time</option>
-					<option value="Full-time" selected>Full-time</option>
-					<option value="Internship" selected>Internship</option>
+					<option selected={values.employment_type == "Part-time" } value="Part-time">Part-time</option>
+					<option selected={values.employment_type == "Full-time" } value="Full-time" >Full-time</option>
+					<option selected={values.employment_type == "Internship"} value="Internship">Internship</option>
 				</select>
 			</div>
 
 			<div class="form-el">
 				<label for="loc_type">Location Type</label>
 				<select name="loc_type" id="loc_type">
-					<option value="Online" selected>Online</option>
-					<option value="Onsite" selected>Onsite</option>
-					<option value="Hybrid" selected>Hybrid</option>
+					<option selected={values.loc_type == "Online"} value="Online">Online</option>
+					<option selected={values.loc_type == "Onsite"} value="Onsite">Onsite</option>
+					<option selected={values.loc_type == "Hybrid"} value="Hybrid">Hybrid</option>
 				</select>
 			</div>
 		</div>
 		<div class="form-el">
 			<label for="location">Location Address</label>
-			<input required name="location" type="text" placeholder="Location of the Company or Job site"/>
+			<input bind:value={values.location} required name="location" type="text" placeholder="Location of the Company or Job site"/>
 		</div>
 		<div class="form-el">
 			<label for="url">Website</label>
-			<input required name="url" type="url" placeholder="Link of your website"/>
+			<input bind:value={values.url} required name="url" type="url" placeholder="Link of your website"/>
 		</div>
 		<div class="form-el">
 			<label for="desc">Description</label>
-			<textarea required name="desc" id="desc" placeholder="Short Description of the Job"></textarea>
+			<textarea bind:value={values.desc} required name="desc" id="desc" placeholder="Short Description of the Job"></textarea>
 			<!-- <input required name="desc" id="desc" type="text" placeholder="Short Description of the Job"/> -->
 		</div>
 	</div>
