@@ -36,14 +36,14 @@
         "SALARY": 47281.67,
         "INDUSTRY_TYPE": 7,
         "URL": "#",
-        "STATUS": "UNPUBLISH"
+        "STATUS": "PUBLISHED"
     },
     {
         "JOB_ID": 4,
         "RECRUITER_ID": 6,
         "DESC": "Aenean fermentum. Donec ut mauris eget massa tempor convallis. Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh.",
         "LOCATION": "12196 Cody Alley",
-        "LOC_TYPE": "Online",
+        "PUBLISHED": "Online",
         "JOB_TITLE": "Quality Control",
         "EMPLOYMENT_TYPE": "Internship",
         "SALARY": 22185.21,
@@ -75,7 +75,7 @@
         "SALARY": 14318.16,
         "INDUSTRY_TYPE": 8,
         "URL": "#",
-        "STATUS": "UNPUBLISH"
+        "STATUS": "PUBLISHED"
     },
     {
         "JOB_ID": 7,
@@ -114,7 +114,7 @@
         "SALARY": 25056.44,
         "INDUSTRY_TYPE": 1,
         "URL": "#",
-        "STATUS": "UNPUBLISH"
+        "STATUS": "PUBLISHED"
     },
     {
         "JOB_ID": 10,
@@ -153,7 +153,7 @@
         "SALARY": 19468.26,
         "INDUSTRY_TYPE": 7,
         "URL": "#",
-        "STATUS": "UNPUBLISH"
+        "STATUS": "PUBLISHED"
     },
     {
         "JOB_ID": 13,
@@ -193,6 +193,6 @@
         "SALARY": 15613.31,
         "INDUSTRY_TYPE": 4,
         "URL": "#",
-        "STATUS": "UNPUBLISH"
+        "STATUS": "PUBLISHED"
     }
 ]

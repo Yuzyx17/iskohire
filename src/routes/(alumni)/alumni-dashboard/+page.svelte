@@ -15,6 +15,7 @@
     }
     let mockdata = loadMockData()   
     
+    
 </script>
 
 <svelte:head>
@@ -64,18 +65,30 @@
                         </div>
                     </div>
                     <div class="text-center">
-                        {#if item.STATUS=="PUBLISH"}
-                        <button class="bg-[#D2AC72] border border-solid border-[#AB7C7C] w-[100px] font-inter text-xs font-black text-white h-8 ml-auto mr-0 shadow-md variant-filled-tertiary cursor-pointer hover:bg-[#AD9673]">
-                            {item.STATUS}
-                        </button>
-                        {:else if item.STATUS=="PUBLISHED"}
-                        <button class="bg-[#417E1B] border border-solid border-[#AB7C7C] w-[100px] font-inter text-xs font-black text-white h-8 ml-auto mr-0 shadow-md variant-filled-tertiary cursor-pointer hover:bg-[#24470F]">
-                            {item.STATUS}
-                        </button>
+                        {#if item.STATUS === "PUBLISHED"}
+                            {#if item.isHovered}
+                                <button
+                                    class="bg-[#417E1B] border border-solid border-[#AB7C7C] w-[100px] font-inter text-xs font-black text-white h-8 ml-auto mr-0 shadow-md variant-filled-tertiary cursor-pointer hover:bg-[#702828]"
+                                    on:mouseleave={() => item.isHovered = false}
+                                >
+                                    UNPUBLISH
+                                </button>
+                            {:else}
+                                <button
+                                    class="bg-[#417E1B] border border-solid border-[#AB7C7C] w-[100px] font-inter text-xs font-black text-white h-8 ml-auto mr-0 shadow-md variant-filled-tertiary cursor-pointer hover:bg-[#AD9673]"
+                                    on:mouseenter={() => item.isHovered = true}
+                                >
+                                    {item.STATUS}
+                                </button>
+                            {/if}
+                        {:else if item.STATUS === "PUBLISH"}
+                            <button class="bg-[#D2AC72] border border-solid border-[#AB7C7C] w-[100px] font-inter text-xs font-black text-white h-8 ml-auto mr-0 shadow-md variant-filled-tertiary cursor-pointer hover:bg-[#AD9673]">
+                                {item.STATUS}
+                            </button>
                         {:else}
-                        <button class="bg-[#702828] border border-solid border-[#AB7C7C] w-[100px] font-inter text-xs font-black text-white h-8 ml-auto mr-0 shadow-md variant-filled-tertiary cursor-pointer hover:bg-[#551414]">
-                            {item.STATUS}
-                        </button>
+                            <button class="bg-[#702828] border border-solid border-[#AB7C7C] w-[100px] font-inter text-xs font-black text-white h-8 ml-auto mr-0 shadow-md variant-filled-tertiary cursor-pointer hover:bg-[#551414]">
+                                {item.STATUS}
+                            </button>
                         {/if}
                     </div>
                 </div>
