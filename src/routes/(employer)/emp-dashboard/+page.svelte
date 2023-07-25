@@ -18,6 +18,10 @@
 
 </script>
 
+<svelte:head>
+	<title>Dashboard</title>
+</svelte:head>
+
 <style>
     .no-scrollbar::-webkit-scrollbar {
         display: none;

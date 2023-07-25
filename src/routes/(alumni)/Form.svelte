@@ -21,7 +21,7 @@
 	.employerForm {
         display: grid;
         place-items: center;
-        height: 100vh;
+        height: max-content;
         margin: auto;
 	}
 	.employerForm > :global(.action-container) {
@@ -33,6 +33,7 @@
 		display: flex;
 		flex-flow: column;
         width: 75%;
+		margin-top: 100px;
 	}
 	#row-1, #row-2 {
 		display: grid;
@@ -94,9 +95,6 @@
 </style>
 <div class="outside bg-white m-10">
 <form method="POST" class="employerForm">
-	<slot name="buttons">
-		<span>EMPTY</span>
-	</slot>
 	<div id="formContainer">
 		<div id="row-1">
 			<div class="form-el">
@@ -149,5 +147,8 @@
 			<input name="desc" id="desc" type="text" placeholder="Short Description of the Job"/>
 		</div>
 	</div>
+	<slot name="buttons">
+		<span>EMPTY</span>
+	</slot>
 </form>
 </div>

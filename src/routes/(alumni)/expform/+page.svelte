@@ -26,6 +26,10 @@
     }
 </script>
 
+<svelte:head>
+	<title>Add Experience</title>
+</svelte:head>
+
 <style>
     .container {
         display: grid;
@@ -49,7 +53,7 @@
 
     select#loctype,
     select#emptype {
-        width: 300px;
+        width: 295px;
         height: 50px;
         background-color: #F1EFEC;
         padding: 0.75rem;
@@ -78,6 +82,11 @@
         resize: none;
     }
 
+    select:focus,
+    input:focus,
+    textarea:focus{
+        outline: solid 1px rgb(110, 37, 32);
+    }
     h1 {
         font-size: 75px;
     }
