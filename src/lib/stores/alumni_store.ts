@@ -1,9 +1,9 @@
 import { writable } from "svelte/store";
 import { supabase } from "$lib/supabase";
-import type {Writable} from "svelte/store";
+import type { Database } from "$lib/db/types";
+import type { Writable } from "svelte/store";
 
-
-export const JobPosts = writable()
+export const JobPosts: Writable<Array<Database['public']['Views']['posts']['Row']>> = writable()
 
 export const loadPosts = async () => {
     

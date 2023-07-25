@@ -1,5 +1,5 @@
 <script>
-    import { onMount } from 'svelte';
+    import { i_types } from "$lib/reference/VALUES";
 </script>
 
 <style>
@@ -60,9 +60,9 @@
 
                 <select class="mb-2 p-10 text-lg">
                     <option value="" disabled selected class="text-lg">In the field of</option>
-                    <option class="text-lg">Science</option>
-                    <option class="text-lg">Secret</option>
-                    <option class="text-lg">Ewan</option>
+                    {#each i_types as industry}
+                        <option class="text-lg">{industry}</option>
+                    {/each}
                 </select>
             </div>
             <div class="search">

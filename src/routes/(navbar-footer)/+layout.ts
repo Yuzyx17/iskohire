@@ -4,7 +4,7 @@ import { createSupabaseLoadClient } from '@supabase/auth-helpers-sveltekit'
 
 export const load = async ({ fetch: any, data, depends }) => {
   depends('supabase:auth')
-
+  
   const supabase = createSupabaseLoadClient({
     supabaseUrl: PUBLIC_SUPABASE_URL,
     supabaseKey: PUBLIC_SUPABASE_ANON_KEY,

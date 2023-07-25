@@ -76,9 +76,10 @@ export interface Database {
       }
       applicant_education: {
         Row: {
-          course: string
+          desc: string
+          field_study: number
+          grade: number
           is_finished: string
-          latin_honor: string
           role_id: number
           school: string
           user_id: number
@@ -86,9 +87,10 @@ export interface Database {
           year_start: number
         }
         Insert: {
-          course: string
+          desc: string
+          field_study: number
+          grade: number
           is_finished: string
-          latin_honor: string
           role_id: number
           school: string
           user_id: number
@@ -96,9 +98,10 @@ export interface Database {
           year_start: number
         }
         Update: {
-          course?: string
+          desc?: string
+          field_study?: number
+          grade?: number
           is_finished?: string
-          latin_honor?: string
           role_id?: number
           school?: string
           user_id?: number
@@ -186,12 +189,6 @@ export interface Database {
           user_id?: number
         }
         Relationships: [
-          {
-            foreignKeyName: "applicant_skills_skill_id_fkey"
-            columns: ["skill_id"]
-            referencedRelation: "skills_info"
-            referencedColumns: ["skill_id"]
-          },
           {
             foreignKeyName: "applicant_skills_user_id_fkey"
             columns: ["user_id"]
@@ -448,6 +445,27 @@ export interface Database {
       }
     }
     Views: {
+      applications: {
+        Row: {
+          applicant_name: string | null
+          job_id: number | null
+          skill_titles: string[] | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "job_application_job_id_fkey"
+            columns: ["job_id"]
+            referencedRelation: "job_post"
+            referencedColumns: ["job_id"]
+          },
+          {
+            foreignKeyName: "job_application_job_id_fkey"
+            columns: ["job_id"]
+            referencedRelation: "posts"
+            referencedColumns: ["job_id"]
+          }
+        ]
+      }
       posts: {
         Row: {
           company_name: string | null
