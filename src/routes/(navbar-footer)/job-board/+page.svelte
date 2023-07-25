@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { JobApplications, addApplications, loadApplications } from "$lib/stores/alumni_store";
 	import { user_id } from "$lib/stores/auth";
-	import { SearchPosts, loadSearch } from "$lib/stores/post_store";
+	import { SearchPosts, loadSearch, publishPost } from "$lib/stores/post_store";
 	import type { PostgrestError } from "@supabase/supabase-js";
 	import { fail } from "@sveltejs/kit";
     import { onMount } from "svelte";
@@ -29,6 +29,8 @@
         await addApplications({job_id: jobid, user_id: user_id, status: "PROCESSING"})
         applying = false
     }
+
+    
 </script>
 
 <div class="flex">

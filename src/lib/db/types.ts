@@ -153,6 +153,7 @@ export interface Database {
       applicant_experience: {
         Row: {
           company_name: string
+          desc: string
           end_date: string
           exp_title: string
           exp_type: string
@@ -165,6 +166,7 @@ export interface Database {
         }
         Insert: {
           company_name: string
+          desc: string
           end_date: string
           exp_title: string
           exp_type: string
@@ -177,6 +179,7 @@ export interface Database {
         }
         Update: {
           company_name?: string
+          desc?: string
           end_date?: string
           exp_title?: string
           exp_type?: string
@@ -535,6 +538,7 @@ export interface Database {
           company_name: string | null
           job_id: number | null
           job_title: string | null
+          post_status: string | null
           status: string | null
           user_id: number | null
         }

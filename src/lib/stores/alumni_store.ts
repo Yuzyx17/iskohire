@@ -15,8 +15,8 @@ export const loadApplications = async () => {
     .eq('user_id', user_id);
     
     if(error) return error;
-
-    JobApplications.set(data)
+    let filtered_data = data.filter((vals) => vals.post_status != "PUBLISH")
+    JobApplications.set(filtered_data)
 }
 
 export const addApplications = async (payload: Database['public']['Tables']['job_application']['Insert']) => {

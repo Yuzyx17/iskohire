@@ -1,8 +1,7 @@
 <script lang="ts">
-    import { loadPosts, JobPosts } from "$lib/stores/post_store";
-    import { loadApplications, Applications } from "$lib/stores/application_store";
+    import { loadPosts, JobPosts, publishPost, unpublishPost } from "$lib/stores/post_store";
+    import { loadApplicants, Applications } from "$lib/stores/application_store";
     import { onMount } from "svelte";
-	import { get } from "svelte/store";
 	import type { PostgrestError } from "@supabase/supabase-js";
     
     let isPostsLoading = true
@@ -15,16 +14,31 @@
             isPostsLoading = false
         })
     })
-    
+    let toggle = true
+    async function publish(id: number){
+        toggle = true
+        await publishPost(id)
+        postsError = await loadPosts()
+        JobPosts.subscribe(() => {
+            toggle = false
+        })
+    }
+    async function unpublish(id: number){
+        toggle = true
+        await unpublishPost(id)
+        postsError = await loadPosts()
+        JobPosts.subscribe(() => {
+            toggle = false
+        })
+    }
     async function getApplicants(job_id: number | null){
         isApplicationsLoading = true
-        applicationError = await loadApplications(job_id)
+        applicationError = await loadApplicants(job_id)
         Applications.subscribe(() => {
             isApplicationsLoading = false
             $Applications
         })
     }
-
 </script>
 
 <style>
@@ -36,17 +50,17 @@
 <!-- scrolling and effect -->
 <div class="flex">
     <div class="m-8">
-
-        <div class="mb-5 w-[1450px] flex overflow-x-scroll">
+        <div class="mb-5 w-[1450px] h-[344px] flex overflow-x-scroll">
         {#if isPostsLoading}
         {#each Array(5) as _, i} 
             <div style="opacity: {(100-i*20)/100}" class="bg-white card card-hover shadow-offset-x-0 shadow-offset-y-4 shadow-blur-4 shadow-spread-0 shadow-opacity-25 w-[277px] min-w-[277px] h-[309px] min-h-[309px] p-3 flex flex-col mr-3"></div>
         {/each}
         
         {:else if $JobPosts}
-            {#each $JobPosts as post}
+        {#each $JobPosts as post}  
+        <div class="flex flex-col items-center">
                 <button on:click|preventDefault={() => getApplicants(post.job_id)} class="bg-white card card-hover shadow-offset-x-0 shadow-offset-y-4 shadow-blur-4 shadow-spread-0 shadow-opacity-25 w-[277px] min-w-[277px] h-[309px] min-h-[309px] p-3 flex flex-col mr-3">
-                    <div class="flex flex-col">
+                    <div class="flex flex-col"> 
                         <span class="text-black font-inter text-xl font-extrabold leading-normal text-center">
                             {post.job_title}
                         </span>
@@ -72,23 +86,24 @@
                             </div>
                         </div>
                         <div class="text-center">
-                            {#if post.status =="PUBLISH"}
-                            <button class="bg-[#D2AC72] border border-solid border-[#AB7C7C] w-[100px] font-inter text-xs font-black text-white h-8 ml-auto mr-0 shadow-md variant-filled-tertiary cursor-pointer hover:bg-[#AD9673]">
-                                {post.status }
-                            </button>
-                            {:else if post.status =="PUBLISHED"}
-                            <button class="bg-[#417E1B] border border-solid border-[#AB7C7C] w-[100px] font-inter text-xs font-black text-white h-8 ml-auto mr-0 shadow-md variant-filled-tertiary cursor-pointer hover:bg-[#24470F]">
-                                {post.status }
-                            </button>
-                            {:else}
-                            <button class="bg-[#702828] border border-solid border-[#AB7C7C] w-[100px] font-inter text-xs font-black text-white h-8 ml-auto mr-0 shadow-md variant-filled-tertiary cursor-pointer hover:bg-[#551414]">
-                                {post.status }
-                            </button>
-                            {/if}
+                            {#key toggle}
+                                {#if post.status =="PUBLISH"}
+                                <button on:click|preventDefault={()=>publish(post.job_id)} class="bg-[#D2AC72] border border-solid border-[#AB7C7C] w-[100px] font-inter text-xs font-black text-white h-8 ml-auto mr-0 shadow-md variant-filled-tertiary cursor-pointer hover:bg-[#AD9673]">
+                                    {post.status }
+                                </button>
+                                {:else if post.status =="PUBLISHED" || post.status == "UNPUBLISHED"}
+                                <button on:click|preventDefault={()=>unpublish(post.job_id)} class="bg-[#417E1B] border border-solid border-[#AB7C7C] w-[100px] font-inter text-xs font-black text-white h-8 ml-auto mr-0 shadow-md variant-filled-tertiary cursor-pointer hover:bg-[#24470F]">
+                                    {post.status }
+                                </button>
+                                {/if}
+                            {/key}
                         </div>
                     </div>
                 </button>
-                    
+                <form method="GET" action="editjobform">
+                    <input type="hidden" name="job_id" value={post.job_id}>
+                <button class="font-extrabold text-2xl bg-[#00ff00] w-[6em] h-[3em]">Edit</button>
+                </div>
                 {/each}
             {:else if postsError}
                 <div>{postsError.message}</div>

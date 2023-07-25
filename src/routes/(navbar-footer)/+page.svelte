@@ -44,10 +44,10 @@
     import { goto } from "$app/navigation";
 	import { Filters } from "$lib/stores/post_store";
 
-    let loctype: number;
-    let industry_type: string;
+    let loctype: string;
+    let industry_type: number;
     function gotoSearch(){
-        Filters.set({industry: industry_type, emp_type: loctype})
+        Filters.set({industry: +industry_type, emp_type: loctype})
         goto("/job-board")
     }
 

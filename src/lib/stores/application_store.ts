@@ -5,7 +5,8 @@ import type { Writable } from "svelte/store";
 
 export const Applications: Writable<Array<Database['public']['Views']['applicants']['Row']>> = writable()
 export const Skills = writable()
-export const loadApplications = async (jobid : number | null) => {
+
+export const loadApplicants = async (jobid : number | null) => {
     
     const { data, error } = await supabase
     .from('applicants')
