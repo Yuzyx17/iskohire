@@ -1,11 +1,6 @@
 import { uploadPosts } from '$lib/stores/post_store';
 import { user_id } from '$lib/stores/auth';
-import type { PageServerLoad } from './$types';
 import type { Database } from '$lib/db/types';
-
-export const load = (async () => {
-    return {};
-}) satisfies PageServerLoad;
 
 export const actions = {
 	create: async ({ request }) => {

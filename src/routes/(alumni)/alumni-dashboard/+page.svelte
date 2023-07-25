@@ -143,7 +143,7 @@
                                 {#if application.skill_titles != null}
                                     {#each application.skill_titles as skill}
                                         {#if skill !== null}
-                                            {skill}
+                                            {skill}, 
                                         {:else}
                                             Nothing to see here
                                         {/if}
