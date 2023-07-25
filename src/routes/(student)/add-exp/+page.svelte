@@ -1,4 +1,20 @@
 <script>
+	import { enhance } from '$app/forms';
+    // function submitForm() {
+    //   console.log({
+    //     title,
+    //     emptype,
+    //     compname,
+    //     loc,
+    //     loctype,
+    //     startDate,
+    //     endDate,
+    //     industry,
+    //     desc,
+    //     skills,
+    //   });
+    // }
+
     let title = "";
     let emptype = "";
     let compname = "";
@@ -10,19 +26,36 @@
     let desc = "";
     let skills = "";
 
-    function submitForm() {
-      console.log({
-        title,
-        emptype,
-        compname,
-        loc,
-        loctype,
-        startDate,
-        endDate,
-        industry,
-        desc,
-        skills,
-      });
+    export let data;
+    export let form;
+
+    export const i_types = [
+        "Business & Management",
+        "Creative Arts",
+        "Engineering & Mathematics",
+        "Food, Hospitality, & Personal Services",
+        "General Skills & Pathways",
+        "Humanities, Arts & Social Sciences",
+        "IT & Computer Science",
+        "Law, Legal Studies, & Justice",
+        "Medical & Health Sciences",
+        "Property & Builty Environment",
+        "Sciences",
+        "Teaching & Education", 
+        "Trades & Services"
+    ]
+
+    async function handleSubmit() {
+        let title = "";
+        let emptype = "";
+        let compname = "";
+        let loc = "";
+        let loctype = "";
+        let startDate = "";
+        let endDate = "";
+        let industry = "";
+        let desc = "";
+        let skills = "";
     }
 </script>
 
@@ -88,13 +121,14 @@
         <div class="form-wrapper">
             <main class="p-8">
                 <h1 class="font-bold mb-20 mt-10 text-center">Add Experience</h1>
-                <form>
+                <form method="POST" action="?/add_exp" use:enhance={handleSubmit}>
                     <div class="mb-4">
                         <label class="block font-bold mb-4" for="title">Title</label>
                         <input
                             class="w-full px-3 py-2"
                             type="text"
                             id="title"
+                            name="title"
                             bind:value="{title}"
                             required
                         />
@@ -106,6 +140,7 @@
                             class="w-full px-3 py-2"
                             type="text"
                             id="compname"
+                            name="compname"
                             bind:value="{compname}"
                             required
                         />
@@ -117,6 +152,7 @@
                             class="w-full px-3 py-2"
                             type="text"
                             id="loc"
+                            name="loc"
                             bind:value="{loc}"
                             required
                         />
@@ -128,6 +164,7 @@
                             <select
                                 class="w-full px-3 py-2 color"
                                 id="loctype"
+                                name="loctype"
                                 bind:value="{loctype}"
                                 required
                             >
@@ -143,6 +180,7 @@
                             <select
                                 class="w-full px-3 py-2"
                                 id="emptype"
+                                name="emptype"
                                 bind:value="{emptype}"
                                 required
                             >
@@ -159,6 +197,7 @@
                                 class="w-full px-3 py-2"
                                 type="date"
                                 id="startDate"
+                                name="startDate"
                                 bind:value="{startDate}"
                                 required
                             />
@@ -170,6 +209,7 @@
                                 class="w-full px-3 py-2"
                                 type="date"
                                 id="endDate"
+                                name="endDate"
                                 bind:value="{endDate}"
                                 required
                             />
@@ -181,10 +221,11 @@
                         <select
                             class="w-full px-3 py-2 h-1"
                             id="industry"
+                            name="industry"
                             bind:value="{industry}"
                             required
                         >
-                            <option class="text-slate-400" disabled selected>Please Select</option>
+                            <!-- <option class="text-slate-400" disabled selected>Please Select</option>
                             <option value="Bussiness">Business & Management</option>
                             <option value="Arts">Creative Arts</option>
                             <option value="Engineer">Engineering & Mathematics</option>
@@ -197,7 +238,10 @@
                             <option value="Property">Property & Built Environment</option>
                             <option value="Sciences">Sciences</option>
                             <option value="Education">Teaching & Education</option>
-                            <option value="Services">Trades and Services</option>
+                            <option value="Services">Trades and Services</option> -->
+                            {#each i_types as item, index}
+                                <option value="{index}">{item}</option>
+                            {/each}
                         </select>
                     </div>
 
@@ -206,6 +250,7 @@
                         <textarea
                             class="w-full px-3 py-2"
                             id="desc"
+                            name="desc"
                             bind:value="{desc}"
                             required
                         ></textarea>
@@ -217,6 +262,7 @@
                             class="w-full px-3 py-2"
                             type="text"
                             id="skills"
+                            name="skills"
                             bind:value="{skills}"
                             required
                         />
@@ -226,8 +272,8 @@
                         <button
                             class="px-4 py-2 text-white font-bold bg-[#417E1B] hover:bg-[#395A24]"
                             id="save"
-                            type="button"
-                            on:click="{submitForm}"
+                            type="submit"
+                            formaction="?/add_exp"
                         >
                             SAVE
                         </button>
