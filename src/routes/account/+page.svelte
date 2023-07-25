@@ -29,6 +29,7 @@
 			update()
 		}
 	}
+	console.log(data.session)
 </script>
 
 <div class="form-widget">
