@@ -1,5 +1,16 @@
 <script>
     import { onMount } from 'svelte';
+	import { Auth } from '@supabase/auth-ui-svelte'
+	import { ThemeSupa } from '@supabase/auth-ui-shared'
+    import { goto, invalidate, invalidateAll } from '$app/navigation';
+    import { redirect } from '@sveltejs/kit';
+	export let data
+
+    /* Hacky Solution to redirect */
+    $: if (data.session !== null) {
+        console.log("session populated")
+        goto('/account/')
+    }
 </script>
 
 <style>
@@ -13,7 +24,21 @@
 
 </style>
 
-<div class="bg-[url('/images/backup.png')] bg-cover m-0 h-full">
+<div class="row flex-center flex">
+	<div class="col-6 form-widget">
+        {data.url}
+        <button on:click={() => console.log(data.session)}>click me</button>
+		<Auth
+			supabaseClient={data.supabase}
+			view="sign_in"
+			redirectTo={`${data.url}/auth/callback`}
+			showLinks={false}
+			appearance={{ theme: ThemeSupa, style: { input: 'color: #000' } }}
+		/>
+	</div>
+</div>
+
+<!-- <div class="bg-[url('/images/backup.png')] bg-cover m-0 h-full">
     <div class="center-container">
         <div class="flex flex-col gap-4 bg-[#702828] p-5 w-2/4 h-5/4">
             <a href="../././test-job-board">
@@ -33,4 +58,4 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
