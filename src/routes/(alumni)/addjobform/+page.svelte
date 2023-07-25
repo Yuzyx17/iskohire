@@ -1,4 +1,5 @@
 <script lang=ts>
+    import { crudPostStatus, uploadPosts } from "$lib/stores/post_store";
     import Form from "../Form.svelte";
 </script>
 
@@ -9,7 +10,7 @@
 <div class="outside bg-white m-10">
 <Form>
     <div class="action-container" slot="buttons">
-        <button formaction="/employer?/create" id="submit" class="action bg-tertiary-500">ADD</button>
+        <button formaction="?/create" id="submit" class="action bg-tertiary-500">ADD</button>
     </div>
 </Form>
 </div>

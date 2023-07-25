@@ -1,20 +1,12 @@
 <script lang="ts">
-	let i_types = [
-		"Any Study Field",
-		"Business & Management",
-		"Creative Arts",
-		"Engineering & Mathematics",
-		"Food, Hospitality & Personal Services",
-		"General Skills & Pathways",
-		"Humanities, Arts & Social Sciences",
-		"IT & Computer Science",
-		"Law, Legal Studies & Justice",
-		"Medical & Health Sciences",
-		"Property & Builty Environment",
-		"Sciences",
-		"Teaching & Education",
-		"Trades & Services",
-	];
+	import { i_types } from "$lib/reference/VALUES";
+	import type { Database } from "$lib/db/types";
+
+	let jobpost: Database['public']['Tables']['job_post']['Insert']
+	
+	async function handleUploads(){
+		
+	}
 </script>
 
 <form method="POST" class="employerForm">
@@ -25,7 +17,7 @@
 		<div id="row-1">
 			<div class="form-el">
 				<label for="job_title">Job Title</label>
-				<input name="job_title" type="text" placeholder="Title of the Job"/>
+				<input bind:value={jobpost.job_title} name="job_title" type="text" placeholder="Title of the Job"/>
 			</div>
 			<div class="form-el">
 				<label for="salary">Salary</label>

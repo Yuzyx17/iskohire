@@ -124,11 +124,11 @@
           <img src="./images/appli.png" alt="appstat" class="h-6 mr-3">
           Application Status
         </a>
-        <a href="../add-exp" class=" flex">
+        <a href="../expform" class=" flex">
           <img src="./images/exp.png" alt="add exp" class="h-6 mr-3"> 
           Add Experience
         </a>
-        <a href="../add-edu"class=" flex"> 
+        <a href="../eduform"class=" flex"> 
           <img src="./images/exp.png" alt="add edu" class="h-6 mr-3"> 
           Add Education
         </a>

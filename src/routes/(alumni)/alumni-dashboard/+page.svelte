@@ -129,12 +129,10 @@
         <div class="bg-white shadow-md p-3 w-[1125px] max-w-[1125px]">
         {#if isApplicationsLoading}
             {#each Array(5) as _, i} 
-            <div style="opacity: {(100-i*20)/100}" class="h-[60px] border border-gray-300 bg-white shadow-md w-[1125px] max-w-[1125px] flex-shrink-0 p-3 mb-5 card"></div>
+                <div style="opacity: {(100-i*20)/100}" class="h-[60px] border border-gray-300 bg-white shadow-md w-[1125px] max-w-[1125px] flex-shrink-0 p-3 mb-5 card"></div>
             {/each}
-        
         {:else if $Applications}
             {#each $Applications as application}
-            
                 <div class="border border-gray-300 bg-white shadow-md w-[1125px] max-w-[1125px] flex-shrink-0 p-3 mb-5 card">
                     <div class="flex">
                         <div class="flex flex-col w-8/12 mt-auto mb-auto">
@@ -142,12 +140,17 @@
                                 {application.applicant_name}
                             </span>
                             <span class="text-gray-600 italic font-inter text-sm font-thin leading-normal">
-                                {#if application.skill_titles !== null}
+                                {#if application.skill_titles != null}
                                     {#each application.skill_titles as skill}
                                         {#if skill !== null}
                                             {skill}
+                                        {:else}
+                                            Nothing to see here
                                         {/if}
+                                        
                                     {/each}
+                                {:else}
+                                    Nothing to see here
                                 {/if}
                             </span>
                         </div>
@@ -200,11 +203,15 @@
                 
                 {/each}
             {:else if applicationError}
-                <div>{applicationError.message}</div>
+            <div class="border border-gray-300 bg-white shadow-md w-[1125px] max-w-[1125px] h-[60px] flex-shrink-0 p-3 mb-5 card">
+                <span class="text-black font-inter text-lg font-extrabold leading-normal">
+                    <div>{applicationError.message}</div>
+                </span>
+            </div>
             {:else}
             <div class="border border-gray-300 bg-white shadow-md w-[1125px] max-w-[1125px] h-[60px] flex-shrink-0 p-3 mb-5 card">
                 <span class="text-black font-inter text-lg font-extrabold leading-normal">
-                    Click a Post
+                    Nothing to see here!
                 </span>
             </div>
             {/if}

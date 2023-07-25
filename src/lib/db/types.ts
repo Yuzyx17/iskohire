@@ -450,6 +450,7 @@ export interface Database {
           applicant_name: string | null
           job_id: number | null
           skill_titles: string[] | null
+          status: string | null
         }
         Relationships: [
           {
