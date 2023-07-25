@@ -1,0 +1,7 @@
+user_id,role_id,exp_title,exp_type,company_name,location,location_type,start_date,end_date,industry_type
+1,1,Office Worker,Part-time,Jaskolski LLC,7 Buena Vista Drive,Onsite,2019-01-01,2022-01-24,1
+2,1,Staff Scientist,Internship,"Murazik, Rodriguez and Conroy",23 Novick Street,Hybrid,2018-08-07,2021-01-22,12
+3,1,BPO,Full-Time,Kassulke-Pagac,0 Scoville Plaza,Online,2019-04-24,2022-05-12,1
+4,2,Quality Control Specialist,Full-Time,Schimmel Inc,1 Messerschmidt Alley,Onsite,2020-02-05,2023-05-03,4
+5,2,Senior Editor,Part-time,"Auer, O'Kon and Schiller",08796 Lillian Parkway,Online,2015-12-08,2021-07-01,7
+6,2,Project Manager,Full-Time,Wolff-Tromp,7945 Commercial Crossing,Online,2018-02-11,2019-06-14,2

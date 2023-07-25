@@ -1,20 +1,6 @@
 <script lang="ts">
-	let i_types = [
-		"Any Study Field",
-		"Business & Management",
-		"Creative Arts",
-		"Engineering & Mathematics",
-		"Food, Hospitality & Personal Services",
-		"General Skills & Pathways",
-		"Humanities, Arts & Social Sciences",
-		"IT & Computer Science",
-		"Law, Legal Studies & Justice",
-		"Medical & Health Sciences",
-		"Property & Builty Environment",
-		"Sciences",
-		"Teaching & Education",
-		"Trades & Services",
-	];
+	import { i_types } from "$lib/reference/VALUES";
+	import type { Database } from "$lib/db/types";
 </script>
 
 <style>
@@ -67,7 +53,8 @@
         flex-flow: column;
         margin-bottom: 1.2rem;
     }
-    input, select{
+    input, select, textarea{
+		resize: none;
         font-size: 1.2rem;
         padding: .75rem 1.5rem;
         border: none;
@@ -99,26 +86,26 @@
 		<div id="row-1">
 			<div class="form-el">
 				<label for="job_title">Job Title</label>
-				<input name="job_title" type="text" placeholder="Title of the Job"/>
+				<input required name="job_title" type="text" placeholder="Title of the Job"/>
 			</div>
 			<div class="form-el">
 				<label for="salary">Salary</label>
-				<input name="salary" type="number" placeholder="Salary of the Job"/>
+				<input required name="salary" type="number" placeholder="Salary of the Job"/>
 			</div>
 		</div>
 		<div id="row-2">
 			<div class="form-el">
-				<label for="i-type">Industry Type</label>
-				<select name="i-type" id="i-type">
+				<label for="industry_type">Industry Type</label>
+				<select name="industry_type" id="industry_type">
 					{#each i_types as i_type}
-						<option value={i_type}>{i_type}</option>
+						<option value={i_types.indexOf(i_type)+1}>{i_type}</option>
 					{/each}
 				</select>
 			</div>
 
 			<div class="form-el">
-				<label for="emp_class">Employment Type</label>
-				<select name="emp_class" id="emp_class">
+				<label for="employment_type">Employment Type</label>
+				<select name="employment_type" id="employment_type">
 					<option value="Part-time" selected>Part-time</option>
 					<option value="Full-time" selected>Full-time</option>
 					<option value="Internship" selected>Internship</option>
@@ -126,8 +113,8 @@
 			</div>
 
 			<div class="form-el">
-				<label for="mode">Location Type</label>
-				<select name="mode" id="mode">
+				<label for="loc_type">Location Type</label>
+				<select name="loc_type" id="loc_type">
 					<option value="Online" selected>Online</option>
 					<option value="Onsite" selected>Onsite</option>
 					<option value="Hybrid" selected>Hybrid</option>
@@ -135,16 +122,17 @@
 			</div>
 		</div>
 		<div class="form-el">
-			<label for="addr">Location Address</label>
-			<input name="addr" type="text" placeholder="Location of the Company or Job site"/>
+			<label for="location">Location Address</label>
+			<input required name="location" type="text" placeholder="Location of the Company or Job site"/>
 		</div>
 		<div class="form-el">
-			<label for="web_url">Website</label>
-			<input name="web_url" type="url" placeholder="Link of your website"/>
+			<label for="url">Website</label>
+			<input required name="url" type="url" placeholder="Link of your website"/>
 		</div>
 		<div class="form-el">
 			<label for="desc">Description</label>
-			<input name="desc" id="desc" type="text" placeholder="Short Description of the Job"/>
+			<textarea required name="desc" id="desc" placeholder="Short Description of the Job"></textarea>
+			<!-- <input required name="desc" id="desc" type="text" placeholder="Short Description of the Job"/> -->
 		</div>
 	</div>
 	<slot name="buttons">

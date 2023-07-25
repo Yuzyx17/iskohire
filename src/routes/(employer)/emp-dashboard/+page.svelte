@@ -1,20 +1,18 @@
 <script lang="ts">
-    // import { onMount } from "svelte";
-    // onMount(async () => {
-    //     let response = await fetch("/mockdata.json");
-    //     mockdata = await response.json()
-    // })
-    async function loadMockData(){
-        let response = await fetch("/mock/JOB_POST.json");
-        let mockdata: Promise<any> = await response.json()
-        if(mockdata){
-            return mockdata
-        }else{
-            throw new Error(mockdata)
-        }
-    }
-
-    let mockdata = loadMockData()
+    import { onMount } from "svelte";
+    onMount(async () => {
+        let response = await fetch("/mockdata.json");
+        let mockdata = await response.json()
+    })
+    // async function loadMockData(){
+    //     let response = await fetch("/mock/JOB_POST.json");
+    //     let mockdata: Promise<any> = await response.json()
+    //     if(mockdata){
+    //         return mockdata
+    //     }else{
+    //         throw new Error(mockdata)
+    //     }
+    // }
 
 </script>
 

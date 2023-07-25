@@ -57,10 +57,10 @@
   import type { DrawerSettings } from '@skeletonlabs/skeleton';
 	import { invalidate } from '$app/navigation'
 	import { onMount } from 'svelte'
-  import User from '../../components/User.svelte';
-  import Register from '../../components/Register.svelte';
+  import User from '$lib/components/User.svelte';
+  import Register from '$lib/components/Register.svelte';
   
-  import {logged_in} from '../../store'
+  import {logged_in} from '$lib/stores/auth'
 
   export let data;
 
@@ -85,7 +85,7 @@
       <!-- Left End Items -->
       <svelte:fragment slot="lead">
         <a href="./">
-        <img id="logo_name" src="./images/logo_name.png" alt="logo_name">
+        <img id="logo_name" src="/images/logo_name.png" alt="logo_name">
         </a>
       </svelte:fragment>
 
@@ -105,21 +105,21 @@
     <div id="sidebar-left" class="flex flex-col h-full w-full bg-[white] justify-between shadow">
       <div class="container flex flex-col bg-[EDECEC]">
         <a href="../emp-dashboard" class=" flex">
-          <img src="./images/dash.png" alt="dashboard" class="h-6 mr-3"> 
+          <img src="/images/dash.png" alt="dashboard" class="h-6 mr-3"> 
           Dashboard
         </a>
         <a href="../emp-addjob" class=" flex">
-          <img src="./images/addjob.png" alt="add job" class="h-6 mr-3"> 
+          <img src="/images/addjob.png" alt="add job" class="h-6 mr-3"> 
           Add Job
         </a>
         <a href="../emp-editjob" class=" flex">
-          <img src="./images/editjob.png" alt="edit job" class="h-6 mr-3"> 
+          <img src="/images/editjob.png" alt="edit job" class="h-6 mr-3"> 
           Edit Job
         </a>
       </div>
       <div class="flex flex-col" id="logout">
         <a href="./" class="font-bold tracking-wider flex" > 
-          <img src="./images/logout.png" alt="logout" class="h-6 mr-3">
+          <img src="/images/logout.png" alt="logout" class="h-6 mr-3">
           LOGOUT
         </a>
       </div>
@@ -129,7 +129,7 @@
 	<svelte:fragment slot="footer">
     <AppBar background="bg-[#702828]">
       <a href="./">
-      <img id="logo" src="./images/logo.png" alt="logo">
+      <img id="logo" src="/images/logo.png" alt="logo">
       </a>
     </AppBar>
   </svelte:fragment>

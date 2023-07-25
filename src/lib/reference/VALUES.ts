@@ -1,4 +1,4 @@
-["Any Study Field",
+export const i_types =["Any Study Field",
 "Business & Management",
 "Creative Arts",
 "Engineering & Mathematics",

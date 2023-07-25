@@ -1,0 +1,11 @@
+user_id,email,pw_hash,role_id
+1,student1@email.com,student1,1
+2,student2@email.com,student2,1
+3,student3@email.com,student3,1
+4,alumni1@email.com,alumni1,2
+5,alumni2@email.com,alumni2,2
+6,alumni3@email.com,alumni3,2
+7,employer1@email.com,employer1,3
+8,employer2@email.com,employer2,3
+9,employer3@email.com,employer3,3
+10,admin@admin.com,admin123,4

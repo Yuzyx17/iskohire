@@ -1,4 +1,6 @@
-[{"ROLE_ID": 1, "PERMISSION": "STUDENT"},
-{"ROLE_ID": 2, "PERMISSION": "ALUMNI"},
-{"ROLE_ID": 3, "PERMISSION": "COMPANY"},
-{"ROLE_ID": 4, "PERMISSION": "ADMIN"}]
+[
+	{ "role_id": 1, "permission": "STUDENT" },
+	{ "role_id": 2, "permission": "ALUMNI" },
+	{ "role_id": 3, "permission": "COMPANY" },
+	{ "role_id": 4, "permission": "ADMIN" }
+]

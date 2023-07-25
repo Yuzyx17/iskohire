@@ -1,0 +1,16 @@
+job_id,user_id,desc,location,loc_type,job_title,employment_type,salary,industry_type,url,status
+1,8,Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.,541 Division Center,Onsite,Tax Accountant,Fulltime,13881.05,2,#,PUBLISHED
+2,5,"Praesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.",013 Dexter Road,Online,Network Service,Internship,24606.4,8,#,PUBLISH
+3,7,Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.,59740 Monument Parkway,Onsite,Design Engineer,Part-time,47281.67,7,#,UNPUBLISH
+4,6,"Aenean fermentum. Donec ut mauris eget massa tempor convallis. Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh.",12196 Cody Alley,Online,Quality Control,Internship,22185.21,1,#,PUBLISHED
+5,6,Suspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst.,2541 Derek Plaza,Online,Help Desk Operator,Part-time,29268.4,7,#,PUBLISH
+6,6,Phasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum.,58788 Mayfield Crossing,Online,Programmer III,Fulltime,14318.16,8,#,UNPUBLISH
+7,7,Aliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis.,2786 Barby Trail,Online,Associate Professor Secretary,Internship,33193.75,13,#,PUBLISHED
+8,8,Nulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi.,4 Northview Avenue,Online,Chemical Engineer,Part-time,26169.81,12,#,PUBLISH
+9,8,Pellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus.,0 Maple Road,Onsite,Project Manager,Fulltime,25056.44,1,#,UNPUBLISH
+10,9,Duis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit.,56119 Sage Drive,Online,Office Assistant I,Part-time,25505.65,1,#,PUBLISHED
+11,7,"Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.",0863 Talisman Drive,Onsite,Senior Sales Associate,Part-time,51375.8,2,#,PUBLISH
+12,7,"Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus.",737 Northview Road,Online,Recruiter,Part-time,19468.26,7,#,UNPUBLISH
+13,5,Sed ante. Vivamus tortor. Duis mattis egestas metus.,23 Sauthoff Road,Online,Dental Hygienist,Fulltime,15615.77,10,#,PUBLISHED
+14,8,"Curabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.",28599 Prairie Rose Crossing,Hybrid,Sales Associate Assistant,Internship,67641.04,2,#,PUBLISH
+15,9,"In hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo.",58969 Prentice Plaza,Onsite,Mechanical Systems Engineer Intern,Internship,15613.31,4,#,UNPUBLISH
