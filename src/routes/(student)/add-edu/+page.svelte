@@ -145,7 +145,7 @@
             <main class="p-8">
                 <h1 class="font-bold mb-20 mt-10 text-center">Add Education</h1>
 
-                <form method="POST" action="?/add_educ" use:enhance={handleSubmit}>
+                <form method="POST" action="?/add_educ" on:submit={handleSubmit}>
                     <div class="mb-4">
                         <label class="block font-bold mb-4" for="school">School</label>
                         <input
@@ -268,6 +268,7 @@
                             id="save"
                             type="submit"
                             formaction="?/add_educ"
+                            on:click={handleSubmit}
                         >
                             SAVE
                         </button>

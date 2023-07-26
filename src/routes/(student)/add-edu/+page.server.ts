@@ -13,10 +13,12 @@ import { fail, redirect } from '@sveltejs/kit';
 //     return {session}
 // }
 
+
 export const actions = {
     add_educ: async ({ request }) => {
         const formData = await request.formData()
         const act_soc = formData.get('acts') as string
+        const degree = formData.get('degree') as string
         const desc = formData.get('desc') as string
 
         let field = formData.get('field') as string
@@ -43,13 +45,14 @@ export const actions = {
             .from("applicant_education")
             .insert({
                 act_soc: act_soc,
+                course: degree,
                 desc: desc,
                 field_study: field_study,
                 grade: grade,
                 is_finished: is_finished,
                 role_id: role_id,
                 school: school,
-                user_id: 7, // to be replace by the user id of the login user
+                user_id: 8, // to be replace by the user id of the login user
                 year_end: year_end,
                 year_start: year_start 
         })

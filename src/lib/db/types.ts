@@ -89,6 +89,7 @@ export interface Database {
       applicant_education: {
         Row: {
           act_soc: string
+          course: string
           desc: string
           field_study: number
           grade: number
@@ -101,6 +102,7 @@ export interface Database {
         }
         Insert: {
           act_soc: string
+          course: string
           desc: string
           field_study: number
           grade: number
@@ -113,6 +115,7 @@ export interface Database {
         }
         Update: {
           act_soc?: string
+          course?: string
           desc?: string
           field_study?: number
           grade?: number
@@ -514,6 +517,8 @@ export interface Database {
       applicants: {
         Row: {
           applicant_name: string | null
+          course: string | null
+          industry_type: number | null
           job_id: number | null
           skill_titles: string[] | null
           status: string | null
@@ -536,6 +541,8 @@ export interface Database {
       applications: {
         Row: {
           company_name: string | null
+          course: string | null
+          industry_type: number | null
           job_id: number | null
           job_title: string | null
           post_status: string | null

@@ -22,15 +22,17 @@
   }
   #sidebar-left a{
     padding: 15px 75px 15px 15px;
+    background-color: #F8F8F8;
     outline: solid 1px #bbbbbb;
   }
   #sidebar-left #logout a{
     background-color: rgb(199, 199, 199);
     color: #702828;
   }
-  #sidebar-left #logout a:hover{
-    background-color: rgb(182, 181, 181);
-  }
+    main {
+      flex-grow: 1;
+    }
+
   #logo_name{
     width: clamp(128px, 50%, 256px);
     align-self: center;
@@ -38,10 +40,6 @@
   #logo{
     width: clamp(64px, 10%, 128px);
     aspect-ratio: 1/1;
-  }
-  a.active{
-    background-color: #dfbfbf;
-    font-weight: bold
   }
 </style>
 
@@ -56,10 +54,10 @@
   import type { DrawerSettings } from '@skeletonlabs/skeleton';
 	import { invalidate } from '$app/navigation'
 	import { onMount } from 'svelte'
-  import User from '../../components/User.svelte';
-  import Register from '../../components/Register.svelte';
+  import User from '$lib/components/User.svelte';
+  import Register from '$lib/components/Register.svelte';
   
-  import {logged_in} from '../../store'
+  import {logged_in} from '$lib/stores/auth'
 
   export let data;
 
@@ -75,8 +73,6 @@
 
 		return () => data.subscription.unsubscribe()
 	})
-
-  import {page} from '$app/stores'
 </script>
 
 <AppShell>
@@ -104,26 +100,26 @@
   <svelte:fragment slot="sidebarLeft">
     <div id="sidebar-left" class="flex flex-col h-full w-full bg-[white] justify-between shadow">
       <div class="container flex flex-col bg-[EDECEC]">
-        <a href="#" class="flex" class:active={$page.url.pathname === "/#" ? "bg-[white]" : ""}>
+        <a href="../profile" class="flex">
           <img src="./images/prof.png" alt="profile" class="h-6 mr-3">
           Profile
         </a>
-        <a href="../app-status" class="flex" class:active={$page.url.pathname === "/app-status" ? "bg-[white]" : ""}>
+        <a href="../app-status" class="flex">
           <img src="./images/appli.png" alt="appstat" class="h-6 mr-3">
           Application Status
         </a>
-        <a href="../add-exp" class=" flex"class:active={$page.url.pathname === "/add-exp" ? "bg-[white]" : ""}>
+        <a href="../add-exp" class=" flex">
           <img src="./images/exp.png" alt="add exp" class="h-6 mr-3"> 
           Add Experience
         </a>
-        <a href="../add-edu"class=" flex" class:active={$page.url.pathname === "/add-edu" ? "bg-[white]" : ""}> 
+        <a href="../add-edu"class=" flex"> 
           <img src="./images/exp.png" alt="add edu" class="h-6 mr-3"> 
           Add Education
         </a>
-        <a href="../saved" class="flex" class:active={$page.url.pathname === "/saved" ? "bg-[white]" : ""}>
+        <!-- <a href="../saved" class="flex">
            <img src="./images/savedicon.png" alt="profile" class="h-6 mr-3"> 
            Saved
-        </a>
+        </a> -->
       </div>
       <div class="flex flex-col" id="logout">
         <a href="./" class="font-bold tracking-wider flex" > 
