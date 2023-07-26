@@ -17,7 +17,7 @@
   }
   #sidebar-left a{
     padding: 15px 75px 15px 15px;
-    background-color: #F8F8F8;
+    /*background-color: #F8F8F8;*/
     outline: solid 1px #bbbbbb;
   }
   #sidebar-left a:hover{
@@ -44,8 +44,9 @@
     aspect-ratio: 1/1;
   }
 
-  a:active{
+  a.active{
     background-color: #dfbfbf;
+    font-weight: bold
   }
 </style>
 
@@ -80,6 +81,7 @@
 		return () => data.subscription.unsubscribe()
 	})
 
+  import {page} from '$app/stores'
 </script>
 
 <AppShell>
@@ -107,35 +109,35 @@
   <svelte:fragment slot="sidebarLeft">
     <div id="sidebar-left" class="flex flex-col h-full w-full bg-[white] justify-between shadow">
       <div class="container bg-[EDECEC]">
-        <a href="#" class="flex">
+        <a href="#" class="flex" class:active={$page.url.pathname === "/#" ? "bg-[white]" : ""}>
           <img src="./images/prof.png" alt="profile" class="h-6 mr-3">
           Profile
         </a>
-        <a href="../alumni-dashboard" class=" flex">
-          <img src="./images/dash.png" alt="dashboard" class="h-6 mr-3"> 
+        <a href="../alumni-dashboard" class="flex" class:active={$page.url.pathname === "/alumni-dashboard" ? "bg-[white]" : ""}>
+          <img src="./images/dash.png" alt="dashboard" class="h-6 mr-3" />
           Dashboard
         </a>
-        <a href="../addjobform" class=" flex">
+        <a href="../addjobform" class=" flex" class:active={$page.url.pathname === "/addjobform" ? "bg-[white]" : ""}>
           <img src="./images/addjob.png" alt="add job" class="h-6 mr-3"> 
           Add Job
         </a>
-        <a href="../editjobform" class=" flex">
+        <a href="../editjobform" class=" flex" class:active={$page.url.pathname === "/editjobform" ? "bg-[white]" : ""}>
           <img src="./images/editjob.png" alt="edit job" class="h-6 mr-3"> 
           Edit Job
         </a>
-        <a href="../application-status" class="flex">
+        <a href="../application-status" class="flex" class:active={$page.url.pathname === "/application-status" ? "bg-[white]" : ""}>
           <img src="./images/appli.png" alt="appstat" class="h-6 mr-3">
           Application Status
         </a>
-        <a href="../expform" class=" flex">
+        <a href="../expform" class=" flex" class:active={$page.url.pathname === "/expform" ? "bg-[white]" : ""}>
           <img src="./images/exp.png" alt="add exp" class="h-6 mr-3"> 
           Add Experience
         </a>
-        <a href="../eduform"class=" flex"> 
+        <a href="../eduform"class=" flex" class:active={$page.url.pathname === "/eduform" ? "bg-[white]" : ""}> 
           <img src="./images/exp.png" alt="add edu" class="h-6 mr-3"> 
           Add Education
         </a>
-        <a href="../savedpage" class="flex">
+        <a href="../savedpage" class="flex" class:active={$page.url.pathname === "/savedpage" ? "bg-[white]" : ""}>
            <img src="./images/savedicon.png" alt="profile" class="h-6 mr-3"> 
            Saved
         </a>

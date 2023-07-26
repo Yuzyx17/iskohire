@@ -8,7 +8,7 @@
 
 <Form>
     <div class="action-container" slot="buttons">
-        <button formaction="/employer?/update" id="submit" class="action bg-tertiary-500 ">UPDATE</button>
-        <button formaction="/employer?/delete" id="delete" class="action bg-warning-500">DELETE</button>
+        <button formaction="/employer?/update" id="submit" class="action bg-tertiary-500 hover:bg-[#AD9673]">UPDATE</button>
+        <button formaction="/employer?/delete" id="delete" class="action bg-warning-500 hover:bg-[#E1D4C0]">DELETE</button>
     </div>
 </Form>

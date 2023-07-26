@@ -17,7 +17,6 @@
   }
   #sidebar-left a{
     padding: 15px 126px 15px 15px;
-    background-color: #F8F8F8;
     outline: solid 1px #bbbbbb;
   }
   #sidebar-left a:hover{
@@ -47,7 +46,10 @@
     width: clamp(64px, 10%, 128px);
     aspect-ratio: 1/1;
   }
-
+  a.active{
+    background-color: #dfbfbf;
+    font-weight: bold
+  }
 </style>
 
 <script lang="ts">
@@ -80,7 +82,7 @@
 
 		return () => data.subscription.unsubscribe()
 	})
-  
+  import {page} from '$app/stores'
 </script>
 
 <AppShell>
@@ -108,15 +110,15 @@
   <svelte:fragment slot="sidebarLeft">
     <div id="sidebar-left" class="flex flex-col h-full w-full bg-[white] justify-between shadow">
       <div class="container flex flex-col bg-[EDECEC]">
-        <a href="../emp-dashboard" class=" flex">
+        <a href="../emp-dashboard" class=" flex" class:active={$page.url.pathname === "/emp-dashboard" ? "bg-[white]" : ""}>
           <img src="./images/dash.png" alt="dashboard" class="h-6 mr-3"> 
           Dashboard
         </a>
-        <a href="../emp-addjob" class=" flex">
+        <a href="../emp-addjob" class=" flex" class:active={$page.url.pathname === "/emp-addjob" ? "bg-[white]" : ""}>
           <img src="./images/addjob.png" alt="add job" class="h-6 mr-3"> 
           Add Job
         </a>
-        <a href="../emp-editjob" class=" flex">
+        <a href="../emp-editjob" class=" flex" class:active={$page.url.pathname === "/emp-editjob" ? "bg-[white]" : ""}>
           <img src="./images/editjob.png" alt="edit job" class="h-6 mr-3"> 
           Edit Job
         </a>
