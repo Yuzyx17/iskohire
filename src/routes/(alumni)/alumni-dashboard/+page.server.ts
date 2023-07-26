@@ -1,7 +1,6 @@
 import { updatePosts, uploadPosts, deletePosts } from '$lib/stores/post_store';
 import { user_id } from '$lib/stores/auth';
 import type { Database } from '$lib/db/types';
-import { goto } from '$app/navigation';
 
 export const actions = {
 	create: async ({ request }) => {
@@ -11,7 +10,7 @@ export const actions = {
             newPost[key] = value;
         }
         newPost["user_id"] = user_id
-        newPost["status"] = "UNPUBLISHED"
+        newPost["status"] = "UNPUBLISH"
         uploadPosts(newPost as Database['public']['Tables']['job_post']['Insert'])
 	},
     update: async ({ request }) => {
