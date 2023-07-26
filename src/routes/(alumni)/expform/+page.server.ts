@@ -32,74 +32,143 @@ export const actions = {
         const role_id: number = 1;
         const startDate = formData.get('startDate') as string 
 
+        const user_skill = formData.get('skills') as string
+
         // const session = await getSession()
 
-        const { error } = await supabase
-        .from("applicant_experience")
-        .insert({
-            company_name: compname,
-            desc: desc,
-            end_date: endDate,
-            exp_title: title,
-            exp_type: emptype,
-            industry_type: industry_type,
-            location: loc,
-            location_type: loctype,
-            role_id: role_id,
-            start_date: startDate,
-            user_id: user_id
-        })
+        // query if this skill is in the database 
+        const { data, error } = await supabase.from('skills_info').select('*')
 
-        if(error) {
-            console.log(error)
-            return fail(500, {
-                compname,
-                endDate,
-                title,
-                emptype,
-                industry_type,
-                loc,
-                loctype,
-                role_id,
-                startDate,
-                user_id
-            })
+        if(error)
+            return error
+        else if(data) {
+
+            const foundItem = data.find((skill) => skill.skill_title === user_skill);
+            if (!foundItem) {
+
+                // if skill not exist
+                const { data, error } = await supabase
+                .from("skills_info")
+                .upsert({
+                    skill_title: user_skill
+                })
+                .select()
+
+                // if sucess 
+                if(data) {
+                    const { error } = await supabase
+                    .from("applicant_skills")
+                    .upsert({
+                        skill_id: data[0].skill_id,
+                        user_id: user_id
+                    })
+                    .select()
+                }
+
+                if(error) return error
+                else if(data) {
+                    const new_skill_id: number = data[0].skill_id;
+
+                    const { error } = await supabase
+                    .from("applicant_experience")
+                    .insert({
+                        company_name: compname,
+                        desc: desc,
+                        end_date: endDate,
+                        exp_title: title,
+                        exp_type: emptype,
+                        industry_type: industry_type,
+                        location: loc,
+                        location_type: loctype,
+                        role_id: role_id,
+                        skill_id: new_skill_id,
+                        start_date: startDate,
+                        user_id: user_id
+                    })
+
+                    if(error) {
+                        console.log(error)
+                        return fail(500, {
+                            compname,
+                            endDate,
+                            title,
+                            emptype,
+                            industry_type,
+                            loc,
+                            loctype,
+                            role_id,
+                            new_skill_id,
+                            startDate,
+                            user_id
+                        })
+                    }
+
+                    return {
+                        compname,
+                        endDate,
+                        title,
+                        emptype,
+                        industry_type,
+                        loc,
+                        loctype,
+                        role_id,
+                        new_skill_id,
+                        startDate,
+                        user_id
+                    }
+                }
+            } else {
+                const skill_id: number = foundItem.skill_id
+                const { error } = await supabase
+                .from("applicant_experience")
+                .insert({
+                    company_name: compname,
+                    desc: desc,
+                    end_date: endDate,
+                    exp_title: title,
+                    exp_type: emptype,
+                    industry_type: industry_type,
+                    location: loc,
+                    location_type: loctype,
+                    role_id: role_id,
+                    skill_id: skill_id,
+                    start_date: startDate,
+                    user_id: user_id
+                })
+
+                if(error) {
+                    console.log(error)
+                    return fail(500, {
+                        compname,
+                        endDate,
+                        title,
+                        emptype,
+                        industry_type,
+                        loc,
+                        loctype,
+                        role_id,
+                        skill_id,
+                        startDate,
+                        user_id
+                    })
+                }
+
+                return {
+                    compname,
+                    endDate,
+                    title,
+                    emptype,
+                    industry_type,
+                    loc,
+                    loctype,
+                    role_id,
+                    skill_id,
+                    startDate,
+                    user_id
+                }
+            }
         }
 
-        return {
-            compname,
-            endDate,
-            title,
-            emptype,
-            industry_type,
-            loc,
-            loctype,
-            role_id,
-            startDate,
-            user_id
-        }
 
     }
-
-    // title,
-    // emptype,
-    // compname,
-    // loc,
-    // loctype,
-    // startDate,
-    // endDate,
-    // industry,
-    // desc,
-    // skills,
-
-    // company_name: string
-    // end_date: string
-    // exp_title: string
-    // exp_type: string
-    // industry_type: number
-    // location: string
-    // location_type: string
-    // role_id: number
-    // start_date: string
-    // user_id: number
 }
