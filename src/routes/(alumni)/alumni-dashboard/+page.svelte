@@ -62,7 +62,7 @@
                             <span class="text-gray-600 font-inter text-xs font-normal leading-normal mt-auto mb-5 ml-2">{item.SALARY}</span>
                         </div>
                         <div class="flex">
-                        </div>
+                        </div>  
                     </div>
                     <div class="text-center">
                         {#if item.STATUS === "PUBLISHED"}

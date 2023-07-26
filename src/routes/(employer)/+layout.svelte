@@ -16,7 +16,7 @@
     flex-grow: 1;
   }
   #sidebar-left a{
-    padding: 15px 75px 15px 15px;
+    padding: 15px 126px 15px 15px;
     background-color: #F8F8F8;
     outline: solid 1px #bbbbbb;
   }
@@ -24,7 +24,11 @@
     background-color: #dfbfbf;
     font-weight: bold;
   }
-  #sidebar-left a:active{
+  #sidebar-left a:active::before{
+    background-color: #DBCBCB;
+    font-weight: bold;
+  }
+  #sidebar-left a:active::after{
     background-color: #DBCBCB;
     font-weight: bold;
   }

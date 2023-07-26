@@ -29,10 +29,9 @@
     background-color: rgb(199, 199, 199);
     color: #702828;
   }
-    main {
-      flex-grow: 1;
-    }
-
+  #sidebar-left #logout a:hover{
+    background-color: rgb(182, 181, 181);
+  }
   #logo_name{
     width: clamp(128px, 50%, 256px);
     align-self: center;
