@@ -188,6 +188,7 @@ export interface Database {
           location: string
           location_type: string
           role_id: number
+          skill_id: number
           start_date: string
           user_id: number
         }
@@ -201,6 +202,7 @@ export interface Database {
           location: string
           location_type: string
           role_id: number
+          skill_id: number
           start_date: string
           user_id: number
         }
@@ -214,6 +216,7 @@ export interface Database {
           location?: string
           location_type?: string
           role_id?: number
+          skill_id?: number
           start_date?: string
           user_id?: number
         }
@@ -223,6 +226,12 @@ export interface Database {
             columns: ["role_id"]
             referencedRelation: "roles"
             referencedColumns: ["role_id"]
+          },
+          {
+            foreignKeyName: "applicant_experience_skill_id_fkey"
+            columns: ["skill_id"]
+            referencedRelation: "skills_info"
+            referencedColumns: ["skill_id"]
           },
           {
             foreignKeyName: "applicant_experience_user_id_fkey"

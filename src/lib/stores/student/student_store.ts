@@ -7,6 +7,7 @@ import { supabase } from "$lib/supabase";
 import type { Database } from "$lib/db/types";
 import type { Data } from "@skeletonlabs/skeleton/dist/utilities/DataTable/types";
 import { user_id } from "$lib/stores/auth";
+import { Skills } from "../application_store";
 
 // export const 
 
@@ -37,7 +38,4 @@ export const loadStudent = async () => {
     if(error) return error;
 
     StudentInfo.set(data[0])
-
-    // add educ 
-    // daya yung sa profile
 }

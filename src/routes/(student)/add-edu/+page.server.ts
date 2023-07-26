@@ -43,7 +43,7 @@ export const actions = {
         // add education
         const { error } = await supabase
             .from("applicant_education")
-            .insert({
+            .upsert({
                 act_soc: act_soc,
                 course: degree,
                 desc: desc,

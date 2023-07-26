@@ -121,6 +121,9 @@
 </style>
 
 <div class="outside bg-white m-10 shadow">
+    <!-- if skill exist in table skills_info
+         get the skills id of that then save to the applicants_skill
+         if not save this to the current skills_info then add to the applicants skill-->
     <div class="container">
         <div class="form-wrapper">
             <main class="p-8">
