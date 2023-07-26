@@ -16,7 +16,9 @@
 	  }
 	}
 </script>
-
+<svelte:head>
+	<title>Alumni Login</title>
+</svelte:head>
 <div class="bg-[url('/images/backup.png')] bg-cover m-0 h-full">
 	<div class="flex items-center justify-center h-screen p-10">
 	  <div class="flex flex-col gap-4 bg-[#702828] p-5 w-5/12 h-5/4 items-center">

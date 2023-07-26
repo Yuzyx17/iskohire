@@ -12,7 +12,9 @@
         goto('/account/')
     }
 </script>
-
+<svelte:head>
+	<title>Login Page</title>
+</svelte:head>
 <style>
     .center-container {
         display: flex;

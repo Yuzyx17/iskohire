@@ -1,19 +1,21 @@
 <script lang="ts">
-    import { onMount } from "svelte";
-    onMount(async () => {
-        let response = await fetch("/mockdata.json");
-        let mockdata = await response.json()
-    })
-    // async function loadMockData(){
-    //     let response = await fetch("/mock/JOB_POST.json");
-    //     let mockdata: Promise<any> = await response.json()
-    //     if(mockdata){
-    //         return mockdata
-    //     }else{
-    //         throw new Error(mockdata)
-    //     }
-    // }
-
+    // import { onMount } from "svelte";
+    // onMount(async () => {
+    //     let response = await fetch("/mockdata.json");
+    //     mockdata = await response.json()
+    // })
+    async function loadMockData(){
+        let response = await fetch("/mock/JOB_POST.json");
+        let mockdata: Promise<any> = await response.json()
+        if(mockdata){
+            return mockdata
+        }else{
+            throw new Error(mockdata)
+        }
+    }
+    let mockdata = loadMockData()   
+    
+    
 </script>
 
 <svelte:head>
@@ -24,289 +26,103 @@
     .no-scrollbar::-webkit-scrollbar {
         display: none;
     }
+    
 </style>
 
 <!-- scrolling and effect -->
 <div class="flex">
-    <!-- <div class="border border-black border-opacity-30 h-screen w-[230px] min-w-[230px] bg-white relative">
-        <div class="flex-grow">
-            <div class="flex border border-black border-opacity-20 hover:bg-[#dbcbcb] p-3 h-79 flex-shrink-0">
-                <img src="images/dashboard-employer.png" class="h-6 w-6 mr-3" alt="Dashboard Logo">
-                <span class="text-black text-justify font-inter text-24 font-medium leading-normal">Dashboard</span>
-            </div>
-            <div class="flex border border-black border-opacity-20 hover:bg-[#dbcbcb] p-3 h-79 flex-shrink-0">
-                <img src="images/add-job-employer.png" class="h-5 w-6 mr-3" alt="Add Job Logo">
-                <span class="text-black text-justify font-inter text-24 font-medium leading-normal">Add Job</span>
-            </div>
-            <div class="flex border border-black border-opacity-20 hover:bg-[#dbcbcb] p-3 h-79 flex-shrink-0">
-                <img src="images/edit-job-employer.png" class="h-5 w-6 mr-3" alt="Edit Job Logo">
-                <span class="text-black text-justify font-inter text-24 font-medium leading-normal">Edit Job</span>
-            </div>
-        </div>
-        <div class="flex border border-black border-opacity-20 hover:bg-[#DFDFDF] hover:text-[#702828] p-3 h-79 w-full absolute bottom-0">
-            <img src="images/logout-employer.png" class="h-5 w-6" alt="Logout Logo">
-            <span class="text-black text-justify font-inter text-24 font-medium leading-normal">LOGOUT</span>
-        </div>
-    </div> -->
     <div class="m-8">
+        {#await mockdata}
+        <div>wait</div>
+        {:then mock}
         <!-- list of job application -->
         <div class="mb-5 w-[1450px] flex overflow-x-scroll no-scrollbar">
-            <div class="bg-white shadow-offset-x-0 shadow-offset-y-4 shadow-blur-4 shadow-spread-0 shadow-opacity-25 w-[277px] min-w-[277px] h-[309px] min-h-[309px] p-3 flex flex-col mr-3">
+        {#each mock as item}
+            <div class="bg-white card card-hover shadow-offset-x-0 shadow-offset-y-4 shadow-blur-4 shadow-spread-0 shadow-opacity-25 w-[277px] min-w-[277px] h-[309px] min-h-[309px] p-3 flex flex-col mr-3">
                 <div class="flex flex-col">
                     <span class="text-black font-inter text-xl font-extrabold leading-normal text-center">
-                        Job Title
+                        {item.JOB_TITLE}
                     </span>
                     <span class="text-gray-600 font-inter text-sm font-normal leading-normal text-center">
-                        Job Description
+                        {item.DESC}
                     </span>
                 </div>
                 <div class="w-full mt-auto self-end">
                     <div class="grid grid-cols-2 gap-2 mt-auto mb-0">
-                        <div class="flex">
-                            <img src="images/loc_type-employer.png" class="h-3.5 w-3.5 mt-auto mb-auto mr-2" alt="Location Type Logo">
-                            <span class="text-gray-600 font-inter text-xs font-normal leading-normal mt-auto mb-auto">Location Type</span>
+                        <div class="flex justify-center">
+                            <img src="./images/loc_type-employer.png" class="h-3.5 w-3.5 mt-auto mb-auto mr-2" alt="Location Type Logo">
+                            <span class="text-gray-600 font-inter text-xs font-normal leading-normal mt-auto mb-auto">{item.LOC_TYPE}</span>
                         </div>
                         <div class="flex">
-                            <img src="images/emp_type-employer.png" class="h-3.5 w-3.5 mt-auto mb-auto mr-2" alt="Employment Type Logo">
-                            <span class="text-gray-600 font-inter text-xs font-normal leading-normal mt-auto mb-auto">Internship</span>
+                            <img src="./images/emp_type-employer.png" class="h-3.5 w-3.5 mt-auto mb-auto mr-2" alt="Employment Type Logo">
+                            <span class="text-gray-600 font-inter text-xs font-normal leading-normal mt-auto mb-auto">{item.EMPLOYMENT_TYPE}</span>
+                        </div>
+                        <div class="flex justify-center ">
+                            <img src="./images/salary.png" class="h-4 w-4.5 mt-auto mb-5 ml-3" alt="Salary Logo">
+                            <span class="text-gray-600 font-inter text-xs font-normal leading-normal mt-auto mb-5 ml-2">{item.SALARY}</span>
                         </div>
                         <div class="flex">
-                            <span class="text-red-700 font-inter text-base italic font-extrabold leading-normal mr-2">P</span>
-                            <span class="text-gray-600 font-inter text-xs font-normal leading-normal mt-auto mb-auto">Salary</span>
-                        </div>
-                        <div class="flex">
-                        </div>
+                        </div>  
                     </div>
                     <div class="text-center">
-                        <button class="bg-[#417E1B] border border-solid border-[#AB7C7C] w-[100px] font-inter text-xs font-black text-white h-8 ml-auto mr-0 shadow-md">
-                            PUBLISHED
-                        </button>
+                        {#if item.STATUS === "PUBLISHED"}
+                            {#if item.isHovered}
+                                <button
+                                    class="bg-[#417E1B] border border-solid border-[#AB7C7C] w-[100px] font-inter text-xs font-black text-white h-8 ml-auto mr-0 shadow-md variant-filled-tertiary cursor-pointer hover:bg-[#702828]"
+                                    on:mouseleave={() => item.isHovered = false}
+                                >
+                                    UNPUBLISH
+                                </button>
+                            {:else}
+                                <button
+                                    class="bg-[#417E1B] border border-solid border-[#AB7C7C] w-[100px] font-inter text-xs font-black text-white h-8 ml-auto mr-0 shadow-md variant-filled-tertiary cursor-pointer hover:bg-[#AD9673]"
+                                    on:mouseenter={() => item.isHovered = true}
+                                >
+                                    {item.STATUS}
+                                </button>
+                            {/if}
+                        {:else if item.STATUS === "PUBLISH"}
+                            <button class="bg-[#D2AC72] border border-solid border-[#AB7C7C] w-[100px] font-inter text-xs font-black text-white h-8 ml-auto mr-0 shadow-md variant-filled-tertiary cursor-pointer hover:bg-[#AD9673]">
+                                {item.STATUS}
+                            </button>
+                        {:else}
+                            <button class="bg-[#702828] border border-solid border-[#AB7C7C] w-[100px] font-inter text-xs font-black text-white h-8 ml-auto mr-0 shadow-md variant-filled-tertiary cursor-pointer hover:bg-[#551414]">
+                                {item.STATUS}
+                            </button>
+                        {/if}
                     </div>
                 </div>
             </div>
-            <div class="bg-white shadow-offset-x-0 shadow-offset-y-4 shadow-blur-4 shadow-spread-0 shadow-opacity-25 w-[277px] h-[309px] min-w-[277px] min-h-[309px] p-3 flex flex-col mr-3">
-                <div class="flex flex-col">
-                    <span class="text-black font-inter text-xl font-extrabold leading-normal text-center">
-                        Job Title
-                    </span>
-                    <span class="text-gray-600 font-inter text-sm font-normal leading-normal text-center">
-                        Job Description
-                    </span>
-                </div>
-                <div class="w-full mt-auto self-end">
-                    <div class="grid grid-cols-2 gap-2 mt-auto mb-0">
-                        <div class="flex">
-                            <img src="images/loc_type-employer.png" class="h-3.5 w-3.5 mt-auto mb-auto mr-2" alt="Location Type Logo">
-                            <span class="text-gray-600 font-inter text-xs font-normal leading-normal mt-auto mb-auto">Location Type</span>
-                        </div>
-                        <div class="flex">
-                            <img src="images/emp_type-employer.png" class="h-3.5 w-3.5 mt-auto mb-auto mr-2" alt="Employment Type Logo">
-                            <span class="text-gray-600 font-inter text-xs font-normal leading-normal mt-auto mb-auto">Internship</span>
-                        </div>
-                        <div class="flex">
-                            <span class="text-red-700 font-inter text-base italic font-extrabold leading-normal mr-2">P</span>
-                            <span class="text-gray-600 font-inter text-xs font-normal leading-normal mt-auto mb-auto">Salary</span>
-                        </div>
-                        <div class="flex">
-                        </div>
-                    </div>
-                    <div class="text-center">
-                        <button class="bg-[#702828] border border-solid border-[#AB7C7C] w-[100px] font-inter text-xs font-black text-white h-8 ml-auto mr-0 shadow-md">
-                            UNPUBLISH
-                        </button>
-                    </div>
-                </div>  
-            </div>
-            <div class="bg-white shadow-offset-x-0 shadow-offset-y-4 shadow-blur-4 shadow-spread-0 shadow-opacity-25 w-[277px] h-[309px] min-w-[277px] min-h-[309px] p-3 flex flex-col mr-3">
-                <div class="flex flex-col">
-                    <span class="text-black font-inter text-xl font-extrabold leading-normal text-center">
-                        Job Title
-                    </span>
-                    <span class="text-gray-600 font-inter text-sm font-normal leading-normal text-center">
-                        Job Description
-                    </span>
-                </div>
-                <div class="w-full mt-auto self-end">
-                    <div class="grid grid-cols-2 gap-2 mt-auto mb-0">
-                        <div class="flex">
-                            <img src="images/loc_type-employer.png" class="h-3.5 w-3.5 mt-auto mb-auto mr-2" alt="Location Type Logo">
-                            <span class="text-gray-600 font-inter text-xs font-normal leading-normal mt-auto mb-auto">Location Type</span>
-                        </div>
-                        <div class="flex">
-                            <img src="images/emp_type-employer.png" class="h-3.5 w-3.5 mt-auto mb-auto mr-2" alt="Employment Type Logo">
-                            <span class="text-gray-600 font-inter text-xs font-normal leading-normal mt-auto mb-auto">Internship</span>
-                        </div>
-                        <div class="flex">
-                            <span class="text-red-700 font-inter text-base italic font-extrabold leading-normal mr-2">P</span>
-                            <span class="text-gray-600 font-inter text-xs font-normal leading-normal mt-auto mb-auto">Salary</span>
-                        </div>
-                        <div class="flex">
-                        </div>
-                    </div>
-                    <div class="text-center">
-                        <button class="bg-[#D2AC72] border border-solid border-[#AB7C7C] w-[100px] font-inter text-xs font-black text-white h-8 ml-auto mr-0 shadow-md">
-                            PUBLISH
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <div class="bg-white shadow-offset-x-0 shadow-offset-y-4 shadow-blur-4 shadow-spread-0 shadow-opacity-25 w-[277px] h-[309px] min-w-[277px] min-h-[309px] p-3 flex flex-col mr-3">
-                <div class="flex flex-col">
-                    <span class="text-black font-inter text-xl font-extrabold leading-normal text-center">
-                        Job Title
-                    </span>
-                    <span class="text-gray-600 font-inter text-sm font-normal leading-normal text-center">
-                        Job Description
-                    </span>
-                </div>
-                <div class="w-full mt-auto self-end">
-                    <div class="grid grid-cols-2 gap-2 mt-auto mb-0">
-                        <div class="flex">
-                            <img src="images/loc_type-employer.png" class="h-3.5 w-3.5 mt-auto mb-auto mr-2" alt="Location Type Logo">
-                            <span class="text-gray-600 font-inter text-xs font-normal leading-normal mt-auto mb-auto">Location Type</span>
-                        </div>
-                        <div class="flex">
-                            <img src="images/emp_type-employer.png" class="h-3.5 w-3.5 mt-auto mb-auto mr-2" alt="Employment Type Logo">
-                            <span class="text-gray-600 font-inter text-xs font-normal leading-normal mt-auto mb-auto">Internship</span>
-                        </div>
-                        <div class="flex">
-                            <span class="text-red-700 font-inter text-base italic font-extrabold leading-normal mr-2">P</span>
-                            <span class="text-gray-600 font-inter text-xs font-normal leading-normal mt-auto mb-auto">Salary</span>
-                        </div>
-                        <div class="flex">
-                        </div>
-                    </div>
-                    <div class="text-center">
-                        <button class="bg-[#D2AC72] border border-solid border-[#AB7C7C] w-[100px] font-inter text-xs font-black text-white h-8 ml-auto mr-0 shadow-md">
-                            PUBLISH
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <div class="bg-white shadow-offset-x-0 shadow-offset-y-4 shadow-blur-4 shadow-spread-0 shadow-opacity-25 w-[277px] h-[309px] min-w-[277px] min-h-[309px] p-3 flex flex-col mr-3">
-                <div class="flex flex-col">
-                    <span class="text-black font-inter text-xl font-extrabold leading-normal text-center">
-                        Job Title
-                    </span>
-                    <span class="text-gray-600 font-inter text-sm font-normal leading-normal text-center">
-                        Job Description
-                    </span>
-                </div>
-                <div class="w-full mt-auto self-end">
-                    <div class="grid grid-cols-2 gap-2 mt-auto mb-0">
-                        <div class="flex">
-                            <img src="images/loc_type-employer.png" class="h-3.5 w-3.5 mt-auto mb-auto mr-2" alt="Location Type Logo">
-                            <span class="text-gray-600 font-inter text-xs font-normal leading-normal mt-auto mb-auto">Location Type</span>
-                        </div>
-                        <div class="flex">
-                            <img src="images/emp_type-employer.png" class="h-3.5 w-3.5 mt-auto mb-auto mr-2" alt="Employment Type Logo">
-                            <span class="text-gray-600 font-inter text-xs font-normal leading-normal mt-auto mb-auto">Internship</span>
-                        </div>
-                        <div class="flex">
-                            <span class="text-red-700 font-inter text-base italic font-extrabold leading-normal mr-2">P</span>
-                            <span class="text-gray-600 font-inter text-xs font-normal leading-normal mt-auto mb-auto">Salary</span>
-                        </div>
-                        <div class="flex">
-                        </div>
-                    </div>
-                    <div class="text-center">
-                        <button class="bg-[#D2AC72] border border-solid border-[#AB7C7C] w-[100px] font-inter text-xs font-black text-white h-8 ml-auto mr-0 shadow-md">
-                            PUBLISH
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <div class="bg-white shadow-offset-x-0 shadow-offset-y-4 shadow-blur-4 shadow-spread-0 shadow-opacity-25 w-[277px] h-[309px] min-w-[277px] min-h-[309px] p-3 flex flex-col mr-3">
-                <div class="flex flex-col">
-                    <span class="text-black font-inter text-xl font-extrabold leading-normal text-center">
-                        Job Title
-                    </span>
-                    <span class="text-gray-600 font-inter text-sm font-normal leading-normal text-center">
-                        Job Description
-                    </span>
-                </div>
-                <div class="w-full mt-auto self-end">
-                    <div class="grid grid-cols-2 gap-2 mt-auto mb-0">
-                        <div class="flex">
-                            <img src="images/loc_type-employer.png" class="h-3.5 w-3.5 mt-auto mb-auto mr-2" alt="Location Type Logo">
-                            <span class="text-gray-600 font-inter text-xs font-normal leading-normal mt-auto mb-auto">Location Type</span>
-                        </div>
-                        <div class="flex">
-                            <img src="images/emp_type-employer.png" class="h-3.5 w-3.5 mt-auto mb-auto mr-2" alt="Employment Type Logo">
-                            <span class="text-gray-600 font-inter text-xs font-normal leading-normal mt-auto mb-auto">Internship</span>
-                        </div>
-                        <div class="flex">
-                            <span class="text-red-700 font-inter text-base italic font-extrabold leading-normal mr-2">P</span>
-                            <span class="text-gray-600 font-inter text-xs font-normal leading-normal mt-auto mb-auto">Salary</span>
-                        </div>
-                        <div class="flex">
-                        </div>
-                    </div>
-                    <div class="text-center">
-                        <button class="bg-[#D2AC72] border border-solid border-[#AB7C7C] w-[100px] font-inter text-xs font-black text-white h-8 ml-auto mr-0 shadow-md">
-                            PUBLISH
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <div class="bg-white shadow-offset-x-0 shadow-offset-y-4 shadow-blur-4 shadow-spread-0 shadow-opacity-25 w-[277px] h-[309px] min-w-[277px] min-h-[309px] p-3 flex flex-col mr-3">
-                <div class="flex flex-col">
-                    <span class="text-black font-inter text-xl font-extrabold leading-normal text-center">
-                        Job Title
-                    </span>
-                    <span class="text-gray-600 font-inter text-sm font-normal leading-normal text-center">
-                        Job Description
-                    </span>
-                </div>
-                <div class="w-full mt-auto self-end">
-                    <div class="grid grid-cols-2 gap-2 mt-auto mb-0">
-                        <div class="flex">
-                            <img src="images/loc_type-employer.png" class="h-3.5 w-3.5 mt-auto mb-auto mr-2" alt="Location Type Logo">
-                            <span class="text-gray-600 font-inter text-xs font-normal leading-normal mt-auto mb-auto">Location Type</span>
-                        </div>
-                        <div class="flex">
-                            <img src="images/emp_type-employer.png" class="h-3.5 w-3.5 mt-auto mb-auto mr-2" alt="Employment Type Logo">
-                            <span class="text-gray-600 font-inter text-xs font-normal leading-normal mt-auto mb-auto">Internship</span>
-                        </div>
-                        <div class="flex">
-                            <span class="text-red-700 font-inter text-base italic font-extrabold leading-normal mr-2">P</span>
-                            <span class="text-gray-600 font-inter text-xs font-normal leading-normal mt-auto mb-auto">Salary</span>
-                        </div>
-                        <div class="flex">
-                        </div>
-                    </div>
-                    <div class="text-center">
-                        <button class="bg-[#D2AC72] border border-solid border-[#AB7C7C] w-[100px] font-inter text-xs font-black text-white h-8 ml-auto mr-0 shadow-md">
-                            PUBLISH
-                        </button>
-                    </div>
-                </div>
-            </div>
+            {/each}
+            
         </div>
+        {:catch error}
+            <p style="color:red">{error.message}</p>
+            {/await}
         <!-- filter and applicants -->
         <div class="mb-5 w-screen w-max-screen flex">
             <!-- filter -->
-            <div class="flex flex-col w-[277px] h-[329px] bg-white shadow-md pt-5 pb-5 pl-3 pr-3 mr-2">
+            <div class="flex  flex-col w-[277px] h-[329px] bg-white shadow-md pt-5 pb-5 pl-3 pr-3 mr-2">
                 <span class="text-black text-justify font-inter text-xl font-semibold leading-normal">
                     Filter
                 </span>
                 <div>
                     <form class="flex flex-col">
-                        <select class="text-black text-justify font-inter text-lg font-semibold leading-normal border border-gray-300 bg-white shadow-md mb-3">
+                        <select class="text-black card card-hover text-justify font-inter text-lg font-semibold leading-normal border border-gray-300 bg-white shadow-md mb-3">
                             <option selected>Field Experience</option>
                         </select>
-                        <select class="text-black text-justify font-inter text-lg font-semibold leading-normal border border-gray-300 bg-white shadow-md mb-3">
+                        <select class="text-black card card-hover text-justify font-inter text-lg font-semibold leading-normal border border-gray-300 bg-white shadow-md mb-3">
                             <option selected>Course</option>
                         </select>
-                        <select class="text-black text-justify font-inter text-lg font-semibold leading-normal border border-gray-300 bg-white shadow-md mb-3">
+                        <select class="text-black card card-hover text-justify font-inter text-lg font-semibold leading-normal border border-gray-300 bg-white shadow-md mb-3">
                             <option selected>Skills</option>
                         </select>
                     </form>
                     <div class="text-right">
-                        <button class="bg-[#D2AC72] border border-solid border-[#AB7C7C] w-[90px] text-white font-inter text-base font-extrabold leading-normal h-8 mt-5 shadow-md">
+                        <button class="variant-filled-tertiary cursor-pointer hover:bg-[#AD9673] border border-solid border-[#AB7C7C] w-[90px] text-white font-inter text-base font-extrabold leading-normal h-8 mt-5 shadow-md">
                             APPLY
                         </button>
-                        <button class="bg-white border border-black border-opacity-20 w-[90px] text-[#702828] font-inter text-base font-extrabold leading-normal h-8 mt-5 shadow-md">
+                        <button class="bg-white cursor-pointer hover:bg-black hover:text-white border border-black border-opacity-20 w-[90px] text-[#702828] font-inter text-base font-extrabold leading-normal h-8 mt-5 shadow-md">
                             CLEAR
                         </button>
                     </div>
@@ -314,7 +130,7 @@
             </div>
             <!-- applicants section -->
             <div class="bg-white shadow-md p-3">
-                <div class="border border-gray-300 bg-white shadow-md w-[1125px] max-w-[1125px] flex-shrink-0 p-3 mb-5">
+                <div class="border border-gray-300 bg-white shadow-md w-[1125px] max-w-[1125px] flex-shrink-0 p-3 mb-5 card card-hover">
                     <div class="flex">
                         <div class="flex flex-col w-8/12 mt-auto mb-auto">
                             <span class="text-black font-inter text-lg font-extrabold leading-normal">
@@ -325,20 +141,48 @@
                             </span>
                         </div>
                         <div class="pr-3 border-r border-gray-500 w-2/12 mt-auto mb-auto">
-                            <button class="bg-[#D2AC72] border border-solid border-[#AB7C7C] w-[134px] h-[38px] text-white font-inter text-base font-extrabold leading-normal h-8 shadow-md">
+                            <button class="bg-[#D2AC72] hover:bg-[#AD9673] border border-solid border-[#AB7C7C] w-[134px] h-[38px] text-white font-inter text-base font-extrabold leading-normal h-8 shadow-md">
                                 View Profile
                             </button>
                         </div>
-                        <div class="border-r w-2/12 pl-3">
-                            <span class="text-green-600 font-inter text-[36px] font-extrabold leading-normal mr-3">
-                                ✓
-                            </span>
-                            <span class="text-[#858585] font-inter text-[36px] font-extrabold leading-normal mr-3">
-                                ?
-                            </span>
-                            <span class="text-[#D00000] font-inter text-[36px] font-extrabold leading-normal mr-3">
-                                X
-                            </span>
+                        <div class="border-r w-2/12 pl-3 flex justify-center mt-2">
+                            <div class="transition-all duration-300 group cursor-pointer">
+                                <img
+                                src="/images/hire.png"
+                                alt="save"
+                                class="h-8 group-hover:hidden mr-3"
+                            />
+                            <img
+                                src="/images/hired.png"
+                                alt="save"
+                                class="h-8 hidden group-hover:block mr-3"
+                            />
+                            </div>
+                            
+                            <div class="transition-all duration-300 group cursor-pointer">
+                                <img
+                                src="/images/wait.png"
+                                alt="save"
+                                class="h-8 group-hover:hidden mr-3"
+                            />
+                            <img
+                                src="/images/waited.png"
+                                alt="save"
+                                class="h-8 hidden group-hover:block mr-3"
+                            />
+                            </div>
+                            <div class="transition-all duration-300 group cursor-pointer">
+                                <img
+                                src="/images/delete.png"
+                                alt="save"
+                                class="h-8 group-hover:hidden mr-3"
+                            />
+                            <img
+                                src="/images/deleted.png"
+                                alt="save"
+                                class="h-8 hidden group-hover:block mr-3"
+                            />
+                            </div>
                         </div>
                     </div>
                 </div>
