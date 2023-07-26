@@ -15,7 +15,9 @@ export const loadApplications = async () => {
     .eq('user_id', user_id);
     
     if(error) return error;
+    data
     let filtered_data = data.filter((vals) => vals.post_status != "PUBLISH")
+    filtered_data
     JobApplications.set(filtered_data)
 }
 

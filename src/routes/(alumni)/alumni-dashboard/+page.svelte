@@ -52,19 +52,20 @@
     if(!$Applicants) return
     app_toggle = !app_toggle
     applicant_list = $Applicants.filter((vals) => {
-        let isco = true
-        let isfo = true
-        let issk = true
-        if(vals.course != course && course != ""){
-          isco = false
+        let isco = false
+        let isfo = false
+        let issk = false
+
+        if(vals.course == course || course == ""){
+          isco = true
         }
-        if(vals.industry_type != fos && fos != 0){
-          isfo = false
+        if(vals.industry_type == fos || fos == 0){
+          isfo = true
         }
-        if(vals.skill_titles?.flat(1).includes(skills) && skills != ""){
-          issk = false
+        if(vals.skill_titles?.flat(1).includes(skills) || skills == ""){
+          issk = true
         }
-        return isco && isfo && issk
+        return (isco && isfo && issk)
       })
       applicant_list
   }
@@ -86,9 +87,9 @@
     <div class="m-8">
         <div class="mb-5 w-[1450px] h-[344px] flex overflow-x-scroll">
         {#if isPostsLoading}
-        {#each Array(5) as _, i} 
-            <div style="opacity: {(100-i*20)/100}" class="bg-white card card-hover shadow-offset-x-0 shadow-offset-y-4 shadow-blur-4 shadow-spread-0 shadow-opacity-25 w-[277px] min-w-[277px] h-[309px] min-h-[309px] p-3 flex flex-col mr-3"></div>
-        {/each}
+          {#each Array(5) as _, i} 
+              <div style="opacity: {(100-i*20)/100}" class="bg-white card card-hover shadow-offset-x-0 shadow-offset-y-4 shadow-blur-4 shadow-spread-0 shadow-opacity-25 w-[277px] min-w-[277px] h-[309px] min-h-[309px] p-3 flex flex-col mr-3"></div>
+          {/each}
         
         {:else if $JobPosts}
         {#each $JobPosts as post}  

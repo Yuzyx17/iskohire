@@ -16,7 +16,7 @@ export const loadApplicants = async (jobid : number | null) => {
     if(error) return error;
     
     let skills = [...data].map((skill) => skill.skill_titles).flat(2)
-
+    
     Applicants.set(data)
     Skills.set(skills)
 }

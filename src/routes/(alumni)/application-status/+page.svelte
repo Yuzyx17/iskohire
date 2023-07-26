@@ -19,13 +19,13 @@
 </svelte:head>
 <div class="flex">
     <div class="m-8 w-full">
+        <div class="flex">
+            <span class=" font-inter text-2xl font-bold text-[#702828] ml-10 mb-3">Application Status</span>
+        </div>
         {#if isApplicationLoading}
             <p>Loading...</p>
         {:else if $JobApplications}
             {#if $JobApplications.length > 0}
-                <div class="flex">
-                    <span class=" font-inter text-2xl font-bold text-[#702828] ml-10 mb-3">Application Status</span>
-                </div>
                 {#each $JobApplications as item}
                 <div class="mt-3 mb-5 mr-10 ml-10 ">
                     <div class="flex flex-col bg-white p-10 shadow-[0_4px_4px_0px_rgba(0,0,0,0.25)] font-inter block card card-hover">
