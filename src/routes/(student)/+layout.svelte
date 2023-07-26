@@ -100,7 +100,7 @@
   <svelte:fragment slot="sidebarLeft">
     <div id="sidebar-left" class="flex flex-col h-full w-full bg-[white] justify-between shadow">
       <div class="container flex flex-col bg-[EDECEC]">
-        <a href="#" class="flex">
+        <a href="../profile" class="flex">
           <img src="./images/prof.png" alt="profile" class="h-6 mr-3">
           Profile
         </a>

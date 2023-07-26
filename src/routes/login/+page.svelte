@@ -24,16 +24,16 @@
 
 </style>
 
-<div class="row flex-center flex">
+<div class="row flex-center flex center-container">
 	<div class="col-6 form-widget">
-        {data.url}
-        <button on:click={() => console.log(data.session)}>click me</button>
+        <!-- {data.url} -->
+        <!-- <button on:click={() => console.log(data.session)}>click me</button> -->
 		<Auth
 			supabaseClient={data.supabase}
 			view="sign_in"
 			redirectTo={`${data.url}/auth/callback`}
 			showLinks={false}
-			appearance={{ theme: ThemeSupa, style: { input: 'color: #000' } }}
+			appearance={{ theme: ThemeSupa, style: { input: 'color: #000; width: 500px' } }}
 		/>
 	</div>
 </div>

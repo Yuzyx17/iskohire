@@ -23,3 +23,21 @@ export const loadApplications = async () => {
 
     JobApplication.set(data)
 }
+
+export const StudentInfo: Writable<Array<Database['public']['Tables']['student_info']['Row']>> = writable()
+
+export const loadStudent = async () => {
+    const user_id: number = 3;
+
+    const { data, error } = await supabase
+    .from('student_info')
+    .select('*')
+    .eq('user_id', user_id);
+
+    if(error) return error;
+
+    StudentInfo.set(data)
+
+    // add educ 
+    // daya yung sa profile
+}
