@@ -1,5 +1,6 @@
 /** @type {import('./$types').Actions} */
 
+import { user_id } from '$lib/stores/auth';
 import { supabase } from '$lib/supabase.js';
 import { fail, redirect } from '@sveltejs/kit';
 
@@ -18,7 +19,6 @@ export const actions = {
         const formData = await request.formData()
         let jobid = formData.get('job_id') as string;
         const job_id = parseInt(jobid, 10);
-        const user_id: number = 5;
 
         // const session = await getSession()
 
