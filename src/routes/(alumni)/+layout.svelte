@@ -74,10 +74,10 @@
           <img src="./images/addjob.png" alt="add job" class="h-6 mr-3" />
           Add Job
         </a>
-        <a href="../editjobform" class=" flex">
+        <!-- <a href="../editjobform" class=" flex">
           <img src="./images/editjob.png" alt="edit job" class="h-6 mr-3" />
           Edit Job
-        </a>
+        </a> -->
         <a href="../application-status" class="flex">
           <img src="./images/appli.png" alt="appstat" class="h-6 mr-3" />
           Application Status
