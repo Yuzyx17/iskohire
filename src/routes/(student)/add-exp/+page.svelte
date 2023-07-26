@@ -125,7 +125,7 @@
         <div class="form-wrapper">
             <main class="p-8">
                 <h1 class="font-bold mb-20 mt-10 text-center">Add Experience</h1>
-                <form method="POST" action="?/add_exp" use:enhance={handleSubmit}>
+                <form method="POST" action="?/add_exp" on:submit={handleSubmit}>
                     <div class="mb-4">
                         <label class="block font-bold mb-4" for="title">Title</label>
                         <input
@@ -278,6 +278,7 @@
                             id="save"
                             type="submit"
                             formaction="?/add_exp"
+                            on:click={handleSubmit}
                         >
                             SAVE
                         </button>
