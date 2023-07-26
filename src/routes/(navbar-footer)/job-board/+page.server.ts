@@ -1,6 +1,5 @@
 import { Filters } from '$lib/stores/post_store.js';
 import { fail } from '@sveltejs/kit';
-import Error from '../../index/+error.svelte';
 export const actions = {
 	search: async ({ request }) => {
 		const data = await request.formData();
