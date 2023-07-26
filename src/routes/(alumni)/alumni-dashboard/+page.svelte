@@ -1,6 +1,6 @@
 <script lang="ts">
     import { loadPosts, JobPosts, publishPost, unpublishPost } from "$lib/stores/post_store";
-    import { loadApplicants, Applicants, Skills } from "$lib/stores/application_store";
+    import { loadApplicants, Applications, Skills } from "$lib/stores/application_store";
     import { onMount } from "svelte";
     import { i_types } from "$lib/reference/VALUES";
 	  import type { PostgrestError } from "@supabase/supabase-js";
@@ -37,21 +37,21 @@
         isApplicationsLoading = true
         applicationError = await loadApplicants(job_id)
         current_job = job_id
-        Applicants.subscribe(() => {
+        Applications.subscribe(() => {
             isApplicationsLoading = false
         })
     }
     let course: string;
     let fos: number | string;
     let skills: string;
-    let applicant_list = $Applicants
-    $: applicant_list = $Applicants
+    let applicant_list = $Applications
+    $: applicant_list = $Applications
     let app_toggle = true
     let clear = true
     async function applyFilter() {
-    if(!$Applicants) return
+    if(!$Applications) return
     app_toggle = !app_toggle
-    applicant_list = $Applicants.filter((vals) => {
+    applicant_list = $Applications.filter((vals) => {
         let isco = false
         let isfo = false
         let issk = false
@@ -74,7 +74,7 @@
       fos = 0 
       skills = ""
       clear = !clear
-      applicant_list = $Applicants
+      applicant_list = $Applications
     }
 </script>
 
@@ -165,8 +165,8 @@
               class="text-black card card-hover text-justify font-inter text-lg font-semibold leading-normal border border-gray-300 bg-white shadow-md mb-3"
             >
               <option selected disabled value=0>Field Experience</option>
-              {#if $Applicants}
-                {#each [...$Applicants].map((itype) => itype.industry_type).flat(1) as itype}
+              {#if $Applications}
+                {#each [...$Applications].map((itype) => itype.industry_type).flat(1) as itype}
                   {#if itype}
                     <option value={itype}>{i_types[itype-1]}</option>
                   {/if}
@@ -177,8 +177,8 @@
               class="text-black card card-hover text-justify font-inter text-lg font-semibold leading-normal border border-gray-300 bg-white shadow-md mb-3"
             >
               <option selected disabled value="" >Course</option>
-              {#if $Applicants}
-              {#each [...$Applicants].map((course) => course.course).flat(1) as course}
+              {#if $Applications}
+              {#each [...$Applications].map((course) => course.course).flat(1) as course}
                 <option value={course}>{course}</option>
               {/each}
               {/if}
@@ -187,8 +187,8 @@
               class="text-black card card-hover text-justify font-inter text-lg font-semibold leading-normal border border-gray-300 bg-white shadow-md mb-3"
             >
               <option selected disabled value="" >Skills</option>
-              {#if $Applicants}
-                {#each [...$Applicants].map((skill) => skill.skill_titles).flat(2) as skill}
+              {#if $Applications}
+                {#each [...$Applications].map((skill) => skill.skill_titles).flat(2) as skill}
                 <option value={skill}>{skill}</option>
               {/each}
               {/if}
@@ -219,7 +219,7 @@
         class="h-[60px] border border-gray-300 bg-white shadow-md w-[1125px] max-w-[1125px] flex-shrink-0 p-3 mb-5 card"
         />
           {/each}
-          {:else if $Applicants}
+          {:else if $Applications}
           {#each applicant_list as application}
           <div
           class="border border-gray-300 bg-white shadow-md w-[1125px] max-w-[1125px] flex-shrink-0 p-3 mb-5 card"
