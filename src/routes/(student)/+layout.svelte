@@ -122,7 +122,7 @@
         </a> -->
       </div>
       <div class="flex flex-col" id="logout">
-        <a href="./" class="font-bold tracking-wider flex" > 
+        <a href="/api/auth/signout" class="font-bold tracking-wider flex" > 
           <img src="./images/logout.png" alt="logout" class="h-6 mr-3">
           LOGOUT
         </a>
