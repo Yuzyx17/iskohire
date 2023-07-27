@@ -6,6 +6,7 @@
         height: 75vh;
         padding: 50px;
         margin: auto;
+        justify-content: center;
     }
 
     .wrapcontainer {
@@ -55,11 +56,7 @@
 
 <div class="bg-[url('/images/backup.png')] bg-cover m-0 h-full">
     <div class="container">
-        <div class="text-container mr-28 w-3/6">
-            <h2 class="text-3xl font-bold mb-4 text-[#7C0000]">Iskohire</h2>
-            <span class="text-lg inline-grid">Iskohire is your gateway to success, providing effortless access to a wide range of internships and job opportunities. Discover the perfect match for your skills and aspirations with a click of a button. Let Iskohire empower your career path and unlock your potential for excellence.</span>
-        </div>
-        <form method="POST" class="wrapcontainer">
+        <div class="wrapcontainer">
             <div class="questions">
                 <select bind:value={loctype} name="loc_type" required class="mb-1 p-10 text-lg">
                     <option value="" disabled selected class="text-lg">I'm looking for</option>
