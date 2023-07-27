@@ -13,6 +13,9 @@ export const load = async ({ locals: { supabase, getSession } }) => {
     .eq('id', session.user.id)
     .single()
 
+    console.log(`data fetched:`)
+    console.log(profile)
+    
   return { session, profile }
 }
 

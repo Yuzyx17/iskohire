@@ -8,8 +8,7 @@
 
     /* Hacky Solution to redirect */
     $: if (data.session !== null) {
-        console.log("session populated")
-        goto('/account/')
+        goto('/api/redirect/dashboard')
     }
 </script>
 
