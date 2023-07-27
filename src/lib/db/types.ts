@@ -13,17 +13,17 @@ export interface Database {
         Row: {
           name: string
           role_id: number
-          user_id: number
+          user_id: string
         }
         Insert: {
           name: string
           role_id: number
-          user_id?: number
+          user_id: string
         }
         Update: {
           name?: string
           role_id?: number
-          user_id?: number
+          user_id?: string
         }
         Relationships: [
           {
@@ -57,19 +57,19 @@ export interface Database {
           name: string
           role_id: number
           student_uid: string
-          user_id: number
+          user_id: string
         }
         Insert: {
           name: string
           role_id: number
           student_uid: string
-          user_id?: number
+          user_id: string
         }
         Update: {
           name?: string
           role_id?: number
           student_uid?: string
-          user_id?: number
+          user_id?: string
         }
         Relationships: [
           {
@@ -108,7 +108,7 @@ export interface Database {
           is_finished: string
           role_id: number
           school: string
-          user_id: number
+          user_id: string
           year_end: number
           year_start: number
         }
@@ -121,7 +121,7 @@ export interface Database {
           is_finished: string
           role_id: number
           school: string
-          user_id: number
+          user_id: string
           year_end: number
           year_start: number
         }
@@ -134,7 +134,7 @@ export interface Database {
           is_finished?: string
           role_id?: number
           school?: string
-          user_id?: number
+          user_id?: string
           year_end?: number
           year_start?: number
         }
@@ -142,20 +142,8 @@ export interface Database {
           {
             foreignKeyName: "applicant_education_role_id_fkey"
             columns: ["role_id"]
-            referencedRelation: "users"
-            referencedColumns: ["user_id"]
-          },
-          {
-            foreignKeyName: "applicant_education_role_id_fkey"
-            columns: ["role_id"]
-            referencedRelation: "applications"
-            referencedColumns: ["user_id"]
-          },
-          {
-            foreignKeyName: "applicant_education_role_id_fkey"
-            columns: ["role_id"]
-            referencedRelation: "profile"
-            referencedColumns: ["user_id"]
+            referencedRelation: "roles"
+            referencedColumns: ["role_id"]
           },
           {
             foreignKeyName: "applicant_education_user_id_fkey"
@@ -190,7 +178,7 @@ export interface Database {
           role_id: number
           skill_id: number
           start_date: string
-          user_id: number
+          user_id: string
         }
         Insert: {
           company_name: string
@@ -204,7 +192,7 @@ export interface Database {
           role_id: number
           skill_id: number
           start_date: string
-          user_id: number
+          user_id: string
         }
         Update: {
           company_name?: string
@@ -218,7 +206,7 @@ export interface Database {
           role_id?: number
           skill_id?: number
           start_date?: string
-          user_id?: number
+          user_id?: string
         }
         Relationships: [
           {
@@ -256,15 +244,15 @@ export interface Database {
       applicant_skills: {
         Row: {
           skill_id: number
-          user_id: number
+          user_id: string
         }
         Insert: {
           skill_id: number
-          user_id: number
+          user_id: string
         }
         Update: {
           skill_id?: number
-          user_id?: number
+          user_id?: string
         }
         Relationships: [
           {
@@ -291,31 +279,19 @@ export interface Database {
         Row: {
           job_id: number
           status: string
-          user_id: number
+          user_id: string
         }
         Insert: {
           job_id: number
           status: string
-          user_id: number
+          user_id: string
         }
         Update: {
           job_id?: number
           status?: string
-          user_id?: number
+          user_id?: string
         }
         Relationships: [
-          {
-            foreignKeyName: "job_application_job_id_fkey"
-            columns: ["job_id"]
-            referencedRelation: "job_post"
-            referencedColumns: ["job_id"]
-          },
-          {
-            foreignKeyName: "job_application_job_id_fkey"
-            columns: ["job_id"]
-            referencedRelation: "posts"
-            referencedColumns: ["job_id"]
-          },
           {
             foreignKeyName: "job_application_user_id_fkey"
             columns: ["user_id"]
@@ -348,7 +324,7 @@ export interface Database {
           salary: number
           status: string
           url: string
-          user_id: number
+          user_id: string
         }
         Insert: {
           desc: string
@@ -361,7 +337,7 @@ export interface Database {
           salary: number
           status: string
           url: string
-          user_id: number
+          user_id: string
         }
         Update: {
           desc?: string
@@ -374,9 +350,21 @@ export interface Database {
           salary?: number
           status?: string
           url?: string
-          user_id?: number
+          user_id?: string
         }
         Relationships: [
+          {
+            foreignKeyName: "job_post_job_id_fkey"
+            columns: ["job_id"]
+            referencedRelation: "job_post"
+            referencedColumns: ["job_id"]
+          },
+          {
+            foreignKeyName: "job_post_job_id_fkey"
+            columns: ["job_id"]
+            referencedRelation: "posts"
+            referencedColumns: ["job_id"]
+          },
           {
             foreignKeyName: "job_post_user_id_fkey"
             columns: ["user_id"]
@@ -436,19 +424,19 @@ export interface Database {
           company_name: string
           name: string
           role_id: number
-          user_id: number
+          user_id: string
         }
         Insert: {
           company_name: string
           name: string
           role_id: number
-          user_id?: number
+          user_id: string
         }
         Update: {
           company_name?: string
           name?: string
           role_id?: number
-          user_id?: number
+          user_id?: string
         }
         Relationships: [
           {
@@ -512,19 +500,19 @@ export interface Database {
           name: string
           role_id: number
           student_uid: string
-          user_id: number
+          user_id: string
         }
         Insert: {
           name: string
           role_id: number
           student_uid: string
-          user_id?: number
+          user_id: string
         }
         Update: {
           name?: string
           role_id?: number
           student_uid?: string
-          user_id?: number
+          user_id?: string
         }
         Relationships: [
           {
@@ -555,22 +543,16 @@ export interface Database {
       }
       users: {
         Row: {
-          email: string
-          pw_hash: string
-          role_id: number
-          user_id: number
+          role_id: number | null
+          user_id: string
         }
         Insert: {
-          email: string
-          pw_hash: string
-          role_id: number
-          user_id?: number
+          role_id?: number | null
+          user_id: string
         }
         Update: {
-          email?: string
-          pw_hash?: string
-          role_id?: number
-          user_id?: number
+          role_id?: number | null
+          user_id?: string
         }
         Relationships: [
           {
@@ -578,6 +560,12 @@ export interface Database {
             columns: ["role_id"]
             referencedRelation: "roles"
             referencedColumns: ["role_id"]
+          },
+          {
+            foreignKeyName: "users_user_id_fkey"
+            columns: ["user_id"]
+            referencedRelation: "users"
+            referencedColumns: ["id"]
           }
         ]
       }
@@ -592,20 +580,7 @@ export interface Database {
           skill_titles: string[] | null
           status: string | null
         }
-        Relationships: [
-          {
-            foreignKeyName: "job_application_job_id_fkey"
-            columns: ["job_id"]
-            referencedRelation: "job_post"
-            referencedColumns: ["job_id"]
-          },
-          {
-            foreignKeyName: "job_application_job_id_fkey"
-            columns: ["job_id"]
-            referencedRelation: "posts"
-            referencedColumns: ["job_id"]
-          }
-        ]
+        Relationships: []
       }
       applications: {
         Row: {
@@ -616,20 +591,14 @@ export interface Database {
           job_title: string | null
           post_status: string | null
           status: string | null
-          user_id: number | null
+          user_id: string | null
         }
         Relationships: [
           {
-            foreignKeyName: "job_application_job_id_fkey"
-            columns: ["job_id"]
-            referencedRelation: "job_post"
-            referencedColumns: ["job_id"]
-          },
-          {
-            foreignKeyName: "job_application_job_id_fkey"
-            columns: ["job_id"]
-            referencedRelation: "posts"
-            referencedColumns: ["job_id"]
+            foreignKeyName: "users_user_id_fkey"
+            columns: ["user_id"]
+            referencedRelation: "users"
+            referencedColumns: ["id"]
           }
         ]
       }
@@ -646,9 +615,21 @@ export interface Database {
           salary: number | null
           status: string | null
           url: string | null
-          user_id: number | null
+          user_id: string | null
         }
         Relationships: [
+          {
+            foreignKeyName: "job_post_job_id_fkey"
+            columns: ["job_id"]
+            referencedRelation: "job_post"
+            referencedColumns: ["job_id"]
+          },
+          {
+            foreignKeyName: "job_post_job_id_fkey"
+            columns: ["job_id"]
+            referencedRelation: "posts"
+            referencedColumns: ["job_id"]
+          },
           {
             foreignKeyName: "job_post_user_id_fkey"
             columns: ["user_id"]
@@ -678,9 +659,16 @@ export interface Database {
           school: string | null
           skill_titles: string[] | null
           student_uid: string | null
-          user_id: number | null
+          user_id: string | null
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "users_user_id_fkey"
+            columns: ["user_id"]
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          }
+        ]
       }
     }
     Functions: {
