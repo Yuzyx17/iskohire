@@ -44,7 +44,7 @@
         </div>
         <div class="flex border border-black border-opacity-20 hover:bg-[#DFDFDF] hover:text-[#702828] p-3 h-79 w-full absolute bottom-0">
             <img src="images/logout-employer.png" class="h-5 w-6" alt="Logout Logo">
-            <span class="text-black text-justify font-inter text-24 font-medium leading-normal">LOGOUT</span>
+            <a href="/api/auth/signout" class="text-black text-justify font-inter text-24 font-medium leading-normal">LOGOUT</span>
         </div>
     </div>
     <div class="m-8">
