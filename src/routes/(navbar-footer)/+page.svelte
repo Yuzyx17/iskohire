@@ -56,7 +56,7 @@
 
 <div class="bg-[url('/images/backup.png')] bg-cover m-0 h-full">
     <div class="container">
-        <div class="wrapcontainer">
+        <form class="wrapcontainer">
             <div class="questions">
                 <select bind:value={loctype} name="loc_type" required class="mb-1 p-10 text-lg">
                     <option value="" disabled selected class="text-lg">I'm looking for</option>
