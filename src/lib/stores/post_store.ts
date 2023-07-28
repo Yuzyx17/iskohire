@@ -95,6 +95,8 @@ export const uploadPosts = async (payload: Database['public']['Tables']['job_pos
     .from('job_post')
     .insert([payload])
     .select()
+    console.log("display error")
+    console.log(error);
     
     if(error) return error;
 
