@@ -36,7 +36,7 @@
         <input type="hidden" name="job_id" value={payload["job_id"]}>
         <input type="hidden" name="user_id" value={jobpost.user_id}>
         <input type="hidden" name="status" value={jobpost.status}>
-        <button formaction="/alumni-dashboard?/update" id="submit" class="action bg-tertiary-500">UPDATE</button>
-        <button formaction="/alumni-dashboard?/delete" id="delete" class="action bg-warning-500">DELETE</button>
+        <button formaction="/emp-dashboard?/update" id="submit" class="action bg-tertiary-500">UPDATE</button>
+        <button formaction="/emp-dashboard?/delete" id="delete" class="action bg-warning-500">DELETE</button>
     </div>
 </Form>
