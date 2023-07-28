@@ -22,11 +22,11 @@ export const load = async ({ locals: { supabase, getSession } }) => {
     // if role == alumni, redirect to alumni dashboard
     // if role == employer, redirect to employer dashboard
     if (role == 1) {
-        throw redirect(303, '/student/dashboard')
+        throw redirect(303, '/profile')
     } else if (role == 2) {
-        throw redirect(303, '/alumni/dashboard')
+        throw redirect(303, '/alumni-dashboard')
     } else if (role == 3) {
-        throw redirect(303, '/employer/dashboard')
+        throw redirect(303, '/emp-dashboard')
     } else if (role == 4) {
         throw redirect(303, '/admin/dashboard')
     }

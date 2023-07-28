@@ -1,3 +1,4 @@
+import { logged_in } from '$lib/stores/auth'
 import { redirect } from '@sveltejs/kit'
 
 export const load = async ({ url, locals: { getSession } }) => {
@@ -6,6 +7,6 @@ export const load = async ({ url, locals: { getSession } }) => {
 	if (session !== null) {
 		throw redirect(303, '/api/redirect/dashboard')
 	}
-
+	logged_in.set(true)
 	return { url: url.origin }
 }
