@@ -28,7 +28,7 @@ export const deletePosts = async (job_id: number, uid: number) => {
     .from('job_post')
     .delete()
     .eq("job_id", job_id)
-    .eq("user_id", uid);
+    .eq("user_id", user_id);
     
     if(error) return error;
 }
