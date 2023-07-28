@@ -22,13 +22,13 @@ export const loadPosts = async () => {
     JobPosts.set(data)
 }
 
-export const deletePosts = async (job_id: number, uid: number) => {
+export const deletePosts = async (job_id: number, uid: string) => {
     
     const { data, error } = await supabase
     .from('job_post')
     .delete()
     .eq("job_id", job_id)
-    .eq("user_id", user_id);
+    .eq("user_id", uid);
     
     if(error) return error;
 }
@@ -71,7 +71,7 @@ export const loadSearch = async () => {
         }
         return values.employment_type == filter_options.emp_type
     } )
-    filtered_data = filtered_data.filter((vals) => vals.status != "PUBLISH")
+    filtered_data = filtered_data.filter((vals) => vals.status == "PUBLISHED")
     SearchPosts.set(filtered_data)
 }
 

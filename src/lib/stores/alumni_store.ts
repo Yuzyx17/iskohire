@@ -8,7 +8,7 @@ export const JobApplications: Writable<Array<Database['public']['Views']['applic
 export const Bookmarks: Writable<Array<number>> = writable()
 
 export const loadApplications = async () => {
-    
+
     const { data, error } = await supabase
     .from('applications')
     .select('*')
@@ -22,7 +22,7 @@ export const loadApplications = async () => {
 }
 
 export const addApplications = async (payload: Database['public']['Tables']['job_application']['Insert']) => {
-    payload
+
     const { data, error } = await supabase
     .from('job_application')
     .insert([payload])
