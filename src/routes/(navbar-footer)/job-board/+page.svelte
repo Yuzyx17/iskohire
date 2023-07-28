@@ -29,7 +29,10 @@
         await addApplications({job_id: jobid, user_id: user_id, status: "PROCESSING"})
         applying = false
     }
+    export let data
 
+    let { supabase, session } = data
+    $: ({ supabase, session } = data)
     
 </script>
 
@@ -49,7 +52,7 @@
                         </span>
                         <div class="absolute bottom-8 flex gap-2">
                             {#key applying}
-                                <ButtonApply apply={apply} item={item} disable={applying}/>
+                                <ButtonApply apply={apply} item={item} disable={applying} logged_in={session ? true : false}/>
                             {/key}
                             <!-- <button class="bg-[#EDE1CF] border border-solid border-[#AB7C7C] w-14 font-inter text-xs font-black text-white h-10 flex items-center justify-center transition-all duration-300 group">
                                 <img src="/images/save.png" alt="save" class="h-7 group-hover:hidden" />
