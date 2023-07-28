@@ -59,6 +59,13 @@
         {:else if $JobPosts}
         {#each $JobPosts as post}  
         <div class="flex flex-col items-center">
+            <form method="GET" action="emp-editjob">
+                <input type="hidden" name="job_id" value={post.job_id}>
+             <button class="flex p-1.5 bg-white color-black rounded-sm hover:rounded-3xl hover:bg-white transition-all duration-300 text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="black" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                    </svg>
+                    </button> 
                 <button on:click|preventDefault={() => getApplicants(post.job_id)} class="bg-white card card-hover shadow-offset-x-0 shadow-offset-y-4 shadow-blur-4 shadow-spread-0 shadow-opacity-25 w-[277px] min-w-[277px] h-[309px] min-h-[309px] p-3 flex flex-col mr-3">
                     <div class="flex flex-col"> 
                         <span class="text-black font-inter text-xl font-extrabold leading-normal text-center">
@@ -100,9 +107,7 @@
                         </div>
                     </div>
                 </button>
-                <form method="GET" action="editjobform">
-                    <input type="hidden" name="job_id" value={post.job_id}>
-                <button class="font-extrabold text-2xl bg-[#00ff00] w-[6em] h-[3em]">Edit</button>
+
                 </div>
                 {/each}
             {:else if postsError}
