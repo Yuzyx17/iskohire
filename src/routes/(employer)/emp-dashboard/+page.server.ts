@@ -12,7 +12,7 @@ export const actions = {
         }
         newPost["user_id"] = user_id
         newPost["status"] = "UNPUBLISHED"
-        uploadPosts(newPost as Database['public']['Tables']['job_post']['Insert'])
+        const error = uploadPosts(newPost as Database['public']['Tables']['job_post']['Insert'])
 	},
     update: async ({ request }) => {
 		const data = await request.formData();

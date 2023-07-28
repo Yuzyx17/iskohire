@@ -28,17 +28,18 @@ export const deletePosts = async (job_id: number, uid: number) => {
     .from('job_post')
     .delete()
     .eq("job_id", job_id)
-    .eq("user_id", uid);
+    .eq("user_id", user_id);
     
     if(error) return error;
 }
 
 export const updatePosts = async (payload: Database['public']['Tables']['job_post']['Update']) => {
-    
+    payload["user_id"] = user_id
     const { data, error } = await supabase
     .from('job_post')
     .update(payload)
     .eq("user_id", user_id)
+    .eq("job_id", payload["job_id"])
     .select();
     
     if(error) return error;
@@ -95,6 +96,8 @@ export const uploadPosts = async (payload: Database['public']['Tables']['job_pos
     .from('job_post')
     .insert([payload])
     .select()
+    console.log("display error")
+    console.log(error);
     
     if(error) return error;
 

@@ -28,7 +28,6 @@ export const loadApplications = async () => {
 export const StudentInfo: Writable<Database['public']['Views']['profile']['Row']> = writable()
 
 export const loadStudent = async () => {
-    const user_id: number = 3;
 
     const { data, error } = await supabase
     .from('profile')

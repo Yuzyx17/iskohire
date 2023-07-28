@@ -7,6 +7,7 @@
         padding: 50px;
         margin: auto;
         justify-content: center;
+        justify-content: center;
     }
 
     .wrapcontainer {

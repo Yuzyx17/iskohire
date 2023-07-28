@@ -16,7 +16,7 @@
 		salary: 0,
 		status: "",
 		industry_type: 0,
-		user_id: 0,
+		user_id: user_id,
 		url: "",
 	};
     onMount(async () => {
@@ -34,7 +34,6 @@
 <Form values={jobpost}>
     <div class="action-container" slot="buttons">
         <input type="hidden" name="job_id" value={payload["job_id"]}>
-        <input type="hidden" name="user_id" value={jobpost.user_id}>
         <input type="hidden" name="status" value={jobpost.status}>
         <button formaction="/alumni-dashboard?/update" id="submit" class="action bg-tertiary-500">UPDATE</button>
         <button formaction="/alumni-dashboard?/delete" id="delete" class="action bg-warning-500">DELETE</button>

@@ -11,13 +11,15 @@
   import { onMount } from "svelte";
   import User from "$lib/components/User.svelte";
   import Register from "$lib/components/Register.svelte";
-
+  import { log_id } from "$lib/stores/auth";
   import { logged_in } from "$lib/stores/auth";
 
   export let data;
 
   let { supabase, session } = data;
   $: ({ supabase, session } = data);
+
+  log_id.set(session?.user?.id)
 
   onMount(() => {
     const { data } = supabase.auth.onAuthStateChange((event, _session) => {
@@ -46,7 +48,7 @@
       </svelte:fragment>
 
       <svelte:fragment slot="trail">
-        {#if $logged_in}
+        {#if session}
           <User />
         {:else}
           <Register />
@@ -96,7 +98,7 @@
         </a> -->
       </div>
       <div class="flex flex-col" id="logout">
-        <a href="./" class="font-bold tracking-wider flex">
+        <a href="/api/auth/signout" class="font-bold tracking-wider flex">
           <img src="./images/logout.png" alt="logout" class="h-6 mr-3" />
           LOGOUT
         </a>
