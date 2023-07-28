@@ -34,11 +34,12 @@ export const deletePosts = async (job_id: number, uid: number) => {
 }
 
 export const updatePosts = async (payload: Database['public']['Tables']['job_post']['Update']) => {
-    
+    payload["user_id"] = user_id
     const { data, error } = await supabase
     .from('job_post')
     .update(payload)
     .eq("user_id", user_id)
+    .eq("job_id", payload["job_id"])
     .select();
     
     if(error) return error;

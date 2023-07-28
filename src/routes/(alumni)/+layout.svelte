@@ -48,7 +48,7 @@
       </svelte:fragment>
 
       <svelte:fragment slot="trail">
-        {#if $logged_in}
+        {#if session}
           <User />
         {:else}
           <Register />
@@ -68,7 +68,7 @@
           <img src="./images/prof.png" alt="profile" class="h-6 mr-3" />
           Profile
         </a>
-        <a href="../alumni-dashboard" class=" flex">
+        <a href="../alumni_dashboard" class=" flex">
           <img src="./images/dash.png" alt="dashboard" class="h-6 mr-3" />
           Dashboard
         </a>
@@ -80,7 +80,7 @@
           <img src="./images/editjob.png" alt="edit job" class="h-6 mr-3" />
           Edit Job
         </a> -->
-        <a href="../application-status" class="flex">
+        <a href="../application_status" class="flex">
           <img src="./images/appli.png" alt="appstat" class="h-6 mr-3" />
           Application Status
         </a>
