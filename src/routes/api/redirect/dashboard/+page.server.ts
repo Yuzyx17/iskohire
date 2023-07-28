@@ -1,3 +1,4 @@
+import { roleid } from '$lib/stores/auth.js'
 import { fail, redirect } from '@sveltejs/kit'
 
 export const load = async ({ locals: { supabase, getSession } }) => {
@@ -17,7 +18,7 @@ export const load = async ({ locals: { supabase, getSession } }) => {
 
     // Get role from session
     let role: number = profile?.role_id ?? ''
-
+    roleid.set(role)
     // if role == student, redirect to student dashboard
     // if role == alumni, redirect to alumni dashboard
     // if role == employer, redirect to employer dashboard

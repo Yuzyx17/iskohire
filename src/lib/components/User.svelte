@@ -1,5 +1,7 @@
+
+
 <div id="profile" class="bg-primary-100">
-    <a href="../app-status" class="block p-4"> <!--dedependee-->
+    <a href="/login" class="block p-4"> <!--dedependee-->
 </div>
 
 <style>

@@ -92,7 +92,7 @@
 
       <svelte:fragment slot="trail">
 
-        {#if $logged_in}
+        {#if session}
           <User/>
         {:else}
           <Register/>
