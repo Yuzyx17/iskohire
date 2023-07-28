@@ -4,12 +4,12 @@ import { supabase } from "$lib/supabase";
 import type { Database } from "$lib/db/types";
 import type { Writable } from "svelte/store";
 
-export const Posts: Writable<Array<Database['public']['Tables']['job_post']['Row']>> = writable()
+export const Posts: Writable<Array<Database['public']['Views']['posts']['Row']>> = writable()
 
 export const loadJobPosts = async () => {
     
     const { data, error } = await supabase
-    .from('job_post')
+    .from('posts')
     .select('*')
     
     if(error) return error;

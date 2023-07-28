@@ -46,20 +46,18 @@
               class="group bg-[#D2AC72] border border-solid border-[#AB7C7C] w-24 font-inter text-xs font-black text-white h-8 ml-auto mr-0 transition-colors duration-300 relative"
             >
               <!-- <span class="group-hover:hidden">{ application.status }</span> -->
-              {#if application.status != "PROCESSING"}
-                <span>{application.status}</span>
-              {:else}
-                <span class="group-hover:hidden">{application.status}</span>
-                <!-- how to pass in parameter -->
-                <form method="POST" action="?/cancel_app">
-                  <button
-                    class="hidden group-hover:inline hover:bg-black absolute inset-0 w-full h-full text-white text-xs font-black"
-                    formaction="?/cancel_app"
-                    name="job_id"
-                    value={application.job_id}>CANCEL</button
-                  >
-                </form>
-              {/if}
+
+              <span class="group-hover:hidden">{application.status}</span>
+              <!-- how to pass in parameter -->
+              <form method="POST" action="?/cancel_app">
+                <button
+                  class="hidden group-hover:inline hover:bg-black absolute inset-0 w-full h-full text-white text-xs font-black"
+                  formaction="?/cancel_app"
+                  name="job_id"
+                  value={application.job_id}>CANCEL</button
+                >
+              </form>
+
             </button>
           </div>
         </div>

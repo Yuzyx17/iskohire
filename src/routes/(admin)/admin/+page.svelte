@@ -49,20 +49,27 @@
 </script>
 
 
-<div>
+<div style="overflow-y: scroll; height: 80vh;">
     {#key isPostsLoading}
     {#if $Posts}
     <h1>PENDING:</h1>
         {#each $Posts.filter((val) => val.status == "PENDING") as post}
-                {post.job_title} 
-                <button on:click|preventDefault={() => acceptPost(post.job_id)} class="bg-[#3f3]">ACCEPT</button>
-                <button on:click|preventDefault={() => deletePost(post.job_id)} class="bg-[#f23]">DELETE</button><br>
+        <div>
+            {post.job_title}<br>
+            {post.desc}<br>
+            {post.company_name}<br>
+            <button on:click|preventDefault={() => acceptPost(post.job_id)} class="bg-[#3f3]">ACCEPT</button>
+            <button on:click|preventDefault={() => deletePost(post.job_id)} class="bg-[#f23]">DELETE</button><br>
+        </div>
         {/each}
         <br>
         <h1>ACCEPTED:   </h1>
         {#each $Posts.filter((val) => val.status != "PENDING") as post}
-                {post.job_title} 
-                <button on:click|preventDefault={() => deletePost(post.job_id)} class="bg-[#3f3]">DELETE</button><br><br>
+            {post.job_title}<br>
+            {post.desc}<br>
+            {post.company_name}<br>
+            {post.job_title} 
+            <button on:click|preventDefault={() => deletePost(post.job_id)} class="bg-[#3f3]">DELETE</button><br><br>
 
         {/each}
     {/if}

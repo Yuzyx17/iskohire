@@ -57,7 +57,7 @@ export const getJobPosts = async (id: number) => {
     return data
 }
 
-export const loadSearch = async () => {
+export const loadSearch = async (uid) => {
     const { data, error } = await supabase
     .from('posts')
     .select('*');
@@ -71,7 +71,7 @@ export const loadSearch = async () => {
         }
         return values.employment_type == filter_options.emp_type
     } )
-    filtered_data = filtered_data.filter((vals) => vals.status == "PUBLISHED")
+    filtered_data = filtered_data.filter((vals) => vals.status == "PUBLISHED" && (uid === undefined ? true : vals.user_id != uid))
     SearchPosts.set(filtered_data)
 }
 

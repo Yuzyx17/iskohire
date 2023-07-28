@@ -11,10 +11,14 @@
     //     mockdata = await response.json()
     // })
 
+    export let data
+
+    let { supabase, session } = data
+    $: ({ supabase, session } = data)
     let isPostLoading = true
     let isApplicationLoading = true
     onMount(async () => {
-        await loadSearch()
+        await loadSearch(session?.user.id)
         await loadApplications()
         SearchPosts.subscribe(() => {
             isPostLoading = false
@@ -23,10 +27,6 @@
             isApplicationLoading = false
         })
     })
-    export let data
-
-    let { supabase, session } = data
-    $: ({ supabase, session } = data)
     
     let applying = false
     async function apply(jobid: number | null) {
