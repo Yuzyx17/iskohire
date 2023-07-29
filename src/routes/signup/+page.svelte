@@ -23,15 +23,15 @@
             <a href="./">
 		    <img class="h-auto max-w-xs mx-auto" id="logo_name" src="./images/logo_name.png" alt="logo_name">
             </a>
-            <div class="flex justify-between items-center bg-white text-[#702828]">
+            <div class="flex justify-between items-center bg-white text-[#702828] card card-hover bg-white">
                 <span class="mb-2 p-7 text-4xl font-extrabold">STUDENT</span>
                 <a href="/stud-account" class="p-2 w-36 text-lg text-center rounded mr-5 font-bold text-white variant-filled-tertiary cursor-pointer hover:bg-[#AD9673]">LOGIN</a>
             </div>
-            <div class="flex justify-between items-center bg-white text-[#702828]">
+            <div class="flex justify-between items-center bg-white text-[#702828] card card-hover bg-white">
                 <span class="mb-2 p-7 text-4xl font-extrabold">ALUMNI</span>
                 <a href="/alumni-account" class="p-2 w-36 text-lg text-center rounded mr-5 font-bold text-white variant-filled-tertiary cursor-pointer hover:bg-[#AD9673]">LOGIN</a>
             </div>
-            <div class="flex justify-between items-center bg-white text-[#702828]">
+            <div class="flex justify-between items-center bg-white text-[#702828] card card-hover bg-white">
                 <span class="mb-2 p-7 text-4xl font-extrabold">EMPLOYER</span>
                 <a href="/employer-account" class="p-2 w-36 text-lg text-center rounded mr-5 font-bold text-white variant-filled-tertiary cursor-pointer hover:bg-[#AD9673]">LOGIN</a>
             </div>

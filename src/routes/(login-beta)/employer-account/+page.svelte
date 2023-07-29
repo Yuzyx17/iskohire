@@ -24,7 +24,7 @@
 <div class="bg-[url('/images/backup.png')] bg-cover m-0 h-full">
 	<div class="flex items-center justify-center h-screen p-10">
 	  <div class="flex flex-col gap-4 bg-[#702828] p-5 w-5/12 h-5/4 items-center">
-		<a href="./">
+		<a href="./signup">
 		  <img class="h-auto max-w-xs mx-auto" id="logo_name" src="./images/logo_name.png" alt="logo_name">
 		</a>
 		<div class="bg-[#702828] w-full h-full flex items-center justify-center flex-col">
@@ -128,8 +128,8 @@
 			<div class="w-full">
 				<input
 				type="submit"
-				class="variant-filled-tertiary cursor-pointer hover:bg-[#AD9673] text-white font-bold text-center w-full py-2 px-4 mt-2 rounded-md cursor-pointer disabled:bg-gray-400"
-				value={loading ? 'Loading...' : 'Sign Up'}
+				class="variant-filled-tertiary cursor-pointer hover:bg-[#AD9673] text-white font-bold text-center w-full py-2 px-4 mt-3 rounded-md cursor-pointer h-14 disabled:bg-gray-400"
+				value={loading ? 'Loading...' : 'SIGN UP'}
 				disabled={loading}
 			  />
 			</div>
