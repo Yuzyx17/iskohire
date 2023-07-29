@@ -1,4 +1,4 @@
-import { logged_in } from '$lib/stores/auth'
+import { log_id, logged_in } from '$lib/stores/auth'
 import { redirect } from '@sveltejs/kit'
 
 export const load = async ({ url, locals: { getSession } }) => {

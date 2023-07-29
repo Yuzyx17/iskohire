@@ -107,8 +107,8 @@
 			<div class="form-el">
 				<label for="employment_type">Employment Type</label>
 				<select name="employment_type" id="employment_type">
-					<option selected={values.employment_type == "Part-time" } value="Part-time">Part-time</option>
-					<option selected={values.employment_type == "Full-time" } value="Full-time" >Full-time</option>
+					<option selected={values.employment_type == "Parttime" } value="Part-time">Part-time</option>
+					<option selected={values.employment_type == "Fulltime" } value="Fulltime" >Full-time</option>
 					<option selected={values.employment_type == "Internship"} value="Internship">Internship</option>
 				</select>
 			</div>
