@@ -1,6 +1,6 @@
 <div id="container">
     <a href="./login" class="text-black variant-filled-tertiary hover:bg-[#AD9673] hover:text-white cursor-pointer rounded" id="button">Sign in</a>
-    <a href="./login" class="font-bold text-white cursor-pointer hover:text-primary-50">Post Job</a>
+    <a href="./signup" class="font-bold text-white cursor-pointer hover:text-primary-50">Sign Up</a>
 </div>
 
 <style>
