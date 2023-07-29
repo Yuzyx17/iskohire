@@ -4,7 +4,7 @@
 
 	let loginForm: HTMLFormElement
 	let loading = false
-	let studnum = ''
+	let fullname = ''
 	let contact = ''
 	let email = ''
 	let password = ''
