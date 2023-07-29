@@ -64,10 +64,6 @@
           <img src="./images/addjob.png" alt="add job" class="h-6 mr-3"> 
           Add Job
         </a>
-<!--         <a href="../emp-editjob" class=" flex" class:active={$page.url.pathname === "/emp-editjob" ? "bg-[white]" : ""}>
-          <img src="./images/editjob.png" alt="edit job" class="h-6 mr-3"> 
-          Edit Job
-        </a> -->
       </div>
       <div class="flex flex-col" id="logout">
         <a href="/api/auth/signout" class="font-bold tracking-wider flex" > 

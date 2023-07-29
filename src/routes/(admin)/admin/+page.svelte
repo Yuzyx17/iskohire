@@ -6,7 +6,7 @@
 
     let isPostsLoading = true
     let postsError: PostgrestError | undefined  
-    export let data;
+    export let data../admin/$types.js;
 
 	let { supabase, session } = data
 	$: ({ supabase, session } = data)
