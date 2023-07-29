@@ -22,7 +22,6 @@
   }
   #sidebar-left a{
     padding: 15px 75px 15px 15px;
-    background-color: #F8F8F8;
     outline: solid 1px #bbbbbb;
   }
   #sidebar-left #logout a{
@@ -40,6 +39,10 @@
   #logo{
     width: clamp(64px, 10%, 128px);
     aspect-ratio: 1/1;
+  }
+  a.active{
+    background-color: #dfbfbf;
+    font-weight: bold
   }
 </style>
 
@@ -75,6 +78,7 @@
 
 		return () => data.subscription.unsubscribe()
 	})
+  import {page} from '$app/stores'
 </script>
 
 <AppShell>
@@ -102,26 +106,22 @@
   <svelte:fragment slot="sidebarLeft">
     <div id="sidebar-left" class="flex flex-col h-full w-full bg-[white] justify-between shadow">
       <div class="container flex flex-col bg-[EDECEC]">
-        <a href="../profile" class="flex">
+        <a href="../profile" class="flex" class:active={$page.url.pathname === "/profile" ? "bg-[white]" : ""}>
           <img src="./images/prof.png" alt="profile" class="h-6 mr-3">
           Profile
         </a>
-        <a href="../app-status" class="flex">
+        <a href="../app-status" class="flex" class:active={$page.url.pathname === "/app-status" ? "bg-[white]" : ""}>
           <img src="./images/appli.png" alt="appstat" class="h-6 mr-3">
           Application Status
         </a>
-        <a href="../add-exp" class=" flex">
+        <a href="../add-exp" class=" flex" class:active={$page.url.pathname === "/add-exp" ? "bg-[white]" : ""}>
           <img src="./images/exp.png" alt="add exp" class="h-6 mr-3"> 
           Add Experience
         </a>
-        <a href="../add-edu"class=" flex"> 
+        <a href="../add-edu"class=" flex" class:active={$page.url.pathname === "/add-edu" ? "bg-[white]" : ""}> 
           <img src="./images/exp.png" alt="add edu" class="h-6 mr-3"> 
           Add Education
         </a>
-        <!-- <a href="../saved" class="flex">
-           <img src="./images/savedicon.png" alt="profile" class="h-6 mr-3"> 
-           Saved
-        </a> -->
       </div>
       <div class="flex flex-col" id="logout">
         <a href="/api/auth/signout" class="font-bold tracking-wider flex" > 

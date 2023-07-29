@@ -37,7 +37,7 @@
 
 <AppShell>
   <svelte:fragment slot="header">
-    <AppBar./admin-dashboard/$types.js
+    <AppBar
       background="bg-[#702828]"
       gridColumns="grid-cols-3"
       slotDefault="place-self-center"
