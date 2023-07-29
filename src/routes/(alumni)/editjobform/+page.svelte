@@ -3,7 +3,6 @@
     import Form from "../Form.svelte";
 	import { getJobPosts } from "$lib/stores/post_store";
 	import type { Database } from "$lib/db/types";
-	import { user_id } from "$lib/stores/auth";
 
     let payload: any = {}
     let jobpost: Database['public']['Tables']['job_post']['Row'] = {
@@ -16,7 +15,7 @@
 		salary: 0,
 		status: "",
 		industry_type: 0,
-		user_id: user_id,
+		user_id: "",
 		url: "",
 	};
     onMount(async () => {

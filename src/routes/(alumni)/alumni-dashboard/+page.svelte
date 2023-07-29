@@ -1,9 +1,10 @@
 <script lang="ts">
-    import { loadPosts, JobPosts, publishPost, unpublishPost } from "$lib/stores/post_store";
+    import { loadPosts, JobPosts, publishPost, unpublishPost, deletePosts } from "$lib/stores/post_store";
     import { loadApplicants, Applications, Skills } from "$lib/stores/application_store";
     import { onMount } from "svelte";
     import { i_types } from "$lib/reference/VALUES";
 	  import type { PostgrestError } from "@supabase/supabase-js";
+	import { user_id } from "$lib/stores/auth";
     
     let isPostsLoading = true
     let isApplicationsLoading = false
@@ -16,6 +17,7 @@
         })
     })
     let toggle = true
+    let reload = true
     async function publish(id: number){
         toggle = true
         await publishPost(id)
@@ -30,6 +32,13 @@
         postsError = await loadPosts()
         JobPosts.subscribe(() => {
             toggle = false
+        })
+    }
+    async function cancelPending(id: number, uid: string){
+        reload = true
+        await deletePosts(id, uid)
+        JobPosts.subscribe(() => {
+            reload = false
         })
     }
     let current_job: number | null = 0
@@ -92,7 +101,8 @@
           {/each}
         
         {:else if $JobPosts}
-        {#each $JobPosts as post}  
+        {#key reload}
+        {#each $JobPosts as post} 
         <div class="flex flex-col items-center">
           <form method="GET" action="editjobform">
             <input type="hidden" name="job_id" value={post.job_id}>
@@ -135,6 +145,10 @@
                                 </button>
                                 {:else if post.status =="PUBLISHED" || post.status == "UNPUBLISH"}
                                 <button on:click|preventDefault={()=>unpublish(post.job_id)} class="hoverization border border-solid border-[#AB7C7C] w-[100px] font-inter text-xs font-black text-white h-8 ml-auto mr-0 shadow-md variant-filled-tertiary cursor-pointer ">
+                                
+                                </button>
+                                {:else if post.status == "PENDING"}
+                                <button on:click|preventDefault={()=>cancelPending(post.job_id, post.user_id)} class="hoverizationB border border-solid border-[#AB7C7C] w-[100px] font-inter text-xs font-black text-white h-8 ml-auto mr-0 shadow-md variant-filled-tertiary cursor-pointer ">
                                     
                                 </button>
                                 {/if}
@@ -144,6 +158,7 @@
                 </button>
                 </div>
                 {/each}
+                {/key}
             {:else if postsError}
                 <div>{postsError.message}</div>
             {:else}
@@ -335,13 +350,19 @@
   .hoverization:after {
     content: "PUBLISHED";
   }
-  .hoverization:hover::after {
+  .hoverizationB:after {
+    content: "PENDING";
+  }
+  .hoverization:hover::after, .hoverizationB:hover::after {
     content: "UNPUBLISH";
   }
   .hoverization{
     background-color: #417E1B;
   }
-  .hoverization:hover{
+  .hoverizationB{
+    background-color: #D2AC72;
+  }
+  .hoverization:hover, .hoverizationB:hover{
     background-color: #702828;
   }
 </style>

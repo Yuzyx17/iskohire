@@ -10,7 +10,6 @@ export const actions = {
             newPost[key] = value;
         }
         newPost["user_id"] = user_id
-        newPost["status"] = "UNPUBLISH"
         uploadPosts(newPost as Database['public']['Tables']['job_post']['Insert'])
 	},
     update: async ({ request }) => {
@@ -22,14 +21,15 @@ export const actions = {
         updatePosts(post)
         // goto("alumni-dashboard")
 	},
-	delete: async ({ request }) => {
+	delete: async ({ request, locals: { getSession }}) => {
+        let session = await getSession()
 		const data = await request.formData();
         let post: any = {}
         for (const [key, value] of data) {
             post[key] = value;
         }
-        post["job_id"]
         post["user_id"]
-        deletePosts(post["job_id"], post["user_id"])
+        session?.user.id
+        deletePosts(post["job_id"], session?.user.id)
 	}
 };

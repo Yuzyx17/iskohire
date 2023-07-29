@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { JobApplications, addApplications, loadApplications } from "$lib/stores/alumni_store";
-	import { user_id } from "$lib/stores/auth";
+	import { log_id, user_id } from "$lib/stores/auth";
 	import { SearchPosts, loadSearch, publishPost } from "$lib/stores/post_store";
 	import type { PostgrestError } from "@supabase/supabase-js";
 	import { fail } from "@sveltejs/kit";
@@ -10,10 +10,15 @@
     //     let response = await fetch("/mockdata.json");
     //     mockdata = await response.json()
     // })
+
+    export let data
+
+    let { supabase, session } = data
+    $: ({ supabase, session } = data)
     let isPostLoading = true
     let isApplicationLoading = true
     onMount(async () => {
-        await loadSearch()
+        await loadSearch(session?.user.id)
         await loadApplications()
         SearchPosts.subscribe(() => {
             isPostLoading = false
@@ -22,18 +27,14 @@
             isApplicationLoading = false
         })
     })
+    
     let applying = false
     async function apply(jobid: number | null) {
         applying = true
         if(jobid == null) {return fail(420, {message: "Error occured"})}
-        await addApplications({job_id: jobid, user_id: user_id, status: "PROCESSING"})
+        await addApplications({job_id: jobid, user_id: session?.user.id, status: "PROCESSING"})
         applying = false
     }
-    export let data
-
-    let { supabase, session } = data
-    $: ({ supabase, session } = data)
-    
 </script>
 
 <div class="flex">
