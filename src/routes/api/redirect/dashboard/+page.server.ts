@@ -1,4 +1,3 @@
-import { log_id, roleid } from '$lib/stores/auth.js'
 import { fail, redirect } from '@sveltejs/kit'
 
 export const load = async ({ locals: { supabase, getSession } }) => {
@@ -18,20 +17,18 @@ export const load = async ({ locals: { supabase, getSession } }) => {
 
     // Get role from session
     let role: number = profile?.role_id ?? ''
-    roleid.set(role)
-    log_id.set(session.user.id)
 
     // if role == student, redirect to student dashboard
     // if role == alumni, redirect to alumni dashboard
     // if role == employer, redirect to employer dashboard
     if (role == 1) {
-        throw redirect(303, '/profile')
+        throw redirect(303, '/student/dashboard')
     } else if (role == 2) {
-        throw redirect(303, '/alumni-dashboard')
+        throw redirect(303, '/alumni/dashboard')
     } else if (role == 3) {
-        throw redirect(303, '/emp-dashboard')
+        throw redirect(303, '/employer/dashboard')
     } else if (role == 4) {
-        throw redirect(303, '/register')
+        throw redirect(303, '/admin/dashboard')
     }
   
     return { session, profile, error }

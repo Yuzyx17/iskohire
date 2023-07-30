@@ -6,6 +6,10 @@
     import { redirect } from '@sveltejs/kit';
 </script>
 
+<svelte:head>
+	<title>Sign Up Page</title>
+</svelte:head>
+
 <style>
     .center-container {
         display: flex;
@@ -25,15 +29,15 @@
             </a>
             <div class="flex justify-between items-center bg-white text-[#702828] card card-hover bg-white">
                 <span class="mb-2 p-7 text-4xl font-extrabold">STUDENT</span>
-                <a href="/stud-account" class="p-2 w-36 text-lg text-center rounded mr-5 font-bold text-white variant-filled-tertiary cursor-pointer hover:bg-[#AD9673]">LOGIN</a>
+                <a href="signup-demo/student" class="p-2 w-36 text-lg text-center rounded mr-5 font-bold text-white variant-filled-tertiary cursor-pointer hover:bg-[#AD9673]">SIGN UP</a>
             </div>
             <div class="flex justify-between items-center bg-white text-[#702828] card card-hover bg-white">
                 <span class="mb-2 p-7 text-4xl font-extrabold">ALUMNI</span>
-                <a href="/alumni-account" class="p-2 w-36 text-lg text-center rounded mr-5 font-bold text-white variant-filled-tertiary cursor-pointer hover:bg-[#AD9673]">LOGIN</a>
+                <a href="signup-demo/alumni" class="p-2 w-36 text-lg text-center rounded mr-5 font-bold text-white variant-filled-tertiary cursor-pointer hover:bg-[#AD9673]">SIGN UP</a>
             </div>
             <div class="flex justify-between items-center bg-white text-[#702828] card card-hover bg-white">
                 <span class="mb-2 p-7 text-4xl font-extrabold">EMPLOYER</span>
-                <a href="/employer-account" class="p-2 w-36 text-lg text-center rounded mr-5 font-bold text-white variant-filled-tertiary cursor-pointer hover:bg-[#AD9673]">LOGIN</a>
+                <a href="signup-demo/employer" class="p-2 w-36 text-lg text-center rounded mr-5 font-bold text-white variant-filled-tertiary cursor-pointer hover:bg-[#AD9673]">SIGN UP</a>
             </div>
         </div>
     </div>
