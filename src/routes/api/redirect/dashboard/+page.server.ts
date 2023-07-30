@@ -20,7 +20,7 @@ export const load = async ({ locals: { supabase, getSession } }) => {
     let role: number = profile?.role_id ?? ''
     roleid.set(role)
     log_id.set(session.user.id)
-    session.user.id
+
     // if role == student, redirect to student dashboard
     // if role == alumni, redirect to alumni dashboard
     // if role == employer, redirect to employer dashboard

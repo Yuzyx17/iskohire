@@ -51,7 +51,6 @@
         Filters.set({industry: +industry_type, emp_type: loctype})
         goto("/job-board")
     }
-
 </script>
 
 <div class="bg-[url('/images/backup.png')] bg-cover m-0 h-full">
