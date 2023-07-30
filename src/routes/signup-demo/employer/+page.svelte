@@ -86,7 +86,7 @@
                         }
                     }
                 />
-                <div class="text-white italic transform-italic text-center">Check your email for the confirmation link</div>
+                <div class="text-[#FFE1B4] italic transform-italic text-center font-bold">Check your email for the confirmation link</div>
             </div>
         </div>
     </div>
