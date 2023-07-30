@@ -6,7 +6,7 @@
 
     let isPostsLoading = true
     let postsError: PostgrestError | undefined  
-    export let data../admin/$types.js;
+    export let data;
 
 	let { supabase, session } = data
 	$: ({ supabase, session } = data)
@@ -44,6 +44,7 @@
         Posts.subscribe(() => {
             isPostsLoading = false
         })
+        $Posts
     }
 </script>
 
@@ -52,7 +53,7 @@
     {#key isPostsLoading}
     {#if $Posts}
     <h1>PENDING:</h1>
-        {#each $Posts.sort().filter((val) => val.status == "PENDING") as post}
+        {#each $Posts.filter((val) => val.status == "PENDING") as post}
         <div>
             {post.job_title}<br>
             {post.desc}<br>
@@ -63,7 +64,7 @@
         {/each}
         <br>
         <h1>ACCEPTED:   </h1>
-        {#each $Posts.sort((a, b) => (a.company_name < b.company_name ? -1 : 1)).filter((val) => val.status != "PENDING") as post}
+        {#each $Posts.filter((val) => val.status != "PENDING") as post}
             {post.job_title}<br>
             {post.desc}<br>
             {post.company_name}<br>

@@ -41,7 +41,13 @@
                     view="sign_in"
                     redirectTo={`${data.url}/api/auth/callback`}
                     showLinks={false}
-                    appearance={{ theme: ThemeSupa, style: { input: 'color: #000; ' } }}
+                    appearance={{
+                        style: { 
+                            input: 'color: #000; background:white; padding: 7px; border: none; border-radius:4px; ',
+                            button: 'font:bold; color:white; background:green; border:none; padding:10px; ButtonBackgroundHover:black',
+                            message:'color:white',
+                            label:'display:none;'}
+                            }}
                 />
             </div>
         </div>
