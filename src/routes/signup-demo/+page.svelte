@@ -62,12 +62,14 @@
                     appearance={{style: { input: 'color: #000; ' } }}
                     additionalData={
                         {
-                            role: 1,
-                            first_name: firstName,
-                            last_name: lastName,
-                            student_id: studentId,
-                            company_name: companyName,
-                            company_id: companyId,
+                            'role_id': 1,
+                            'first_name': firstName,
+                            'last_name': lastName,
+                            'student_id': studentId,
+                            'company_name': companyName,
+                            'company_id': companyId,
+                            'status': "PENDING",
+                            'is_approved': false,
                         }
                     }
                 />
