@@ -49,10 +49,10 @@
                     <input type="text" bind:value={contactNumber} required placeholder="Contact Number" class="border border-gray-300 text-gray-900 text-sm mb-4 focus:ring-blue-500 focus:border-blue-500 block w-full p-2 rounded"/>
                 </label>
                 <label>
-                    <input type="text" bind:value={companyName} required placeholder="Company Name" class="border border-gray-300 text-black color-black text-sm mb-4 focus:ring-blue-500 focus:border-blue-500 block w-full p-2 rounded"/>
+                    <input type="text" bind:value={companyName} placeholder="Company Name" class="border border-gray-300 text-black color-black text-sm mb-4 focus:ring-blue-500 focus:border-blue-500 block w-full p-2 rounded"/>
                 </label>
                 <label>
-                    <input type="text" bind:value={companyId} required placeholder="DTI Registration Number" class="border border-gray-300 text-black color-black text-sm mb-4 focus:ring-blue-500 focus:border-blue-500 block w-full p-2 rounded"/>
+                    <input type="text" bind:value={companyId} placeholder="DTI Registration Number" class="border border-gray-300 text-black color-black text-sm mb-4 focus:ring-blue-500 focus:border-blue-500 block w-full p-2 rounded"/>
                 </label>
                 <Auth
                     supabaseClient={data.supabase}
@@ -71,7 +71,7 @@
                         style: { 
                             input: 'color: #000; background:white; padding: 7px; border: none; border-radius:4px; ',
                             button: 'font:bold; color:white; background:green; border:none; padding:10px; ButtonBackgroundHover:black',
-                            message:'color:white',
+                            message:'font-style: italic; font-weight: 700; text-align: center; color: #FFE1B4;',
                             label:'display:none;'}
                             }}
                     additionalData={
@@ -86,7 +86,6 @@
                         }
                     }
                 />
-                <div class="text-[#FFE1B4] italic transform-italic text-center font-bold">Check your email for the confirmation link</div>
             </div>
         </div>
     </div>
