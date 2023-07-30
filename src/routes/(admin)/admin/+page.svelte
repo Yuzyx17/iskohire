@@ -6,7 +6,7 @@
 
     let isPostsLoading = true
     let postsError: PostgrestError | undefined  
-    export let data../admin/$types.js;
+    export let data
 
 	let { supabase, session } = data
 	$: ({ supabase, session } = data)
@@ -48,27 +48,40 @@
 </script>
 
 
-<div style="overflow-y: scroll; height: 80vh;">
+<div class="p-[32px]">
     {#key isPostsLoading}
     {#if $Posts}
-    <h1>PENDING:</h1>
+    <div class="w-full px-3 text-black font-inter font-extrabold py-2 text-4xl flex-auto">
+        <span class="rounded-full bg-[#abc] pt-[12px] pb-[12px] pr-[20px] pl-[20px] inline-block align-middle">PENDING </span>
+    </div>
         {#each $Posts.sort().filter((val) => val.status == "PENDING") as post}
-        <div>
-            {post.job_title}<br>
-            {post.desc}<br>
-            {post.company_name}<br>
-            <button on:click|preventDefault={() => acceptPost(post.job_id)} class="bg-[#3f3]">ACCEPT</button>
-            <button on:click|preventDefault={() => deletePost(post.job_id)} class="bg-[#f23]">DELETE</button><br>
+        <div class="relative min-h-[6em] h-[12em] overflow-y-auto border border-gray-300 bg-white shadow-md w-[90%] ml-[5%] max-w-screen flex-auto flex-column p-3 mb-5 card mr-5">
+            <div class="flex-auto flex-column">
+                <div class="text-black font-inter font-bold text-xl">{post.job_title}</div>
+                <div class="text-black font-inter font-italic leading-3 text-xs">{post.company_name}</div>
+                <div class="text-black font-inter text-base pt-[16px] whitespace-normal text-justify w-[75%]">{post.desc}</div>
+            </div>
+            <div class="absolute bottom-[12px] right-[12px]">
+                <button on:click|preventDefault={() => acceptPost(post.job_id)} class="hover:bg-[#2e2] bg-[#3f3] p-[4px] card-hover font-bold rounded">ACCEPT</button>
+                <button on:click|preventDefault={() => deletePost(post.job_id)} class="hover:bg-[#de3939] bg-[#ef4a4a] p-[4px] card-hover font-bold rounded">DELETE</button>
+            </div>
         </div>
         {/each}
-        <br>
-        <h1>ACCEPTED:   </h1>
+        <hr>
+        <div class="w-full px-3 text-black font-inter font-extrabold py-2 text-4xl">
+            <span class="rounded-full bg-[#9f9] pt-[12px] pb-[12px] pr-[20px] pl-[20px] inline-block align-middle">ACCEPTED</span>
+        </div>
         {#each $Posts.sort((a, b) => (a.company_name < b.company_name ? -1 : 1)).filter((val) => val.status != "PENDING") as post}
-            {post.job_title}<br>
-            {post.desc}<br>
-            {post.company_name}<br>
-            {post.job_title} 
-            <button on:click|preventDefault={() => deletePost(post.job_id)} class="bg-[#3f3]">DELETE</button><br><br>
+        <div class="relative min-h-[6em] h-[12em] overflow-y-auto border border-gray-300 bg-white shadow-md w-[90%] ml-[5%] max-w-screen flex-auto flex-column p-3 mb-5 card mr-5">
+            <div class="flex-auto flex-column">
+                <div class="text-black font-inter font-bold text-xl">{post.job_title}</div>
+                <div class="text-black font-inter font-italic leading-3 text-xs">{post.company_name}</div>
+                <div class="text-black font-inter text-base pt-[16px] whitespace-normal text-justify w-[75%]">{post.desc}</div>
+            </div>
+            <div class="absolute bottom-[12px] right-[12px]">
+                <button on:click|preventDefault={() => deletePost(post.job_id)} class="hover:bg-[#de3939] bg-[#ef4a4a] p-[4px] card-hover font-bold rounded">DELETE</button>
+            </div>
+        </div>
 
         {/each}
     {/if}

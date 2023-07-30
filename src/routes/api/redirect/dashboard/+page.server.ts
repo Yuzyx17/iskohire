@@ -31,7 +31,7 @@ export const load = async ({ locals: { supabase, getSession } }) => {
     } else if (role == 3) {
         throw redirect(303, '/emp-dashboard')
     } else if (role == 4) {
-        throw redirect(303, '/admin')
+        throw redirect(303, '/register')
     }
   
     return { session, profile, error }
