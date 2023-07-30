@@ -229,7 +229,7 @@
                 </span>
             </div>
             {:else}
-            <div class="border border-gray-300 bg-white shadow-md w-[1125px] max-w-[1125px] h-[60px] flex-shrink-0 p-3 mb-5 card">
+            <div class="border border-gray-300 bg-white shadow-md w-full max-w-[1125px] h-[60px] flex-shrink-0 p-3 mb-5 card card-hover">
                 <span class="text-black font-inter text-lg font-extrabold leading-normal">
                     Nothing to see here!
                 </span>

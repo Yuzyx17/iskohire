@@ -32,9 +32,9 @@
 <div class="bg-[url('/images/backup.png')] bg-cover m-0 h-full">
     <div class="center-container">
         <div class="flex flex-col gap-4 bg-[#702828] p-5 w-2/4 h-5/4">
-            <span>
-		        <img class="h-auto max-w-xs mx-auto" id="logo_name" src="./images/logo_name.png" alt="logo_name">
-            </span>
+            <a href="./">
+		        <img class="h-auto max-w-xs mx-auto" id="logo_name" src="./images/logo_name.png" alt="logo_name" >
+            </a>
             <div class="col-6 form-widget">
                 <Auth
                     supabaseClient={data.supabase}

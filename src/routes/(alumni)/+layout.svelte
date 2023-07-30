@@ -30,6 +30,7 @@
 
     return () => data.subscription.unsubscribe();
   });
+  import {page} from '$app/stores'
 </script>
 
 <AppShell>
@@ -68,34 +69,26 @@
           <img src="./images/prof.png" alt="profile" class="h-6 mr-3" />
           Profile
         </a>
-        <a href="../alumni-dashboard" class=" flex">
+        <a href="../alumni-dashboard" class=" flex" class:active={$page.url.pathname === "/alumni-dashboard" ? "bg-[white]" : ""}>
           <img src="./images/dash.png" alt="dashboard" class="h-6 mr-3" />
           Dashboard
         </a>
-        <a href="../addjobform" class=" flex">
+        <a href="../addjobform" class=" flex" class:active={$page.url.pathname === "/addjobform" ? "bg-[white]" : ""}>
           <img src="./images/addjob.png" alt="add job" class="h-6 mr-3" />
           Add Job
         </a>
-        <!-- <a href="../editjobform" class=" flex">
-          <img src="./images/editjob.png" alt="edit job" class="h-6 mr-3" />
-          Edit Job
-        </a> -->
-        <a href="../application-status" class="flex">
+        <a href="../application-status" class="flex" class:active={$page.url.pathname === "/application-status" ? "bg-[white]" : ""}>
           <img src="./images/appli.png" alt="appstat" class="h-6 mr-3" />
           Application Status
         </a>
-        <a href="../expform" class=" flex">
+        <a href="../expform" class=" flex" class:active={$page.url.pathname === "/expform" ? "bg-[white]" : ""}>
           <img src="./images/exp.png" alt="add exp" class="h-6 mr-3" />
           Add Experience
         </a>
-        <a href="../eduform" class=" flex">
+        <a href="../eduform" class=" flex" class:active={$page.url.pathname === "/eduform" ? "bg-[white]" : ""}>
           <img src="./images/exp.png" alt="add edu" class="h-6 mr-3" />
           Add Education
         </a>
-        <!-- <a href="../alumni-saved" class="flex">
-           <img src="./images/savedicon.png" alt="profile" class="h-6 mr-3"> 
-           Saved
-        </a> -->
       </div>
       <div class="flex flex-col" id="logout">
         <a href="/api/auth/signout" class="font-bold tracking-wider flex">
@@ -135,7 +128,6 @@
   }
   #sidebar-left a {
     padding: 15px 75px 15px 15px;
-    background-color: #f8f8f8;
     outline: solid 1px #bbbbbb;
   }
   #sidebar-left a:hover {
@@ -160,5 +152,9 @@
   #logo {
     width: clamp(64px, 10%, 128px);
     aspect-ratio: 1/1;
+  }
+  a.active{
+    background-color: #dfbfbf;
+    font-weight: bold
   }
 </style>
