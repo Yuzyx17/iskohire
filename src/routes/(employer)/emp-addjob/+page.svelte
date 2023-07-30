@@ -23,7 +23,7 @@
 <div class="outside bg-white m-10">
     <Form values={jobpost}>
         <div class="action-container" slot="buttons">
-            <button formaction="/emp-dashboard?/create" id="submit" class="action bg-tertiary-500 m3-5 hover:bg-[#AD9673]">ADD</button>
+            <button formaction="/alumni-dashboard?/create" id="submit" class="action bg-tertiary-500 hover:bg-[#AD9673]">ADD</button>
         </div>
     </Form>
 </div>

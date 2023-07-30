@@ -1,4 +1,3 @@
-
 <style>
 	.employerForm {
         display: grid;
@@ -76,14 +75,12 @@
 		height: 25rem;
     }
 </style>
-
 <script lang="ts">
 	import { i_types } from "$lib/reference/VALUES";
 	import type { Database } from "$lib/db/types";
 
 	export let values: Database['public']['Tables']['job_post']['Row'];
 </script>
-
 <div class="outside bg-white m-10">
 <form method="POST" class="employerForm">
 	<div id="formContainer">

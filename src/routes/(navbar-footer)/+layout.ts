@@ -1,5 +1,6 @@
 import { invalidate } from '$app/navigation'
 import { PUBLIC_SUPABASE_ANON_KEY, PUBLIC_SUPABASE_URL } from '$env/static/public'
+import { role_id } from '$lib/stores/auth.js'
 import { createSupabaseLoadClient } from '@supabase/auth-helpers-sveltekit'
 
 export const load = async ({ fetch: any, data, depends }) => {
@@ -16,5 +17,5 @@ export const load = async ({ fetch: any, data, depends }) => {
     data: { session },
   } = await supabase.auth.getSession()
 
-  return { supabase, session }
+  return { supabase, session, role_ID : data.role_ID}
 }

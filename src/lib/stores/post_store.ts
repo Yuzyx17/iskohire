@@ -18,7 +18,7 @@ export const loadPosts = async () => {
     .eq("user_id", user_id);
     
     if(error) return error;
-
+    let filtered_data = data.sort((a, b) => (a.job_title < b.job_title ? -1 : 1))
     JobPosts.set(data)
 }
 
