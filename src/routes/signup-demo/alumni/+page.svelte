@@ -74,12 +74,12 @@
                         style: { 
                             input: 'color: #000; background:white; padding: 7px; border: none; border-radius:4px; ',
                             button: 'font:bold; color:white; background:green; border:none; padding:10px; ButtonBackgroundHover:black',
-                            message:'color:white',
+                            message:'font-style: italic; font-weight: 700; text-align: center; color: #FFE1B4;',
                             label:'display:none;'}
                             }}
                     additionalData={
                         {
-                            'role_id': 2, // 1 for student
+                            'role_id': '2', // 1 for student
                             'full_name': fullName,
                             'student_id': studentId,
                             'company_name': companyName,
@@ -90,7 +90,6 @@
                         }
                     }
                 />
-                <div class="text-[#FFE1B4] italic transform-italic text-center font-bold">Check your email for the confirmation link</div>
             </div>
         </div>
     </div>
