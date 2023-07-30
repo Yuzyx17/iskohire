@@ -22,6 +22,7 @@ export const loadApplications = async () => {
     
     if(error) return error;
     let filtered_data = data.sort((a, b) => (a.status < b.status ? -1 : 1))
+    filtered_data = filtered_data.filter((val) => val.post_status == "PUBLISHED")
     JobApplication.set(filtered_data)
 }
 

@@ -4,10 +4,8 @@
     import { onMount } from "svelte";
     import { i_types } from "$lib/reference/VALUES";
 	  import type { PostgrestError } from "@supabase/supabase-js";
-	import { user_id } from "$lib/stores/auth";
-	import { ApplicantInfo, loadApplicant } from "$lib/stores/student/student_store";
-	import { redirect } from "@sveltejs/kit";
-	import { goto } from "$app/navigation";
+	  import { goto } from "$app/navigation";
+	import { loadApplicant } from "$lib/stores/student/student_store";
     
     let isPostsLoading = true
     let isApplicationsLoading = false
@@ -86,36 +84,34 @@
     let app_toggle = true
     let clear = true
     async function applyFilter() {
-    if(!$Applications) return
-    app_toggle = !app_toggle
-    applicant_list = $Applications.filter((vals) => {
-        let isco = false
-        let isfo = false
-        let issk = false
+      if(!$Applications) return
+      app_toggle = !app_toggle
+      applicant_list = $Applications.filter((vals) => {
+          let isco = false
+          let isfo = false
+          let issk = false
 
-        if(vals.course == course || course == ""){
-          isco = true
-        }
-        if(vals.industry_type == fos || fos == 0){
-          isfo = true
-        }
-        if(vals.skill_titles?.flat(1).includes(skills) || skills == ""){
-          issk = true
-        }
-        return (isco && isfo && issk)
-      })
-      applicant_list
-  }
+          if(vals.course == course || course == ""){
+            isco = true
+          }
+          if(vals.industry_type == fos || fos == "Field Experience"){
+            isfo = true
+          }
+          if(vals.skill_titles?.flat(1).includes(skills) || skills == ""){
+            issk = true
+          }
+          return (isco && isfo && issk)
+        })
+      }
     async function clearFilter(){
       course = ""
-      fos = 0 
+      fos = "Field Experience"
       skills = ""
       clear = !clear
       applicant_list = $Applications
     }
     async function viewProfile(uid){
       await loadApplicant(uid)
-      $ApplicantInfo
       goto("viewprofile")
     }
 </script>
@@ -134,8 +130,8 @@
           {/each}
         
         {:else if $JobPosts}
-        {#key reload}
         {#each $JobPosts as post} 
+        {#key reload}
         <div class="flex flex-col items-center">
           <form method="GET" action="editjobform">
             <input type="hidden" name="job_id" value={post.job_id}>
@@ -190,8 +186,8 @@
                     </div>
                 </button>
                 </div>
-                {/each}
                 {/key}
+                {/each}
             {:else if postsError}
                 <div>{postsError.message}</div>
             {:else}
@@ -215,7 +211,7 @@
             <select bind:value={fos}
               class="text-black card card-hover text-justify font-inter text-lg font-semibold leading-normal border border-gray-300 bg-white shadow-md mb-3"
             >
-              <option selected disabled value=0>Field Experience</option>
+              <option selected disabled value="Field Experience">Field Experience</option>
               {#if $Applications}
                 {#each [...$Applications].map((itype) => itype.industry_type).flat(1) as itype}
                   {#if itype}
