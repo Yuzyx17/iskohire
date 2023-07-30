@@ -16,6 +16,7 @@
     let studentId = ''
     let companyId = ''
     let companyName = ''
+    let contactNumber = ''
 </script>
 
 
@@ -39,7 +40,7 @@
     <div class="center-container">
         <div class="flex flex-col gap-4 bg-[#702828] p-5 w-2/4 h-5/4">
             <a href="./">
-		        <img class="h-auto max-w-xs mx-auto" id="logo_name" src="./images/logo_name.png" alt="logo_name" >
+		        <img class="h-auto max-w-xs mx-auto" id="logo_name" src="./../images/logo_name.png" alt="logo_name" >
             </a>
             <div class="col-6 form-widget">
                 <label>
@@ -54,6 +55,10 @@
                     Student ID:
                     <input type="text" bind:value={studentId} required />
                 </label>
+                <label>
+                    Contact number:
+                    <input type="text" bind:value={contactNumber} required />
+                </label>
                 <Auth
                     supabaseClient={data.supabase}
                     view="sign_up"
@@ -62,11 +67,12 @@
                     appearance={{style: { input: 'color: #000; ' } }}
                     additionalData={
                         {
-                            'role_id': 1,
+                            'role_id': 1, // 1 for student
                             'first_name': firstName,
                             'last_name': lastName,
                             'student_id': studentId,
                             'company_name': companyName,
+                            'contact_number': contactNumber,
                             'company_id': companyId,
                             'status': "PENDING",
                             'is_approved': false,
