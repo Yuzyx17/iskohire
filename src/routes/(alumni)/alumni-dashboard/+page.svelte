@@ -1,10 +1,13 @@
 <script lang="ts">
     import { loadPosts, JobPosts, publishPost, unpublishPost, deletePosts } from "$lib/stores/post_store";
-    import { loadApplicants, Applications, Skills } from "$lib/stores/application_store";
+    import { loadApplicants, Applications, acceptApplicant, processApplicant, declineApplicant } from "$lib/stores/application_store";
     import { onMount } from "svelte";
     import { i_types } from "$lib/reference/VALUES";
 	  import type { PostgrestError } from "@supabase/supabase-js";
 	import { user_id } from "$lib/stores/auth";
+	import { ApplicantInfo, loadApplicant } from "$lib/stores/student/student_store";
+	import { redirect } from "@sveltejs/kit";
+	import { goto } from "$app/navigation";
     
     let isPostsLoading = true
     let isApplicationsLoading = false
@@ -41,14 +44,39 @@
             reload = false
         })
     }
-    let current_job: number | null = 0
-    async function getApplicants(job_id: number | null){
+    let current_job: number = 0
+    async function getApplicants(job_id: number){
         isApplicationsLoading = true
         applicationError = await loadApplicants(job_id)
         current_job = job_id
         Applications.subscribe(() => {
             isApplicationsLoading = false
         })
+    }
+    let reloadApp = true
+    async function acceptApp(uid: string){
+      reloadApp = true
+      await acceptApplicant(current_job, uid)
+      await loadApplicants(current_job)
+      Applications.subscribe(() => {
+        reloadApp = false
+      })
+    }
+    async function processApp(uid: string){
+      reloadApp = true
+        await processApplicant(current_job, uid)
+        await loadApplicants(current_job)
+        Applications.subscribe(() => {
+        reloadApp = false
+      })
+    }
+    async function declineApp(uid: string){
+      reloadApp = true
+        await declineApplicant(current_job, uid)
+        await loadApplicants(current_job)
+        Applications.subscribe(() => {
+        reloadApp = false
+      })
     }
     let course: string;
     let fos: number | string;
@@ -84,6 +112,11 @@
       skills = ""
       clear = !clear
       applicant_list = $Applications
+    }
+    async function viewProfile(uid){
+      await loadApplicant(uid)
+      $ApplicantInfo
+      goto("viewprofile")
     }
 </script>
 
@@ -268,14 +301,22 @@
                       <div
                       class="pr-3 border-r border-gray-500 w-2/12 mt-auto mb-auto"
                       >
-                      <button
+                      <button on:click|preventDefault={() => viewProfile(application.user_id)}
                       class="bg-[#D2AC72] hover:bg-[#AD9673] border border-solid border-[#AB7C7C] w-[134px] h-[38px] text-white font-inter text-base font-extrabold leading-normal h-8 shadow-md"
                   >
                   View Profile
                 </button>
                 </div>
                 <div class="border-r w-2/12 pl-3 flex justify-center mt-2">
-                  <div class="transition-all duration-300 group cursor-pointer">
+                  {#key reloadApp}
+                  {#if application.status == "APPROVED"}
+                  <img
+                  src="/images/hired.png"
+                  alt="save"
+                  class="h-8 group-hover:block mr-3"
+                  />
+                  {:else}
+                  <button on:click|preventDefault={() => acceptApp(application.user_id)} class="transition-all duration-300 group cursor-pointer">
                     <img
                     src="/images/hire.png"
                     alt="save"
@@ -286,9 +327,16 @@
                     alt="save"
                     class="h-8 hidden group-hover:block mr-3"
                     />
-                  </div>
-
-                  <div class="transition-all duration-300 group cursor-pointer">
+                  </button>
+                  {/if}
+                  {#if application.status == "PROCESSING"}
+                  <img
+                      src="/images/waited.png"
+                      alt="save"
+                      class="h-8 group-hover:block mr-3"
+                      />
+                    {:else}
+                  <button on:click|preventDefault={() => processApp(application.user_id)} class="transition-all duration-300 group cursor-pointer">
                     <img
                     src="/images/wait.png"
                     alt="save"
@@ -299,8 +347,9 @@
                       alt="save"
                       class="h-8 hidden group-hover:block mr-3"
                       />
-                    </div>
-                  <div class="transition-all duration-300 group cursor-pointer">
+                    </button>
+                    {/if}
+                  <button on:click|preventDefault={() => declineApp(application.user_id)} class="transition-all duration-300 group cursor-pointer">
                     <img
                     src="/images/delete.png"
                     alt="save"
@@ -311,7 +360,8 @@
                     alt="save"
                     class="h-8 hidden group-hover:block mr-3"
                     />
-                  </div>
+                  </button>
+                  {/key}
                 </div>
               </div>
             </div>

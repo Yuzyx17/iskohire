@@ -21,11 +21,12 @@ export const loadApplications = async () => {
     .eq('user_id', user_id);
     
     if(error) return error;
-
-    JobApplication.set(data)
+    let filtered_data = data.sort((a, b) => (a.status < b.status ? -1 : 1))
+    JobApplication.set(filtered_data)
 }
 
 export const StudentInfo: Writable<Database['public']['Views']['profile']['Row']> = writable()
+export const ApplicantInfo: Writable<Database['public']['Views']['profile']['Row']> = writable()
 
 export const loadStudent = async () => {
 
@@ -37,4 +38,18 @@ export const loadStudent = async () => {
     if(error) return error;
 
     StudentInfo.set(data[0])
+}
+
+
+export const loadApplicant = async (uid) => {
+    uid
+    const { data, error } = await supabase
+    .from('profile')
+    .select('*')
+    .eq('user_id', uid)
+    .single();
+
+    if(error) return error;
+
+    ApplicantInfo.set(data)
 }

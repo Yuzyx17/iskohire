@@ -19,7 +19,7 @@
     let isApplicationLoading = true
     onMount(async () => {
         await loadSearch(session?.user.id)
-        await loadApplications()
+        await loadApplications(session?.user.id)
         SearchPosts.subscribe(() => {
             isPostLoading = false
         })
