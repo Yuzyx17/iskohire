@@ -76,7 +76,7 @@
                             }}
                     additionalData={
                         {
-                            'role_id': 3, // 1 for student
+                            'role_id': '3', // 1 for student
                             'full_name': fullName,
                             'company_name': companyName,
                             'contact_number': contactNumber,
