@@ -2,22 +2,20 @@
 	import { enhance, type SubmitFunction } from '$app/forms'
 	import { goto } from '$app/navigation';
 
+	export let data;
+
 	let loginForm: HTMLFormElement
 	let loading = false
-	let studnum = ''
-	let fullname = ''
-	let contact = ''
+	let studentNumber = ''
+	let firstName = ''
+	let lastName = ''
+	let contactNumber = ''
 	let email = ''
 	let password = ''
+
+	let signUpMessage = ''
 	
-	const handleSubmit: SubmitFunction = () => {
-	  loading = true
-	  return async () => {
-		await new Promise((resolve) => setTimeout(resolve, 2000))
-		loading = false
-		goto("../app-status")
-	  }
-	}
+
 </script>
 <svelte:head>
 	<title>Student Login</title>
@@ -44,7 +42,7 @@
 				type="text"
 				class="bg-gray-50 border border-gray-300 text-gray-900 text-sm mb-1 focus:ring-blue-500 focus:border-blue-500 block w-full p-2 pl-10 rounded"
 				placeholder="Student Number"
-				on:input={(event) => (studnum = event.currentTarget.value)}
+				bind:value={studentNumber}
 				required
 			  />
 			  <div class="absolute top-0 left-0 h-full flex items-center pl-3"> 
@@ -58,8 +56,23 @@
 			  	name="Name"
 			  	type="text"
 			  	class="bg-gray-50 border border-gray-300 text-gray-900 text-sm mb-1 focus:ring-blue-500 focus:border-blue-500 block w-full p-2 pl-10 rounded"
-			  	placeholder="Full Name"
-			  	on:input={(event) => (fullname= event.currentTarget.value)}
+			  	placeholder="First Name"
+			  	bind:value={firstName}
+			  	required
+				/>
+				<div class="absolute top-0 left-0 h-full flex items-center pl-3"> 
+			  		<img src="/images/admin.png" alt="icon" class="h-7" /> 
+				</div>
+		  	</div>
+
+			<div class="w-full relative h-">
+				<input
+			  	id="name"
+			  	name="Name"
+			  	type="text"
+			  	class="bg-gray-50 border border-gray-300 text-gray-900 text-sm mb-1 focus:ring-blue-500 focus:border-blue-500 block w-full p-2 pl-10 rounded"
+			  	placeholder="Last Name"
+			  	bind:value={lastName}
 			  	required
 				/>
 				<div class="absolute top-0 left-0 h-full flex items-center pl-3"> 
@@ -74,7 +87,7 @@
 			  	type="tel"
 			  	class="bg-gray-50 border border-gray-300 text-gray-900 text-sm mb-1 focus:ring-blue-500 focus:border-blue-500 block w-full p-2 pl-10 rounded"
 			  	placeholder="Contact Number"
-			  	on:input={(event) => (contact = event.currentTarget.value)}
+			  	bind:value={contactNumber}
 			  	required
 				/>
 				<div class="absolute top-0 left-0 h-full flex items-center pl-3"> 
@@ -89,7 +102,7 @@
 			  	type="email"
 			  	class="bg-gray-50 border border-gray-300 text-gray-900 text-sm mb-1 focus:ring-blue-500 focus:border-blue-500 block w-full p-2 pl-10 rounded"
 			  	placeholder="Email"
-			  	on:input={(event) => (email = event.currentTarget.value)}
+			  	bind:value={email}
 			  	required
 				/>
 				<div class="absolute top-0 left-0 h-full flex items-center pl-3"> 
@@ -103,8 +116,7 @@
 				name="password"
 				type="password"
 				placeholder="•••••••••"
-				value={password}
-				on:input={(event) => (password = event.currentTarget.value)}
+				bind:value={password}
 				class="bg-gray-50 border border-gray-300 text-gray-900 text-sm mb-1 focus:ring-blue-500 focus:border-blue-500 block w-full p-2 pl-10 rounded" 
 				required
 			  />
@@ -122,6 +134,7 @@
 			  />
 			</div>
 		  </form>
+		  <p>{signUpMessage}</p>
 		</div>
 	  </div>
 	</div>
