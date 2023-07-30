@@ -1,11 +1,9 @@
 <script lang="ts">
-    import { loadPosts, JobPosts, publishPost, unpublishPost, deletePosts } from "$lib/stores/post_store";
-    import { loadApplicants, Applications, acceptApplicant, processApplicant, declineApplicant } from "$lib/stores/application_store";
+    import { loadPosts, JobPosts, publishPost, unpublishPost } from "$lib/stores/post_store";
+    import { loadApplicants, Applications, Skills } from "$lib/stores/application_store";
     import { onMount } from "svelte";
     import { i_types } from "$lib/reference/VALUES";
 	  import type { PostgrestError } from "@supabase/supabase-js";
-	  import { goto } from "$app/navigation";
-	import { loadApplicant } from "$lib/stores/student/student_store";
     
     let isPostsLoading = true
     let isApplicationsLoading = false
@@ -18,7 +16,6 @@
         })
     })
     let toggle = true
-    let reload = true
     async function publish(id: number){
         toggle = true
         await publishPost(id)
@@ -35,46 +32,14 @@
             toggle = false
         })
     }
-    async function cancelPending(id: number, uid: string){
-        reload = true
-        await deletePosts(id, uid)
-        JobPosts.subscribe(() => {
-            reload = false
-        })
-    }
-    let current_job: number = 0
-    async function getApplicants(job_id: number){
+    let current_job: number | null = 0
+    async function getApplicants(job_id: number | null){
         isApplicationsLoading = true
         applicationError = await loadApplicants(job_id)
         current_job = job_id
         Applications.subscribe(() => {
             isApplicationsLoading = false
         })
-    }
-    let reloadApp = true
-    async function acceptApp(uid: string){
-      reloadApp = true
-      await acceptApplicant(current_job, uid)
-      await loadApplicants(current_job)
-      Applications.subscribe(() => {
-        reloadApp = false
-      })
-    }
-    async function processApp(uid: string){
-      reloadApp = true
-        await processApplicant(current_job, uid)
-        await loadApplicants(current_job)
-        Applications.subscribe(() => {
-        reloadApp = false
-      })
-    }
-    async function declineApp(uid: string){
-      reloadApp = true
-        await declineApplicant(current_job, uid)
-        await loadApplicants(current_job)
-        Applications.subscribe(() => {
-        reloadApp = false
-      })
     }
     let course: string;
     let fos: number | string;
@@ -91,18 +56,19 @@
           let isfo = false
           let issk = false
 
-          if(vals.course == course || course == ""){
-            isco = true
-          }
-          if(vals.industry_type == fos || fos == "Field Experience"){
-            isfo = true
-          }
-          if(vals.skill_titles?.flat(1).includes(skills) || skills == ""){
-            issk = true
-          }
-          return (isco && isfo && issk)
-        })
-      }
+        if(vals.course == course || course == ""){
+          isco = true
+        }
+        if(vals.industry_type == fos || fos == "Field Experience"){
+          isfo = true
+        }
+        if(vals.skill_titles?.flat(1).includes(skills) || skills == ""){
+          issk = true
+        }
+        return (isco && isfo && issk)
+      })
+      applicant_list
+  }
     async function clearFilter(){
       course = ""
       fos = "Field Experience"
@@ -110,14 +76,10 @@
       clear = !clear
       applicant_list = $Applications
     }
-    async function viewProfile(uid){
-      await loadApplicant(uid)
-      goto("viewprofile")
-    }
 </script>
 
 <svelte:head>
-  <title>Dashboard</title>
+<title>Dashboard</title>
 </svelte:head>
 
 <!-- scrolling and effect -->
@@ -130,16 +92,8 @@
           {/each}
         
         {:else if $JobPosts}
-        {#each $JobPosts as post} 
-        {#key reload}
+        {#each $JobPosts as post}  
         <div class="flex flex-col items-center">
-          <form method="GET" action="editjobform">
-            <input type="hidden" name="job_id" value={post.job_id}>
-         <button class="flex p-1.5 bg-white color-black rounded-sm hover:rounded-3xl hover:bg-white transition-all duration-300 text-white">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="black" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-                </svg>
-                </button> 
                 <button on:click|preventDefault={() => getApplicants(post.job_id)} class="bg-white card card-hover shadow-offset-x-0 shadow-offset-y-4 shadow-blur-4 shadow-spread-0 shadow-opacity-25 w-[277px] min-w-[277px] h-[309px] min-h-[309px] p-3 flex flex-col mr-3">
                     <div class="flex flex-col"> 
                         <span class="text-black font-inter text-xl font-extrabold leading-normal text-center">
@@ -176,17 +130,12 @@
                                 <button on:click|preventDefault={()=>unpublish(post.job_id)} class="hoverization border border-solid border-[#AB7C7C] w-[100px] font-inter text-xs font-black text-white h-8 ml-auto mr-0 shadow-md variant-filled-tertiary cursor-pointer ">
                                 
                                 </button>
-                                {:else if post.status == "PENDING"}
-                                <button on:click|preventDefault={()=>cancelPending(post.job_id, post.user_id)} class="hoverizationB border border-solid border-[#AB7C7C] w-[100px] font-inter text-xs font-black text-white h-8 ml-auto mr-0 shadow-md variant-filled-tertiary cursor-pointer ">
-                                    
-                                </button>
                                 {/if}
                             {/key}
                         </div>
                     </div>
                 </button>
                 </div>
-                {/key}
                 {/each}
             {:else if postsError}
                 <div>{postsError.message}</div>
@@ -304,15 +253,7 @@
                 </button>
                 </div>
                 <div class="border-r w-2/12 pl-3 flex justify-center mt-2">
-                  {#key reloadApp}
-                  {#if application.status == "APPROVED"}
-                  <img
-                  src="/images/hired.png"
-                  alt="save"
-                  class="h-8 group-hover:block mr-3"
-                  />
-                  {:else}
-                  <button on:click|preventDefault={() => acceptApp(application.user_id)} class="transition-all duration-300 group cursor-pointer">
+                  <div class="transition-all duration-300 group cursor-pointer">
                     <img
                     src="/images/hire.png"
                     alt="save"
@@ -323,16 +264,9 @@
                     alt="save"
                     class="h-8 hidden group-hover:block mr-3"
                     />
-                  </button>
-                  {/if}
-                  {#if application.status == "PROCESSING"}
-                  <img
-                      src="/images/waited.png"
-                      alt="save"
-                      class="h-8 group-hover:block mr-3"
-                      />
-                    {:else}
-                  <button on:click|preventDefault={() => processApp(application.user_id)} class="transition-all duration-300 group cursor-pointer">
+                  </div>
+
+                  <div class="transition-all duration-300 group cursor-pointer">
                     <img
                     src="/images/wait.png"
                     alt="save"
@@ -343,9 +277,8 @@
                       alt="save"
                       class="h-8 hidden group-hover:block mr-3"
                       />
-                    </button>
-                    {/if}
-                  <button on:click|preventDefault={() => declineApp(application.user_id)} class="transition-all duration-300 group cursor-pointer">
+                    </div>
+                  <div class="transition-all duration-300 group cursor-pointer">
                     <img
                     src="/images/delete.png"
                     alt="save"
@@ -356,8 +289,7 @@
                     alt="save"
                     class="h-8 hidden group-hover:block mr-3"
                     />
-                  </button>
-                  {/key}
+                  </div>
                 </div>
               </div>
             </div>
@@ -396,19 +328,13 @@
   .hoverization:after {
     content: "PUBLISHED";
   }
-  .hoverizationB:after {
-    content: "PENDING";
-  }
-  .hoverization:hover::after, .hoverizationB:hover::after {
+  .hoverization:hover::after {
     content: "UNPUBLISH";
   }
   .hoverization{
     background-color: #417E1B;
   }
-  .hoverizationB{
-    background-color: #D2AC72;
-  }
-  .hoverization:hover, .hoverizationB:hover{
+  .hoverization:hover{
     background-color: #702828;
   }
 </style>
