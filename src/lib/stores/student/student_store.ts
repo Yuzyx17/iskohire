@@ -11,12 +11,12 @@ import { Skills } from "../application_store";
 
 // export const 
 
-export const JobApplication: Writable<Array<Database['public']['Views']['applications']['Row']>> = writable();
+export const JobApplication: Writable<Array<Database['public']['Views']['status']['Row']>> = writable();
 
 export const loadApplications = async () => {
 
     const { data, error } = await supabase
-    .from('applications')
+    .from('status')
     .select('*')
     .eq('user_id', user_id);
     
