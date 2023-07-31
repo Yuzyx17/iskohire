@@ -112,7 +112,7 @@ import { loadApplicant } from "$lib/stores/student/student_store";
   }
   async function viewProfile(uid){
     await loadApplicant(uid)
-    goto("emp-viewprofile")
+    goto("viewprofile")
   }
 </script>
 
